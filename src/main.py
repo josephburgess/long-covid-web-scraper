@@ -10,7 +10,7 @@ def main():
 
     for scraper in scrapers:
         data = scraper.scrape()
-        update_csv_file('data/long_covid_articles.csv', data)
+        update_csv_file('data/raw/long_covid_articles.csv', data)
 
 
 if __name__ == '__main__':

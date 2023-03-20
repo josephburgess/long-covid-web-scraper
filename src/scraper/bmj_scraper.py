@@ -18,8 +18,8 @@ class BMJScraper(Scraper):
                 'span', {'class': ['nlm-given-names', 'nlm-surname']})
             authors = ' '.join([author.text for author in authors_list])
 
-            publication_date = container.find(
-                'span', class_='highwire-cite-metadata-date').text.strip()
+            publication_date = container.find_all(
+                'span', class_='highwire-cite-metadata-date')[1].text.strip()
 
             article = {
                 'title': title,

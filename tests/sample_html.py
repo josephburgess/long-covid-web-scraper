@@ -10,6 +10,6 @@ sample_bmj_html = '''
 <div class="highwire-article-citation">
   <a class="highwire-cite-linked-title">Sample Article Title</a>
   <div  class="highwire-cite-authors"><span class="nlm-given-names">John</span> <span class="nlm-surname">Doe</span></div>
-  <span  class="highwire-cite-metadata-date">Mar 01, 2023</span>
+  <span  class="highwire-cite-metadata-date">Mar 01, 2023</span><span  class="highwire-cite-metadata-date">Mar 01, 2023</span>
 </div>
 '''
