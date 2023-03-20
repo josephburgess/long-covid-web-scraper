@@ -3,7 +3,7 @@ import responses
 from src.scraper import Scraper, PubMedScraper
 
 sample_pubmed_html = '''
-<div class="pubmed-docsum">
+<div class="docsum-content">
     <a class="docsum-title" href="/12345678/">Sample Article Title</a>
     <span class="docsum-authors">John Doe, Jane Smith</span>
     <span class="docsum-journal-citation">Jan 01, 2022</span>
@@ -20,7 +20,7 @@ def test_fetch_html_pubmed():
     html_content = pubmed_scraper.fetch_html(url)
 
     assert html_content is not None
-    assert 'pubmed-docsum' in html_content
+    assert 'docsum-content' in html_content
 
 
 def test_parse_pubmed():

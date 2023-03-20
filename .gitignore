@@ -1,2 +1,4 @@
 venv
 pastedump.py
+data
+__pycache__
