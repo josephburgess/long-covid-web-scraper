@@ -1,6 +1,6 @@
 import pytest
 import responses
-from src.scraper import Scraper, PubMedScraper
+from src.scraper import PubMedScraper
 
 sample_pubmed_html = '''
 <div class="docsum-content">

@@ -1,18 +1,5 @@
-import requests
+from scraper import Scraper
 from bs4 import BeautifulSoup
-import pandas as pd
-
-
-class Scraper:
-    def fetch_html(self, url):
-        response = requests.get(url)
-        print(f"Status code: {response.status_code}")
-        if response.status_code == 200:
-            return response.text
-        return None
-
-    def scrape(self):
-        raise NotImplementedError("Subclasses must implement this method")
 
 
 class PubMedScraper(Scraper):
@@ -36,6 +23,7 @@ class PubMedScraper(Scraper):
                 'title': title,
                 'authors': authors,
                 'publication_date': publication_date,
+                'source': 'pubmed'
             }
 
             articles.append(article)
@@ -58,18 +46,3 @@ class PubMedScraper(Scraper):
                 break
 
         return all_articles
-
-
-def main():
-    scrapers = [
-        PubMedScraper(),
-    ]
-
-    for scraper in scrapers:
-        data = scraper.scrape()
-        df = pd.DataFrame(data)
-        df.to_csv('data/long_covid_articles.csv', index=False)
-
-
-if __name__ == '__main__':
-    main()
