@@ -42,11 +42,8 @@ def standardize_date(date_string, source):
 
 def main():
     file_path = 'data/raw/long_covid_articles.csv'
-
     df = load_data(file_path)
-
     processed_df = clean_data(df)
-
     processed_df.to_csv('data/processed/processed_articles.csv', index=False)
 
 
