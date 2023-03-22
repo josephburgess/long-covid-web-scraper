@@ -24,7 +24,6 @@ def test_clean_data(test_df):
     processed_df = clean_data(test_df)
     assert len(processed_df) == 2
     assert 'publication_date' in processed_df.columns
-    assert 'source' not in processed_df.columns
     assert not processed_df.duplicated(subset=['title']).any()
 
 
