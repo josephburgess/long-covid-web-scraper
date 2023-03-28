@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+import React from 'react';
+import YearPublishedGraph from './components/YearPublishedGraph/YearPublishedGraph';
 import './App.css';
-import YearPublishedGraph from './components/YearPublished/YearPublished';
 
 function App() {
   return (
