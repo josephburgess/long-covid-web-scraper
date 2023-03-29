@@ -1,9 +1,9 @@
 import React from 'react'
 import DataVisualisation from './DataVisualisation'
+import { mount } from '@cypress/react18';
 
 describe('<DataVisualisation />', () => {
   it('renders', () => {
-    // see: https://on.cypress.io/mounting-react
-    cy.mount(<DataVisualisation />)
+    mount(<DataVisualisation />)
   })
 })
