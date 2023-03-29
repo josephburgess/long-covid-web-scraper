@@ -1,17 +1,41 @@
 import React from 'react';
-import YearPublishedGraph from './components/YearPublishedGraph/YearPublishedGraph';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import NewsArticles from './components/NewsArticles/NewsArticles';
+import DataVisualisation from './components/DataVisualisation/DataVisualisation';
+import RedditFeed from './components/RedditFeed/RedditFeed';
+import { AppBar, Toolbar, Typography, Button, Container, Box } from '@mui/material';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1>Long COVID Articles Visualization</h1>
-      </header>
-      <main>
-        <YearPublishedGraph />
-      </main>
-    </div>
+    <Router>
+      <div>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Long COVID News Hub
+            </Typography>
+            <Button color="inherit" component={Link} to="/">
+              News Articles
+            </Button>
+            <Button color="inherit" component={Link} to="/data-visualization">
+              Data
+            </Button>
+            <Button color="inherit" component={Link} to="/reddit-feed">
+              Reddit Feed
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <Container>
+          <Box sx={{ marginTop: 4 }}>
+            <Routes>
+              <Route path="/" element={<NewsArticles />} />
+              <Route path="/data-visualization" element={<DataVisualisation />} />
+              <Route path="/reddit-feed" element={<RedditFeed />} />
+            </Routes>
+          </Box>
+        </Container>
+      </div>
+    </Router>
   );
 }
 
