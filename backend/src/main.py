@@ -1,4 +1,4 @@
-from scraper import BMJScraper, PubMedScraper, update_csv_file
+from scrapers import BMJScraper, PubMedScraper, update_csv_file
 import pandas as pd
 
 
