@@ -1,6 +1,6 @@
 import pytest
 import responses
-from src.scraper import PubMedScraper, BMJScraper
+from src.scrapers import PubMedScraper, BMJScraper
 from .sample_html import sample_pubmed_html, sample_bmj_html
 
 
