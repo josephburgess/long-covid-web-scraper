@@ -1,6 +1,7 @@
 import pandas as pd
 import pytest
 from src.data_processing import load_data, clean_data, standardize_date
+import os
 
 
 @pytest.fixture
@@ -14,7 +15,9 @@ def test_df():
 
 
 def test_load_data():
-    file_path = 'data/raw/test.csv'
+    project_root = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), '..'))
+    file_path = os.path.join(project_root, 'data/raw/test.csv')
     df = load_data(file_path)
     assert isinstance(df, pd.DataFrame)
     assert len(df) > 0
