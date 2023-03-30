@@ -1,5 +1,6 @@
 import requests
 import os
+import logging
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -20,14 +21,18 @@ class GuardianClient:
             'order-by': 'newest',
             'api-key': self.api_key
         }
-        response = requests.get(url, params=params)
-        response.raise_for_status()
-        data = response.json()
-        results = data['response']['results']
-        output = [{
-            'weburl': result['webUrl'],
-            'headline': result['fields']['headline'],
-            'thumbnail': result['fields'].get('thumbnail', ''),
-            'standfirst': result['fields'].get('standfirst', '')
-        } for result in results]
-        return output
+        try:
+            response = requests.get(url, params=params)
+            response.raise_for_status()
+            data = response.json()
+            results = data['response']['results']
+            output = [{
+                'weburl': result['webUrl'],
+                'headline': result['fields']['headline'],
+                'thumbnail': result['fields'].get('thumbnail', ''),
+                'standfirst': result['fields'].get('standfirst', '')
+            } for result in results]
+            return output
+        except Exception as e:
+            logging.exception(f'Error searching news: {e}')
+            return None

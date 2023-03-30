@@ -1,5 +1,7 @@
 import unittest
-import requests
+import requests.exceptions
+import pytest
+import logging
 from unittest.mock import Mock, patch
 from src.clients import GuardianClient
 
@@ -69,3 +71,9 @@ class TestGuardianClient(unittest.TestCase):
             }
         )
         self.assertEqual(output, self.example_output)
+
+    def test_search_news_error_handling(self):
+        with patch('requests.get', side_effect=Exception('error')):
+            with self.assertLogs(level='ERROR') as log:
+                self.client.search_news('example')
+                self.assertIn('Error searching news', log.output[0])
