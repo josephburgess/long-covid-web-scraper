@@ -8,28 +8,26 @@ load_dotenv()
 
 class RedditClient:
     def __init__(self):
-        self.url = 'https://www.reddit.com/r/longhaulers.json'
         self.client_id = os.getenv('REDDIT_CLIENT_ID')
         self.client_secret = os.getenv('REDDIT_CLIENT_SECRET')
         self.user_agent = os.getenv('REDDIT_USER_AGENT')
+        self.subreddit_name = 'covidlonghaulers'
+        self.search_terms = [
+            'skin', 'burning', 'neurologist', 'neurology', 'fatigue',
+            'neuropathy', 'tingling', 'burn', 'fire', 'neuro',
+            'sfn', 'sensitive', 'touch', 'POTS'
+        ]
 
     def load_posts(self):
         try:
-            reddit = praw.Reddit(client_id=self.client_id,
-                                 client_secret=self.client_secret,
-                                 user_agent=self.user_agent)
-            subreddit = reddit.subreddit('covidlonghaulers')
-            search_terms = ['skin',
-                            'burning', 'neurologist',
-                            'neurology', 'fatigue',
-                            'neuropathy', 'tingling',
-                            'burn', 'fire', 'fizzing',
-                            'neuro', 'sfn', 'sensitive',
-                            'sensitivity', 'hypersensitive',
-                            'hypersensitivity', 'touch', 'POTS',
-                            'fibromyalgia', 'allodynia', 'autoimmune',
-                            'microclots', 'nerve']
-            search_query = ' OR '.join(search_terms)
+            reddit = praw.Reddit(
+                client_id=self.client_id,
+                client_secret=self.client_secret,
+                user_agent=self.user_agent
+            )
+            subreddit = reddit.subreddit(self.subreddit_name)
+            search_query = ' OR '.join(
+                f'selftext:{term} OR title:{term}' for term in self.search_terms)
             search_results = subreddit.search(
                 search_query, time_filter='month')
             output = [{
