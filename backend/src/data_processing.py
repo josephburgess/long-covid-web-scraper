@@ -46,7 +46,7 @@ def standardize_date(date_string, source):
 
 def main():
     db = get_db()
-    df = load_data(db, 'long_covid_articles')
+    df = load_data(db, 'articles')
     processed_df = clean_data(df)
     collection_name = 'processed_articles'
     update_mongodb_collection(
