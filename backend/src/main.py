@@ -1,4 +1,4 @@
-from scrapers import BMJScraper, PubMedScraper, update_csv_file
+from scrapers import BMJScraper, PubMedScraper, update_mongodb_collection
 import pandas as pd
 
 
@@ -10,7 +10,7 @@ def main():
 
     for scraper in scrapers:
         data = scraper.scrape()
-        update_csv_file('data/raw/long_covid_articles.csv', data)
+        update_mongodb_collection('articles', data)
 
 
 if __name__ == '__main__':

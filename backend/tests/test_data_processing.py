@@ -1,7 +1,7 @@
+from mongomock import MongoClient
 import pandas as pd
 import pytest
 from src.data_processing import load_data, clean_data, standardize_date
-import os
 
 
 @pytest.fixture
@@ -14,11 +14,21 @@ def test_df():
     return df
 
 
-def test_load_data():
-    project_root = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), '..'))
-    file_path = os.path.join(project_root, 'data/raw/test.csv')
-    df = load_data(file_path)
+@pytest.fixture
+def test_database():
+    return MongoClient().db
+
+
+def test_load_data(test_database):
+    test_collection_name = "long_covid_articles"
+    test_collection = test_database[test_collection_name]
+    test_collection.insert_many([
+        {'title': 'Article 1', 'publication_date': '2020 May 10', 'source': 'pubmed'},
+        {'title': 'Article 2', 'publication_date': 'Published 15 Jun 2021', 'source': 'BMJ'},
+        {'title': 'Article 3', 'publication_date': None, 'source': 'pubmed'}
+    ])
+
+    df = load_data(test_database, test_collection_name)
     assert isinstance(df, pd.DataFrame)
     assert len(df) > 0
 

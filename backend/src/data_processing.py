@@ -1,9 +1,21 @@
+from pymongo import MongoClient
 import pandas as pd
 import re
+import os
+from scrapers import update_mongodb_collection
 
 
-def load_data(file_path):
-    df = pd.read_csv(file_path)
+def get_db():
+    mongo_url = os.getenv('MONGO_CLIENT_STRING', 'mongodb://0.0.0.0')
+    client = MongoClient(mongo_url)
+    db = client.longcovid
+    return db
+
+
+def load_data(db, collection_name):
+    collection = db[collection_name]
+    data = list(collection.find())
+    df = pd.DataFrame(data)
     return df
 
 
@@ -16,7 +28,6 @@ def clean_data(df):
         df.at[i, 'publication_date'] = standardized_date
 
     df = df.drop_duplicates(subset=['title'])
-    # df = df.drop(columns=['source'])
     df = df.dropna(subset=['publication_date'])
     return df
 
@@ -40,10 +51,12 @@ def standardize_date(date_string, source):
 
 
 def main():
-    file_path = 'data/raw/long_covid_articles.csv'
-    df = load_data(file_path)
+    db = get_db()
+    df = load_data(db, 'long_covid_articles')
     processed_df = clean_data(df)
-    processed_df.to_csv('data/processed/processed_articles.csv', index=False)
+    collection_name = 'processed_articles'
+    update_mongodb_collection(
+        collection_name, processed_df.to_dict(orient='records'))
 
 
 if __name__ == "__main__":
