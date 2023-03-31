@@ -1,12 +1,9 @@
-from pymongo import MongoClient
 from bson.objectid import ObjectId
-import os
+from db_connector import get_db
 
 
 def update_mongodb_collection(collection_name, new_articles):
-    mongo_url = os.getenv('MONGO_CLIENT_STRING', 'mongodb://localhost:27017/')
-    client = MongoClient(mongo_url)
-    db = client.longcovid
+    db = get_db()
     collection = db[collection_name]
 
     existing_articles = collection.find({}, {'_id': 1})
@@ -21,4 +18,3 @@ def update_mongodb_collection(collection_name, new_articles):
 
     if deduplicated_articles:
         collection.insert_many(deduplicated_articles)
-    client.close()

@@ -3,13 +3,7 @@ import pandas as pd
 import re
 import os
 from scrapers import update_mongodb_collection
-
-
-def get_db():
-    mongo_url = os.getenv('MONGO_CLIENT_STRING', 'mongodb://0.0.0.0')
-    client = MongoClient(mongo_url)
-    db = client.longcovid
-    return db
+from db_connector import get_db
 
 
 def load_data(db, collection_name):
