@@ -1,7 +1,6 @@
 import logging
 import praw
 import os
-from datetime import datetime, timedelta
 from dotenv import load_dotenv
 load_dotenv()
 

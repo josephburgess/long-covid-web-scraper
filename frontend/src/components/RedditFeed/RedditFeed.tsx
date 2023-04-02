@@ -9,14 +9,13 @@ const RedditFeed: React.FC = () => {
   const [posts, setPosts] = useState<RedditPost[]>([]);
 
   useEffect(() => {
-    // Fetch data from Reddit API
-    fetch('https://www.reddit.com/r/longhaulers.json')
+    fetch('/api/reddit')
       .then((response) => response.json())
       .then((data) => {
-        const postsData = data.data.children.map((post: any) => {
+        const postsData = data.map((post: any) => {
           return {
-            title: post.data.title,
-            url: post.data.url,
+            title: post.title,
+            url: post.url,
           };
         });
         setPosts(postsData);

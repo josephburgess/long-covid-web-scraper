@@ -3,3 +3,4 @@ pastedump.py
 data
 __pycache__
 .env
+.pytest_cache
