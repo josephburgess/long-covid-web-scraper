@@ -11,7 +11,7 @@ const YearPublishedGraph: React.FC = () => {
   const plotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch('/data')
+    fetch('/api/data')
       .then((response) => response.json())
       .then((data: Article[]) => {
         const sources = Array.from(

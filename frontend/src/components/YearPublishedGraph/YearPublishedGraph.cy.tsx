@@ -6,7 +6,7 @@ describe('<YearPublishedGraph />', () => {
 
   beforeEach(() => {
     cy.fixture('sample_data.json').then((sampleData) => {
-      cy.intercept('GET', '/data', { body: sampleData });
+      cy.intercept('GET', '/api/data', { body: sampleData });
     });
   })
 
