@@ -14,6 +14,7 @@ class GuardianClient:
     def search_news(self, query):
         url = f'{self.base_url}search'
         params = {
+            'section': 'society',
             'q': query,
             'page-size': 40,
             'query-fields': 'headline',

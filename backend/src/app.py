@@ -1,10 +1,10 @@
 from bson import json_util
 from flask import Flask, jsonify
-from .clients import RedditClient
+from .clients import RedditClient, GuardianClient
 from .db_connector import get_db
 
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__)
 
 
 @app.route("/api/data")
@@ -14,6 +14,13 @@ def get_data():
     cursor = collection.find({})
     data_list = list(cursor)
     return json_util.dumps(data_list)
+
+
+@app.route("/api/news")
+def get_news():
+    news_client = GuardianClient()
+    articles = news_client.search_news('long-covid')
+    return jsonify(articles)
 
 
 @app.route("/api/reddit")
