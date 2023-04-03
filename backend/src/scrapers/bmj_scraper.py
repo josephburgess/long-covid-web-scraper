@@ -11,8 +11,10 @@ class BMJScraper(Scraper):
             'div', class_='highwire-article-citation')
 
         for container in article_containers:
-            title = container.find(
-                'a', class_='highwire-cite-linked-title').text.strip()
+            title_tag = container.find(
+                'a', class_='highwire-cite-linked-title')
+            title = title_tag.text.strip()
+            url = "http://www.bmj.com" + title_tag['href']
 
             authors_list = container.find_all(
                 'span', {'class': ['nlm-given-names', 'nlm-surname']})
@@ -23,6 +25,7 @@ class BMJScraper(Scraper):
 
             article = {
                 'title': title,
+                'url': url,
                 'authors': authors,
                 'publication_date': publication_date,
                 'source': 'BMJ'

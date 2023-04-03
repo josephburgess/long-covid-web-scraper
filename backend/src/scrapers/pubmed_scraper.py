@@ -11,7 +11,9 @@ class PubMedScraper(Scraper):
         article_containers = soup.find_all('div', class_='docsum-content')
 
         for container in article_containers:
-            title = container.find('a', class_='docsum-title').text.strip()
+            title_tag = container.find('a', class_='docsum-title')
+            title = title_tag.text.strip()
+            url = "https://pubmed.ncbi.nlm.nih.gov" + title_tag['href']
 
             authors = container.find(
                 'span', class_='docsum-authors').text.strip()
@@ -21,6 +23,7 @@ class PubMedScraper(Scraper):
 
             article = {
                 'title': title,
+                'url': url,
                 'authors': authors,
                 'publication_date': publication_date,
                 'source': 'pubmed'
