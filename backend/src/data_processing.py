@@ -41,6 +41,12 @@ def standardize_date(date_string, source):
             month = date_match.group(2)
             year = date_match.group(3)
             return f"{year}-{month}-{day}"
+    elif source == "The Lancet":
+        date_match = re.search(
+            r'Published: ([a-zA-Z]+) (\d{1,2}), (\d{4})', date_string)
+        if date_match:
+            month, day, year = date_match.groups()
+            return f'{year}-{month[:3].lower()}-{day.zfill(2)}'
     return None
 
 
