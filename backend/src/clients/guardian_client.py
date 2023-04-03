@@ -1,6 +1,7 @@
 import requests
 import os
 import logging
+from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,10 +32,16 @@ class GuardianClient:
                 'weburl': result['webUrl'],
                 'headline': result['fields']['headline'],
                 'thumbnail': result['fields'].get('thumbnail', ''),
-                'standfirst': result['fields'].get('standfirst', ''),
+                'standfirst': self.clean_standfirst(result['fields'].get('standfirst', '')),
                 'date': result['webPublicationDate']
             } for result in results]
             return output
         except Exception as e:
             logging.exception(f'Error searching news: {e}')
             return None
+
+    def clean_standfirst(self, standfirst: str) -> str:
+        soup = BeautifulSoup(standfirst, 'html.parser')
+        for ul in soup.find_all('ul'):
+            ul.decompose()
+        return soup.get_text(strip=True)

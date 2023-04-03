@@ -1,14 +1,18 @@
+// NewsFeed.tsx
 import React, { useState, useEffect } from 'react';
+import NewsArticle from '../NewsArticle/NewsArticle';
+import styles from './NewsFeed.module.css';
 
-interface NewsArticle {
+interface NewsArticleData {
   weburl: string;
   headline: string;
   thumbnail: string;
   standfirst: string;
+  date: string;
 }
 
 const NewsFeed: React.FC = () => {
-  const [articles, setArticles] = useState<NewsArticle[]>([]);
+  const [articles, setArticles] = useState<NewsArticleData[]>([]);
 
   useEffect(() => {
     fetch('/api/news')
@@ -19,7 +23,8 @@ const NewsFeed: React.FC = () => {
             weburl: article.weburl,
             headline: article.headline,
             thumbnail: article.thumbnail,
-            standfirst: article.standfirst
+            standfirst: article.standfirst,
+            date: article.date,
           };
         });
         setArticles(newsData);
@@ -30,15 +35,16 @@ const NewsFeed: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>News Feed</h1>
-      <ul>
+      <div className={styles.grid}>
         {articles.map((article, index) => (
-          <li key={index}>
-            <a href={article.weburl}>{article.headline}</a>
-          </li>
+          <NewsArticle
+            key={index}
+            {...article}
+          />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
