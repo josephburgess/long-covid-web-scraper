@@ -31,7 +31,8 @@ class GuardianClient:
                 'weburl': result['webUrl'],
                 'headline': result['fields']['headline'],
                 'thumbnail': result['fields'].get('thumbnail', ''),
-                'standfirst': result['fields'].get('standfirst', '')
+                'standfirst': result['fields'].get('standfirst', ''),
+                'date': result['webPublicationDate']
             } for result in results]
             return output
         except Exception as e:

@@ -19,7 +19,8 @@ class TestGuardianClient(unittest.TestCase):
                             'headline': 'Example Article 1',
                             'thumbnail': 'https://www.example.com/thumbnail1',
                             'standfirst': 'This is an example article'
-                        }
+                        },
+                        'webPublicationDate': "2023-04-03T13:37:48Z"
                     },
                     {
                         'webUrl': 'https://www.example.com/article2',
@@ -27,7 +28,8 @@ class TestGuardianClient(unittest.TestCase):
                             'headline': 'Example Article 2',
                             'thumbnail': '',
                             'standfirst': ''
-                        }
+                        },
+                        'webPublicationDate': "2023-04-03T15:37:48Z"
                     }
                 ]
             }
@@ -37,13 +39,15 @@ class TestGuardianClient(unittest.TestCase):
                 'weburl': 'https://www.example.com/article1',
                 'headline': 'Example Article 1',
                 'thumbnail': 'https://www.example.com/thumbnail1',
-                'standfirst': 'This is an example article'
+                'standfirst': 'This is an example article',
+                'date': "2023-04-03T13:37:48Z"
             },
             {
                 'weburl': 'https://www.example.com/article2',
                 'headline': 'Example Article 2',
                 'thumbnail': '',
-                'standfirst': ''
+                'standfirst': '',
+                'date': "2023-04-03T15:37:48Z"
             }
         ]
 
