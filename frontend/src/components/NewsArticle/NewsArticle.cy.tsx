@@ -1,5 +1,5 @@
 import React from 'react'
-import NewsArticles from './NewsArticles'
+import NewsArticles from './NewsArticle'
 import { mount } from '@cypress/react18';
 
 
