@@ -1,6 +1,7 @@
 import logging
 import praw
 import os
+import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -32,6 +33,7 @@ class RedditClient:
             output = [{
                 'title': post.title,
                 'url': post.url,
+                'created': post.created_utc
             } for post in search_results if post.is_self]
             return output
         except Exception as e:
