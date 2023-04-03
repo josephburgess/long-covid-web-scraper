@@ -9,30 +9,26 @@ describe('<RedditPost />', () => {
     created: Date.now() / 1000,
   };
 
-  it('renders', () => {
+  beforeEach(() => {
     mount(<RedditPost title={post.title} url={post.url} created={post.created} />);
   });
 
   it('displays the post title', () => {
-    mount(<RedditPost title={post.title} url={post.url} created={post.created} />)
-    cy.get('[data-cy="title"]').should('contain.text', 'Test post');
+    cy.get('[data-cy="title"]').should('contain.text', post.title);
   });
 
   it('displays the post URL', () => {
-    mount(<RedditPost title={post.title} url={post.url} created={post.created} />)
-      .get('[data-cy="title"]')
+    cy.get('[data-cy="title"]')
       .should('have.attr', 'href', post.url);
   });
 
   it('displays a thumbnail image', () => {
-    mount(<RedditPost title={post.title} url={post.url} created={post.created} />)
-      .get('[data-cy="thumbnail"]')
+    cy.get('[data-cy="thumbnail"]')
       .should('be.visible');
   });
 
   it('displays the timestamp', () => {
-    mount(<RedditPost title={post.title} url={post.url} created={post.created} />)
-      .get('[data-cy="timestamp"]')
+    cy.get('[data-cy="timestamp"]')
       .should('be.visible');
   });
 });
