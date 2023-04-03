@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import NewsArticles from './components/NewsArticles/NewsArticles';
 import DataVisualisation from './components/DataVisualisation/DataVisualisation';
 import RedditFeed from './components/RedditFeed/RedditFeed';
 import NewsFeed from './components/NewsFeed/NewsFeed';
@@ -13,15 +12,15 @@ function App() {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Long COVID News Hub
+              Long COVID Hub
             </Typography>
             <Button color="inherit" component={Link} to="/news">
-              News Articles
+              News
             </Button>
-            <Button color="inherit" component={Link} to="/data-visualization">
+            <Button color="inherit" component={Link} to="/research">
               Data
             </Button>
-            <Button color="inherit" component={Link} to="/reddit-feed">
+            <Button color="inherit" component={Link} to="/reddit">
               Reddit Feed
             </Button>
           </Toolbar>
@@ -29,9 +28,9 @@ function App() {
         <Container>
           <Box sx={{ marginTop: 4 }}>
             <Routes>
-              <Route path="/" element={<NewsArticles />} />
-              <Route path="/data-visualization" element={<DataVisualisation />} />
-              <Route path="/reddit-feed" element={<RedditFeed />} />
+              <Route path="/" element={<NewsFeed />} />
+              <Route path="/research" element={<DataVisualisation />} />
+              <Route path="/reddit" element={<RedditFeed />} />
               <Route path="/news" element={<NewsFeed />} />
             </Routes>
           </Box>
