@@ -2,10 +2,12 @@ from bson import json_util
 from flask import Flask, jsonify
 from src.clients import RedditClient, GuardianClient
 from src.db_connector import get_db
+from flask_cors import CORS
 import os
 
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/api/data")
