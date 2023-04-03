@@ -15,7 +15,7 @@ const NewsFeed: React.FC = () => {
   const [articles, setArticles] = useState<NewsArticleData[]>([]);
 
   useEffect(() => {
-    fetch('/api/news')
+    fetch(`${process.env.REACT_APP_API_URL}/api/news`)
       .then((response) => response.json())
       .then((data) => {
         const newsData = data.map((article: any) => {

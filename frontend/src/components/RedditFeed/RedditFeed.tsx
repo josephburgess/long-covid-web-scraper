@@ -11,7 +11,7 @@ const RedditFeed: React.FC = () => {
   const [posts, setPosts] = useState<RedditPostData[]>([]);
 
   useEffect(() => {
-    fetch('/api/reddit')
+    fetch(`${process.env.REACT_APP_API_URL}/api/reddit`)
       .then((response) => response.json())
       .then((data) => {
         setPosts(data);
