@@ -62,6 +62,7 @@ class TestGuardianClient(unittest.TestCase):
         mock_get.assert_called_once_with(
             'https://content.guardianapis.com/search',
             params={
+                'section': 'society',
                 'q': 'example',
                 'page-size': 40,
                 'query-fields': 'headline',
