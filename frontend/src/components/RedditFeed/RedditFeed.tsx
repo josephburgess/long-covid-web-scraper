@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import RedditPost from '../RedditPost/RedditPost';
 
-interface RedditPost {
+interface RedditPostData {
   title: string;
   url: string;
+  created: number;
 }
 
 const RedditFeed: React.FC = () => {
-  const [posts, setPosts] = useState<RedditPost[]>([]);
+  const [posts, setPosts] = useState<RedditPostData[]>([]);
 
   useEffect(() => {
     fetch('/api/reddit')
       .then((response) => response.json())
       .then((data) => {
-        const postsData = data.map((post: any) => {
-          return {
-            title: post.title,
-            url: post.url,
-          };
-        });
-        setPosts(postsData);
+        setPosts(data);
       })
       .catch((error) => {
         console.log(error);
@@ -26,15 +22,11 @@ const RedditFeed: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="reddit-feed">
       <h1>Reddit Feed</h1>
-      <ul>
-        {posts.map((post, index) => (
-          <li key={index}>
-            <a href={post.url}>{post.title}</a>
-          </li>
-        ))}
-      </ul>
+      {posts.map((post, index) => (
+        <RedditPost key={index} title={post.title} url={post.url} created={post.created} />
+      ))}
     </div>
   );
 };

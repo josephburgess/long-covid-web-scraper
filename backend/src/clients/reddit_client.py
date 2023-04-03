@@ -29,7 +29,7 @@ class RedditClient:
             search_query = ' OR '.join(
                 f'selftext:{term} OR title:{term}' for term in self.search_terms)
             search_results = subreddit.search(
-                search_query, time_filter='month')
+                search_query, sort='new', time_filter='month')
             output = [{
                 'title': post.title,
                 'url': post.url,
