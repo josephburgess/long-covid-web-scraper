@@ -2,6 +2,7 @@ from bson import json_util
 from flask import Flask, jsonify
 from src.clients import RedditClient, GuardianClient
 from src.db_connector import get_db
+import os
 
 
 app = Flask(__name__)
@@ -31,4 +32,4 @@ def get_reddit_data():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
