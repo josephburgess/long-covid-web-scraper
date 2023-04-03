@@ -1,7 +1,7 @@
 from bson import json_util
 from flask import Flask, jsonify
-from .clients import RedditClient, GuardianClient
-from .db_connector import get_db
+from src.clients import RedditClient, GuardianClient
+from src.db_connector import get_db
 
 
 app = Flask(__name__)
