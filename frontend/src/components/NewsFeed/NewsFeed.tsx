@@ -18,7 +18,7 @@ const NewsFeed: React.FC = () => {
     fetch(`${process.env.REACT_APP_API_URL}/api/news`)
       .then((response) => response.json())
       .then((data) => {
-        const newsData = data.map((article: any) => {
+        const newsData = data.map((article: NewsArticleData) => {
           return {
             weburl: article.weburl,
             headline: article.headline,

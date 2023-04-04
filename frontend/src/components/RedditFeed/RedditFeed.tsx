@@ -24,7 +24,7 @@ const RedditFeed: React.FC = () => {
   return (
     <div className="reddit-feed">
       <h1>Reddit Feed</h1>
-      {posts.map((post, index) => (
+      {posts.map((post: RedditPostData, index) => (
         <RedditPost key={index} title={post.title} url={post.url} created={post.created} />
       ))}
     </div>
