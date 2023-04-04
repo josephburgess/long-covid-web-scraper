@@ -36,14 +36,14 @@ class TestGuardianClient(unittest.TestCase):
         }
         cls.example_output = [
             {
-                'weburl': 'https://www.example.com/article1',
+                'webUrl': 'https://www.example.com/article1',
                 'headline': 'Example Article 1',
                 'thumbnail': 'https://www.example.com/thumbnail1',
                 'standfirst': 'This is an example article',
                 'date': "2023-04-03T13:37:48Z"
             },
             {
-                'weburl': 'https://www.example.com/article2',
+                'webUrl': 'https://www.example.com/article2',
                 'headline': 'Example Article 2',
                 'thumbnail': '',
                 'standfirst': '',

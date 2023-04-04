@@ -2,17 +2,17 @@ import React from 'react';
 import styles from './NewsArticle.module.css';
 
 interface NewsArticleProps {
-  weburl: string;
+  webUrl: string;
   headline: string;
   thumbnail: string;
   standfirst: string;
   date: string;
 }
 
-const NewsArticle: React.FC<NewsArticleProps> = ({ weburl, headline, thumbnail, standfirst, date }) => {
+const NewsArticle: React.FC<NewsArticleProps> = ({ webUrl, headline, thumbnail, standfirst, date }) => {
   return (
     <div className={styles.articleContainer}>
-      <a href={weburl} data-cy="weburl" className={styles.articleLink}>
+      <a href={webUrl} data-cy="webUrl" className={styles.articleLink}>
         <div className={styles.thumbnail}>
           <img src={thumbnail} alt={headline} data-cy="thumbnail" />
         </div>

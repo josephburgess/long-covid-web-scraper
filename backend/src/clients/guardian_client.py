@@ -29,7 +29,7 @@ class GuardianClient:
             data = response.json()
             results = data['response']['results']
             output = [{
-                'weburl': result['webUrl'],
+                'webUrl': result['webUrl'],
                 'headline': result['fields']['headline'],
                 'thumbnail': result['fields'].get('thumbnail', ''),
                 'standfirst': self.clean_standfirst(result['fields'].get('standfirst', '')),

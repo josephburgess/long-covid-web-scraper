@@ -1,10 +1,10 @@
-// NewsFeed.tsx
 import React, { useState, useEffect } from 'react';
 import NewsArticle from '../NewsArticle/NewsArticle';
 import styles from './NewsFeed.module.css';
+import { fetchNewsArticles } from '../../services/newsApi';
 
-interface NewsArticleData {
-  weburl: string;
+export interface NewsArticleData {
+  webUrl: string;
   headline: string;
   thumbnail: string;
   standfirst: string;
@@ -15,23 +15,12 @@ const NewsFeed: React.FC = () => {
   const [articles, setArticles] = useState<NewsArticleData[]>([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/news`)
-      .then((response) => response.json())
-      .then((data) => {
-        const newsData = data.map((article: NewsArticleData) => {
-          return {
-            weburl: article.weburl,
-            headline: article.headline,
-            thumbnail: article.thumbnail,
-            standfirst: article.standfirst,
-            date: article.date,
-          };
-        });
-        setArticles(newsData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const fetchData = async () => {
+      const newsData = await fetchNewsArticles();
+      setArticles(newsData);
+    };
+
+    fetchData();
   }, []);
 
   return (
