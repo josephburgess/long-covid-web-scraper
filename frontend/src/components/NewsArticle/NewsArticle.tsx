@@ -11,7 +11,7 @@ interface NewsArticleProps {
 
 const NewsArticle: React.FC<NewsArticleProps> = ({ webUrl, headline, thumbnail, standfirst, date }) => {
   return (
-    <div className={styles.articleContainer}>
+    <div data-cy="news-article" className={styles.articleContainer}>
       <a href={webUrl} data-cy="webUrl" className={styles.articleLink}>
         <div className={styles.thumbnail}>
           <img src={thumbnail} alt={headline} data-cy="thumbnail" />
