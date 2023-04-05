@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import pandas as pd
 import re
 import os
-from scrapers import update_mongodb_collection
+from scrapers import DatabaseManager
 from db_connector import get_db
 
 
@@ -55,8 +55,8 @@ def main():
     df = load_data(db, 'articles')
     processed_df = clean_data(df)
     collection_name = 'processed_articles'
-    update_mongodb_collection(
-        collection_name, processed_df.to_dict(orient='records'))
+    db_manager = DatabaseManager(collection_name)
+    db_manager.update_collection(processed_df.to_dict(orient='records'))
 
 
 if __name__ == "__main__":
