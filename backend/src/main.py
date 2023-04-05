@@ -1,5 +1,5 @@
 from scrapers import BMJScraper, PubMedScraper, LancetScraper, DatabaseManager
-from data_processing import main as data_processing_main
+from data_processor import main as data_processor_main
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
         db_manager = DatabaseManager('articles')
         db_manager.update_collection(data)
 
-    data_processing_main()
+    data_processor_main()
 
 
 if __name__ == '__main__':
