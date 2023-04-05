@@ -1,7 +1,9 @@
 import requests
+from abc import ABC, abstractmethod
 
 
-class Scraper:
+class Scraper(ABC):
+
     def fetch_html(self, url):
         response = requests.get(url)
         print(f"Status code: {response.status_code}")
@@ -9,5 +11,6 @@ class Scraper:
             return response.text
         return None
 
+    @abstractmethod
     def scrape(self):
-        raise NotImplementedError("Subclasses must implement this method")
+        pass

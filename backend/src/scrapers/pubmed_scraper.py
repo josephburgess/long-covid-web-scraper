@@ -3,6 +3,10 @@ from bs4 import BeautifulSoup
 
 
 class PubMedScraper(Scraper):
+    def __init__(self):
+        self.base_url = 'https://pubmed.ncbi.nlm.nih.gov/'
+        self.query = '?term=long+covid&page='
+
     def parse_pubmed(self, html_content):
         soup = BeautifulSoup(html_content, 'html.parser')
         articles = []
@@ -34,12 +38,10 @@ class PubMedScraper(Scraper):
         return articles
 
     def scrape(self, max_pages=5):
-        base_url = 'https://pubmed.ncbi.nlm.nih.gov/'
-        query = '?term=long+covid&page='
         all_articles = []
 
         for page_num in range(1, max_pages + 1):
-            url = f"{base_url}{query}{page_num}"
+            url = f"{self.base_url}{self.query}{page_num}"
             html_content = self.fetch_html(url)
 
             if html_content:

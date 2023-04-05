@@ -3,6 +3,10 @@ from bs4 import BeautifulSoup
 
 
 class LancetScraper(Scraper):
+    def __init__(self):
+        self.base_url = 'https://www.thelancet.com/action/doSearch'
+        self.query = '?term=long+covid&page='
+
     def parse_lancet(self, html_content):
         soup = BeautifulSoup(html_content, 'html.parser')
         articles = []
@@ -37,9 +41,8 @@ class LancetScraper(Scraper):
         return articles
 
     def scrape(self):
-        base_url = 'https://www.thelancet.com/action/doSearch'
-        query = '?text1=long+covid&field1=Title&journalCode=lancet&SeriesKey=lancet'
-        html_content = self.fetch_html(base_url + query)
+
+        html_content = self.fetch_html(self.base_url + self.query)
 
         if html_content:
             articles = self.parse_lancet(html_content)
