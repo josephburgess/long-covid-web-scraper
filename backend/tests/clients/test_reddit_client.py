@@ -1,6 +1,6 @@
 from unittest.mock import Mock, patch
-from src.clients import RedditClient
 import unittest
+from src.clients import RedditClient
 
 
 class TestRedditClient(unittest.TestCase):

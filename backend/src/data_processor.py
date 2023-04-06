@@ -48,7 +48,7 @@ class DataProcessor:
                 r'Published: ([a-zA-Z]+) (\d{1,2}), (\d{4})', date_string)
             if date_match:
                 month, day, year = date_match.groups()
-                return f'{year}-{month[:3].lower()}-{day.zfill(2)}'
+                return f'{year}-{month[:3]}-{day.zfill(2)}'
         return None
 
     def update_processed_collection(self, processed_collection_name):
