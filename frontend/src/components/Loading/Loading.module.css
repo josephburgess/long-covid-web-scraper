@@ -1,0 +1,27 @@
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loadingAnimationContainer {
+  width: 100px; /* Set a default size */
+  height: 100px; /* Set a default size */
+  overflow: hidden;
+}
+
+/* Change the size for smaller devices */
+@media (max-width: 768px) {
+  .loadingAnimationContainer {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+/* Change the size for larger devices */
+@media (min-width: 1200px) {
+  .loadingAnimationContainer {
+    width: 150px;
+    height: 150px;
+  }
+}

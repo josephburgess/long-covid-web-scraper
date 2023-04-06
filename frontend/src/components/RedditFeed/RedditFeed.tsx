@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RedditPost from '../RedditPost/RedditPost';
 import { fetchRedditPosts } from '../../services/redditApi';
+import Loading from '../Loading/Loading';
 
 export interface RedditPostData {
   title: string;
@@ -10,11 +11,13 @@ export interface RedditPostData {
 
 const RedditFeed: React.FC = () => {
   const [posts, setPosts] = useState<RedditPostData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const redditData = await fetchRedditPosts();
       setPosts(redditData);
+      setIsLoading(false);
     };
 
     fetchData();
@@ -23,9 +26,11 @@ const RedditFeed: React.FC = () => {
   return (
     <div className="reddit-feed">
       <h1>Reddit Feed</h1>
-      {posts.map((post, index) => (
-        <RedditPost key={index} {...post} />
-      ))}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        posts.map((post, index) => <RedditPost key={index} {...post} />)
+      )}
     </div>
   );
 };
