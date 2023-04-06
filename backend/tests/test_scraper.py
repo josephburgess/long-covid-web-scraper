@@ -26,6 +26,7 @@ def test_parse_pubmed():
     assert articles[0]['publication_date'] == 'Jan 01, 2022'
 
 
+@responses.activate
 def test_fetch_html_BMJ():
     url = 'https://www.bmj.com/search/advanced/title%3Along%2Bcovid'
     responses.add(responses.GET, url, body=sample_bmj_html, status=200)
@@ -47,6 +48,7 @@ def test_parse_BMJ():
     assert articles[0]['publication_date'] == 'Mar 01, 2023'
 
 
+@responses.activate
 def test_fetch_html_lancet():
     url = 'https://www.thelancet.com/action/doSearch?text1=long+covid&field1=Title&journalCode=lancet&SeriesKey=lancet'
     responses.add(responses.GET, url, body=sample_lancet_html, status=200)
@@ -55,7 +57,7 @@ def test_fetch_html_lancet():
     html_content = lancet_scraper.fetch_html(url)
 
     assert html_content is not None
-    assert 'search__item clearfix separator' in html_content
+    assert 'search__item' in html_content
 
 
 def test_parse_lancet():

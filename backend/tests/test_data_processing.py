@@ -33,7 +33,13 @@ def test_load_data(test_database):
     assert len(data_processor.df) > 0
 
 
-def test_clean_data(test_df):
+@pytest.fixture
+def data_processor(test_database):  # ADDED: data_processor fixture
+    test_collection_name = "long_covid_articles"
+    return DataProcessor(test_database, test_collection_name)
+
+
+def test_clean_data(test_df, data_processor):
     test_database = MongoClient().db
     test_collection_name = "long_covid_articles"
     data_processor = DataProcessor(test_database, test_collection_name)
