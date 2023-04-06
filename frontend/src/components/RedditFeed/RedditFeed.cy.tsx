@@ -28,4 +28,18 @@ describe('<RedditFeed />', () => {
     cy.get('[data-cy="reddit-post"]').should('have.length.at.least', 1);
   });
 
+  it('paginates through the Reddit posts', () => {
+    cy.wait('@fetchRedditPosts');
+    cy.get('[data-cy="reddit-post"]').should('have.length', 20);
+
+    cy.get('li.next').click();
+    cy.get('[data-cy="reddit-post"]').should('have.length', 5);
+
+    cy.get('li.previous').click();
+    cy.get('[data-cy="reddit-post"]').should('have.length', 20);
+  });
 })
+
+
+
+  
