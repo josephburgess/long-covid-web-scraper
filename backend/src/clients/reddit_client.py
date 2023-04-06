@@ -33,7 +33,8 @@ class RedditClient:
             output = [{
                 'title': post.title,
                 'url': post.url,
-                'created': post.created_utc
+                'created': post.created_utc,
+                'selftext': post.selftext,
             } for post in search_results if post.is_self]
             return output
         except Exception as e:

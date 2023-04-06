@@ -1,6 +1,13 @@
 .reddit-post {
   display: flex;
-  margin-bottom: 16px;
+  align-items: flex-start;
+  background-color: #f6f6f6;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 0.5rem;
+  max-width: 600px; /* Change the max-width value to your desired width */
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .reddit-post-thumbnail {
@@ -13,8 +20,18 @@
 }
 
 .reddit-post-content a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
   font-weight: bold;
   color: #1a0dab;
+}
+
+.reddit-post-selftext {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
 }
 
 .reddit-post-content a:hover {

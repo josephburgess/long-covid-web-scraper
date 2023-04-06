@@ -7,10 +7,11 @@ describe('<RedditPost />', () => {
     title: 'Test post',
     url: 'https://www.reddit.com/test-post',
     created: Date.now() / 1000,
+    selftext: 'This is a test post and here is the selftext'
   };
 
   beforeEach(() => {
-    mount(<RedditPost title={post.title} url={post.url} created={post.created} />);
+    mount(<RedditPost title={post.title} url={post.url} created={post.created} selftext={post.selftext} />);
   });
 
   it('displays the post title', () => {
