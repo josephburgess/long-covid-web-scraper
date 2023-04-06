@@ -32,4 +32,9 @@ describe('<RedditPost />', () => {
     cy.get('[data-cy="timestamp"]')
       .should('be.visible');
   });
+  
+  it('displays the selftext preview', () => {
+    cy.get('[data-cy="selftext"]')
+      .should('be.visible');
+  });
 });
