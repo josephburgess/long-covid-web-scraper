@@ -6,7 +6,7 @@ import styles from './Loading.module.css';
 const Loading: React.FC = () => {
   return (
     <div className={styles.loadingContainer}>
-      <div className={styles.loadingAnimationContainer}>
+      <div data-cy="loading-indicator" className={styles.loadingAnimationContainer}>
         <Lottie animationData={loadingAnimation} loop={true} />
       </div>
     </div>

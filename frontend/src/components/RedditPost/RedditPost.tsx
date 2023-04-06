@@ -15,7 +15,7 @@ const RedditPost: React.FC<RedditPostProps> = ({ title, url, created, selftext }
 
 
   return (
-    <div className={styles['reddit-post']}>
+    <div data-cy="reddit-post" className={styles['reddit-post']}>
       <div className={styles['reddit-post-thumbnail']}>
         <img data-cy="thumbnail" src="https://www.redditstatic.com/desktop2x/img/favicon/favicon-32x32.png" alt="Reddit Thumbnail" />
       </div>

@@ -3,8 +3,29 @@ import RedditFeed from './RedditFeed'
 import { mount } from '@cypress/react18';
 
 describe('<RedditFeed />', () => {
-  it('renders', () => {
-    // see: https://on.cypress.io/mounting-react
-    mount(<RedditFeed />)
-  })
+  beforeEach(() => {
+    cy.fixture('sample_posts.json').then((posts) => {
+      cy.intercept('GET', 'http://127.0.0.1:5000/api/reddit', {
+        fixture: 'sample_posts.json',
+      }).as('fetchRedditPosts');
+    });
+
+    mount(<RedditFeed />);
+  });
+
+  it('displays the Reddit Feed title', () => {
+    cy.get('[data-cy="reddit-feed-title"]').should('be.visible').contains('Reddit Feed');
+  });
+
+  it('displays a loading indicator before the posts are fetched', () => {
+    cy.get('[data-cy="loading-indicator"]').should('be.visible');
+    cy.get('[data-cy="reddit-post"]').should('not.exist');
+  });
+
+  it('displays Reddit posts once they are fetched', () => {
+    cy.wait('@fetchRedditPosts');
+    cy.get('[data-cy="loading-indicator"]').should('not.exist');
+    cy.get('[data-cy="reddit-post"]').should('have.length.at.least', 1);
+  });
+
 })

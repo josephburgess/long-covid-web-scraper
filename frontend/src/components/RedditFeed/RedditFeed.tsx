@@ -38,7 +38,7 @@ const RedditFeed: React.FC = () => {
 
   return (
     <div className="reddit-feed">
-      <h1>Reddit Feed</h1>
+      <h1 data-cy="reddit-feed-title">Reddit Feed</h1>
       <div className={styles['reddit-post-container']}>
       {isLoading ? (
         <Loading />
