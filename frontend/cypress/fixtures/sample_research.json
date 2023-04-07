@@ -1,0 +1,901 @@
+[{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9ac"
+  },
+  "title": "Long COVID or post COVID-19 syndrome.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34601388/",
+  "authors": "Lechner-Scott J, Levy M, Hawkes C, Yeh A, Giovannoni G.",
+  "publication_date": "2021-Sep-17",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9ad"
+  },
+  "title": "Long COVID: post-acute sequelae of COVID-19 with a cardiovascular focus.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35176758/",
+  "authors": "Raman B, Bluemke DA, Lüscher TF, Neubauer S.",
+  "publication_date": "2022-Mar-14",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9ae"
+  },
+  "title": "Long COVID: major findings, mechanisms and recommendations.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/36639608/",
+  "authors": "Davis HE, McCorkell L, Vogel JM, Topol EJ.",
+  "publication_date": "2023-Jan-13",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9af"
+  },
+  "title": "The neurobiology of long COVID.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/36288726/",
+  "authors": "Monje M, Iwasaki A.",
+  "publication_date": "2022-Nov-02",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9b0"
+  },
+  "title": "Long COVID, a comprehensive systematic scoping review.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34319569/",
+  "authors": "Akbarialiabad H, Taghrir MH, Abdollahi A, Ghahramani N, Kumar M, Paydar S, Razani B, Mwangi J, Asadi-Pooya AA, Malekmakan L, Bastani B.",
+  "publication_date": "2021-Jul-28",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9b1"
+  },
+  "title": "Long COVID and its Management.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35874958/",
+  "authors": "Koc HC, Xiao J, Liu W, Li Y, Chen G.",
+  "publication_date": "2022-Jul-11",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9b2"
+  },
+  "title": "Long COVID or post-COVID-19 syndrome: putative pathophysiology, risk factors, and treatments.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34024217/",
+  "authors": "Yong SJ.",
+  "publication_date": "2021-May-22",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9b3"
+  },
+  "title": "Post-acute and long-COVID-19 symptoms in patients with mild diseases: a systematic review.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34268556/",
+  "authors": "van Kessel SAM, Olde Hartman TC, Lucassen PLBJ, van Jaarsveld CHM.",
+  "publication_date": "2022-Jan-19",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9b4"
+  },
+  "title": "Long COVID in Children and Adolescents.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35486940/",
+  "authors": "Gupta M, Gupta N, Esang M.",
+  "publication_date": "2022-Apr-26",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9b5"
+  },
+  "title": "Phenotyping long COVID.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34244323/",
+  "authors": "Naeije R, Caravita S.",
+  "publication_date": "2021-Aug-26",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9b7"
+  },
+  "title": "[S1 Guideline Post-COVID/Long-COVID].",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34474488/",
+  "authors": "Koczulla AR, Ankermann T, Behrends U, Berlit P, Böing S, Brinkmann F, Franke C, Glöckl R, Gogoll C, Hummel T, Kronsbein J, Maibaum T, Peters EMJ, Pfeifer M, Platz T, Pletz M, Pongratz G, Powitz F, Rabe KF, Scheibenbogen C, Stallmach A, Stegbauer M, Wagner HO, Waller C, Wirtz H, Zeiher A, Zwick RH.",
+  "publication_date": "2021-Sep-02",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9b8"
+  },
+  "title": "Long COVID from rheumatology perspective - a narrative review.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34845562/",
+  "authors": "Sapkota HR, Nune A.",
+  "publication_date": "2021-Nov-30",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9b9"
+  },
+  "title": "Long covid in children and adolescents.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35058281/",
+  "authors": "Zimmermann P, Pittet LF, Curtis N.",
+  "publication_date": "2022-Jan-20",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9ba"
+  },
+  "title": "Long COVID: understanding the neurological effects.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/33743226/",
+  "authors": "The Lancet Neurology.",
+  "publication_date": "2021-Mar-17",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9bc"
+  },
+  "title": "Long COVID: current definition.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34519974/",
+  "authors": "Fernández-de-Las-Peñas C.",
+  "publication_date": "2021-Sep-14",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9bd"
+  },
+  "title": "Long-COVID diagnosis: From diagnostic to advanced AI-driven models.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35114535/",
+  "authors": "Cau R, Faa G, Nardi V, Balestrieri A, Puig J, Suri JS, SanFilippo R, Saba L.",
+  "publication_date": "2022-Jan-19",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9be"
+  },
+  "title": "[Long COVID: long-term symptoms and morphological/radiological correlates].",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34554270/",
+  "authors": "Thurnher MM, Reith W, Thurnher AP, Rommer P.",
+  "publication_date": "2021-Sep-23",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9bf"
+  },
+  "title": "Preliminary evidence on long COVID in children.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/33835507/",
+  "authors": "Buonsenso D, Munblit D, De Rose C, Sinatti D, Ricchiuto A, Carfi A, Valentini P.",
+  "publication_date": "2021-Apr-18",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9c0"
+  },
+  "title": "Long COVID-19 in Children: From the Pathogenesis to the Biologically Plausible Roots of the Syndrome.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35454144/",
+  "authors": "Piazza M, Di Cicco M, Pecoraro L, Ghezzi M, Peroni D, Comberiati P.",
+  "publication_date": "2022-Apr-08",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9c2"
+  },
+  "title": "The Impact of Long COVID-19 on Muscle Health.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35868672/",
+  "authors": "Montes-Ibarra M, Oliveira CLP, Orsso CE, Landi F, Marzetti E, Prado CM.",
+  "publication_date": "2022-Mar-21",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9c3"
+  },
+  "title": "Understanding long COVID: a modern medical challenge.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34454656/",
+  "authors": "The Lancet.",
+  "publication_date": "2021-Aug-28",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9c4"
+  },
+  "title": "Psychiatric and neurological complications of long COVID.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/36326545/",
+  "authors": "Zawilska JB, Kuczyńska K.",
+  "publication_date": "2022-Oct-20",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9c5"
+  },
+  "title": "Early clues regarding the pathogenesis of long-COVID.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35272932/",
+  "authors": "Peluso MJ, Deeks SG.",
+  "publication_date": "2022-Mar-08",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9c7"
+  },
+  "title": "COVID-19 and the long-term cardio-respiratory and metabolic health complications.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35229544/",
+  "authors": "Ashton R, Ansdell P, Hume E, Maden-Wilkinson T, Ryan D, Tuttiett E, Faghy M.",
+  "publication_date": "2022-Feb-09",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9c8"
+  },
+  "title": "Long COVID: aiming for a consensus.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35525253/",
+  "authors": "Munblit D, O'Hara ME, Akrami A, Perego E, Olliaro P, Needham DM.",
+  "publication_date": "2022-May-04",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9c9"
+  },
+  "title": "Long COVID: An inevitable sequela of SARS-CoV-2 infection.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/36283919/",
+  "authors": "Lai CC, Hsu CK, Yen MY, Lee PI, Ko WC, Hsueh PR.",
+  "publication_date": "2022-Oct-15",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9ca"
+  },
+  "title": "Lifestyle Adjustments in Long-COVID Management: Potential Benefits of Plant-Based Diets.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34506003/",
+  "authors": "Storz MA.",
+  "publication_date": "2021-Sep-10",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9cd"
+  },
+  "title": "Evidence mapping and review of long-COVID and its underlying pathophysiological mechanism.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35489015/",
+  "authors": "Umesh A, Pranay K, Pandey RC, Gupta MK.",
+  "publication_date": "2022-Apr-30",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9ce"
+  },
+  "title": "Long COVID: to investigate immunological mechanisms and sex/gender related aspects as fundamental steps for tailored therapy.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34531277/",
+  "authors": "Ortona E, Malorni W.",
+  "publication_date": "2022-Feb-03",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9cf"
+  },
+  "title": "Avascular necrosis as a part of 'long COVID-19'.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34215639/",
+  "authors": "Agarwala SR, Vijayvargiya M, Pandey P.",
+  "publication_date": "2021-Jul-02",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d0"
+  },
+  "title": "Long COVID and Medicine's Two Cultures.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35417745/",
+  "authors": "Horwitz RI, Conroy AH, Cullen MR, Colella K, Mawn M, Singer BH, Sim I.",
+  "publication_date": "2022-Apr-10",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d1"
+  },
+  "title": "Long-COVID: Cognitive deficits (brain fog) and brain lesions in non-hospitalized patients.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34718113/",
+  "authors": "Hugon J.",
+  "publication_date": "2021-Oct-28",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d2"
+  },
+  "title": "COVID-19: long covid and its societal consequences.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34110078/",
+  "authors": "Brüssow H, Timmis K.",
+  "publication_date": "2021-Jun-22",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d3"
+  },
+  "title": "Postural tachycardia syndrome and long COVID: an update.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34972793/",
+  "authors": "Kavi L.",
+  "publication_date": "2021-Dec-31",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d4"
+  },
+  "title": "Long COVID and oral health care considerations.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34756590/",
+  "authors": "France K, Glick M.",
+  "publication_date": "2021-Oct-29",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d5"
+  },
+  "title": "Nutraceuticals and Dietary Supplements for Older Adults with Long COVID-19.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35868674/",
+  "authors": "Tosato M, Ciciarello F, Zazzara MB, Pais C, Savera G, Picca A, Galluzzo V, Coelho-Júnior HJ, Calvani R, Marzetti E, Landi F; Gemelli Against COVID-19 Post-Acute Care Team.",
+  "publication_date": "2022-Jun-20",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d6"
+  },
+  "title": "Understanding Long Covid: Nosology, social attitudes and stigma.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34563621/",
+  "authors": "Byrne EA.",
+  "publication_date": "2021-Sep-23",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d7"
+  },
+  "title": "Possible Adrenal Involvement in Long COVID Syndrome.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34684123/",
+  "authors": "Salzano C, Saracino G, Cardillo G.",
+  "publication_date": "2021-Oct-11",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d8"
+  },
+  "title": "Long Covid: Untangling the Complex Syndrome and the Search for Therapeutics.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/36680082/",
+  "authors": "Haque A, Pant AB.",
+  "publication_date": "2022-Dec-22",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9d9"
+  },
+  "title": "Parkinson's Disease and Post-COVID-19 Syndrome: The Parkinson's Long-COVID Spectrum.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/33890344/",
+  "authors": "Leta V, Rodríguez-Violante M, Abundes A, Rukavina K, Teo JT, Falup-Pecurariu C, Irincu L, Rota S, Bhidayasiri R, Storch A, Odin P, Antonini A, Ray Chaudhuri K.",
+  "publication_date": "2021-Apr-28",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9da"
+  },
+  "title": "Long COVID: which symptoms can be attributed to SARS-CoV-2 infection?",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/35933996/",
+  "authors": "Brightling CE, Evans RA.",
+  "publication_date": "2022-Aug-06",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9dc"
+  },
+  "title": "A Review of Persistent Post-COVID Syndrome (PPCS).",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/33609255/",
+  "authors": "Oronsky B, Larson C, Hammond TC, Oronsky A, Kesari S, Lybeck M, Reid TR.",
+  "publication_date": "2021-Feb-20",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2eb9abd321d8b784c9dd"
+  },
+  "title": "Post-acute COVID-19 syndrome (PCS) and health-related quality of life (HRQoL)-A systematic review and meta-analysis.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/34463956/",
+  "authors": "Malik P, Patel K, Pinto C, Jaiswal R, Tirupathi R, Pillai S, Patel U.",
+  "publication_date": "2021-Sep-07",
+  "source": "pubmed"
+},{
+  "_id": {
+    "$oid": "642b2ebfabd321d8b784c9e0"
+  },
+  "title": "Long COVID: 3 years in",
+  "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(23)00493-2/fulltext",
+  "authors": "The Lancet",
+  "publication_date": "2023-mar-11",
+  "source": "The Lancet"
+},{
+  "_id": {
+    "$oid": "642b2ebfabd321d8b784c9e1"
+  },
+  "title": "Healing Long Covid: a marathon not a sprint",
+  "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(23)00408-7/fulltext",
+  "authors": "Nisreen A Alwan",
+  "publication_date": "2023-mar-04",
+  "source": "The Lancet"
+},{
+  "_id": {
+    "$oid": "642b2ebfabd321d8b784c9e2"
+  },
+  "title": "China needs a scientific long COVID recovery-support platform",
+  "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(23)00138-1/fulltext",
+  "authors": "Hao TanJiayan LiuFanrui Zeng",
+  "publication_date": "2023-feb-04",
+  "source": "The Lancet"
+},{
+  "_id": {
+    "$oid": "642b2ebfabd321d8b784c9e5"
+  },
+  "title": "Risk of long COVID associated with delta versus omicron variants of SARS-CoV-2",
+  "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(22)00941-2/fulltext",
+  "authors": "Michela AntonelliJoan Capdevila PujolTim D SpectorSebastien OurselinClaire J Steves",
+  "publication_date": "2022-jun-18",
+  "source": "The Lancet"
+},{
+  "_id": {
+    "$oid": "642b2ebfabd321d8b784c9e6"
+  },
+  "title": "Long COVID and self-management",
+  "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)02798-7/fulltext",
+  "authors": "Kirsty BrownAsma YahyoucheShamil HaroonJenny CamaradouGrace Turner",
+  "publication_date": "2022-jan-22",
+  "source": "The Lancet"
+},{
+  "_id": {
+    "$oid": "642b2ebfabd321d8b784c9e7"
+  },
+  "title": "Global surveillance, research, and collaboration needed to improve understanding and management of long COVID",
+  "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)02444-2/fulltext",
+  "authors": "Helen WardBarnaby FlowerPatricia J GarciaSean Wei Xiang OngDaniel M AltmannBrendan Delaneyand others",
+  "publication_date": "2021-nov-10",
+  "source": "The Lancet"
+},{
+  "_id": {
+    "$oid": "642b2ebfabd321d8b784c9e8"
+  },
+  "title": "Understanding long COVID: a modern medical challenge",
+  "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)01900-0/fulltext",
+  "authors": "The Lancet",
+  "publication_date": "2021-aug-28",
+  "source": "The Lancet"
+},{
+  "_id": {
+    "$oid": "642b2ebfabd321d8b784c9e9"
+  },
+  "title": "Long COVID guidelines need to reflect lived experience",
+  "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32705-7/fulltext",
+  "authors": "Robin GornaNathalie MacDermottClare RaynerMargaret O’HaraSophie EvansLisa Agyenand others",
+  "publication_date": "2020-dec-21",
+  "source": "The Lancet"
+},{
+  "_id": {
+    "$oid": "642b2ebfabd321d8b784c9ea"
+  },
+  "title": "Facing up to long COVID",
+  "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32662-3/fulltext",
+  "authors": "The Lancet",
+  "publication_date": "2020-dec-12",
+  "source": "The Lancet"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e2f"
+  },
+  "title": "Long covid in children and adolescents",
+  "url": "http://www.bmj.com/content/376/bmj.o143",
+  "authors": "Petra Zimmermann Laure F Pittet Nigel Curtis",
+  "publication_date": "2022-Jan-20",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e30"
+  },
+  "title": "Are vaccines a potential treatment for long covid?",
+  "url": "http://www.bmj.com/content/377/bmj.o988",
+  "authors": "Manoj Sivan Trisha Greenhalgh Ruairidh Milne Brendan Delaney",
+  "publication_date": "2022-May-18",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e31"
+  },
+  "title": "Long covid: research must guide future management",
+  "url": "http://www.bmj.com/content/375/bmj.n3109",
+  "authors": "Anthony S David",
+  "publication_date": "2021-Dec-17",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e32"
+  },
+  "title": "The needs of patients with long covid must not be ignored",
+  "url": "http://www.bmj.com/content/378/bmj.o2287",
+  "authors": "",
+  "publication_date": "2022-Sep-21",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e33"
+  },
+  "title": "Covid-19: WHO urges action as 17 million long covid cases are estimated in Europe",
+  "url": "http://www.bmj.com/content/378/bmj.o2232",
+  "authors": "Jacqui Wise",
+  "publication_date": "2022-Sep-14",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e34"
+  },
+  "title": "Navigating the social identity of long covid",
+  "url": "http://www.bmj.com/content/375/bmj.n2933",
+  "authors": "Julie Van de Vyver Ana C. Leite Nisreen A. Alwan",
+  "publication_date": "2021-Nov-26",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e35"
+  },
+  "title": "Are we mislabelling long covid in children and adolescents?",
+  "url": "http://www.bmj.com/content/376/bmj.o705",
+  "authors": "Federico Marchetti Giorgio Cozzi",
+  "publication_date": "2022-Mar-18",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e36"
+  },
+  "title": "Long covid: coding is caring",
+  "url": "http://www.bmj.com/content/373/bmj.n1262",
+  "authors": "Nikhil Mayor Ruby Tsang Mark Joy FD Richard Hobbs Simon de Lusignan",
+  "publication_date": "2021-May-19",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e37"
+  },
+  "title": "Covid-19: One in eight adults develops long covid symptoms, study suggests",
+  "url": "http://www.bmj.com/content/378/bmj.o1946",
+  "authors": "Elisabeth Mahase",
+  "publication_date": "2022-Aug-04",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e38"
+  },
+  "title": "Long covid: Hair loss and sexual dysfunction are among wider symptoms, study finds",
+  "url": "http://www.bmj.com/content/378/bmj.o1887",
+  "authors": "Jacqui Wise",
+  "publication_date": "2022-Jul-27",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e39"
+  },
+  "title": "Long covid and apheresis: a miracle cure sold on a hypothesis of hope",
+  "url": "http://www.bmj.com/content/378/bmj.o1813",
+  "authors": "",
+  "publication_date": "2022-Jul-19",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e3b"
+  },
+  "title": "Long covid patients travel abroad for expensive and experimental “blood washing”",
+  "url": "http://www.bmj.com/content/378/bmj.o1671",
+  "authors": "Madlen Davies",
+  "publication_date": "2022-Jul-12",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e3c"
+  },
+  "title": "Covid-19: Antibody “signature” could predict risk of long covid",
+  "url": "http://www.bmj.com/content/376/bmj.o245",
+  "authors": "Jacqui Wise",
+  "publication_date": "2022-Jan-28",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e3d"
+  },
+  "title": "Using condition specific patient reported outcome measures for long covid",
+  "url": "http://www.bmj.com/content/376/bmj.o257",
+  "authors": "Manoj Sivan Shaney Wright Sarah Hughes Melanie Calvert",
+  "publication_date": "2022-Jan-28",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e3e"
+  },
+  "title": "How can you help me integrate my long covid care?",
+  "url": "http://www.bmj.com/content/376/bmj.n3102",
+  "authors": "Carl Jreidini",
+  "publication_date": "2022-Jan-27",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e3f"
+  },
+  "title": "Covid-19: How Europe is approaching long covid",
+  "url": "http://www.bmj.com/content/376/bmj.o158",
+  "authors": "Chris Baraniuk",
+  "publication_date": "2022-Jan-20",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e40"
+  },
+  "title": "Long covid—mechanisms, risk factors, and management",
+  "url": "http://www.bmj.com/content/374/bmj.n1648",
+  "authors": "Harry Crook Sanara Raza Joseph Nowell Megan Young Paul Edison",
+  "publication_date": "2021-Jul-26",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e41"
+  },
+  "title": "Covid-19: Long covid risk is lower with omicron than delta, researchers find",
+  "url": "http://www.bmj.com/content/377/bmj.o1500",
+  "authors": "Jacqui Wise",
+  "publication_date": "2022-Jun-17",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e42"
+  },
+  "title": "NICE guideline on long covid",
+  "url": "http://www.bmj.com/content/371/bmj.m4938",
+  "authors": "Manoj Sivan Sharon Taylor",
+  "publication_date": "2020-Dec-23",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e43"
+  },
+  "title": "Trajectory of long covid symptoms after covid-19 vaccination: community based cohort study",
+  "url": "http://www.bmj.com/content/377/bmj-2021-069676",
+  "authors": "Daniel Ayoubkhani Charlotte Bermingham Koen B Pouwels Myer Glickman Vahé Nafilyan Francesco Zaccardi Kamlesh Khunti Nisreen A Alwan A Sarah Walker",
+  "publication_date": "2022-May-18",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e44"
+  },
+  "title": "Caring for the carers: understanding long covid in our diverse healthcare workforce",
+  "url": "http://www.bmj.com/content/377/bmj.o1152",
+  "authors": "Amani Al-Oraibi Katherine Woolf Laura B Nellums Carolyn Tarrant Habib Naqvi Manish Pareek",
+  "publication_date": "2022-May-06",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e45"
+  },
+  "title": "Long covid: new wine in need of new bottles",
+  "url": "http://www.bmj.com/content/375/bmj.n2736",
+  "authors": "Amitava Banerjee",
+  "publication_date": "2021-Nov-09",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e46"
+  },
+  "title": "Development and validation of the symptom burden questionnaire for long covid (SBQ-LC): Rasch analysis",
+  "url": "http://www.bmj.com/content/377/bmj-2022-070230",
+  "authors": "Sarah E Hughes Shamil Haroon Anuradhaa Subramanian Christel McMullan Olalekan L Aiyegbusi Grace M Turner Louise Jackson Elin Haf Davies Chris Frost Gary McNamara Gary Price Karen Matthews Jennifer Camaradou Jane Ormerod Anita Walker Melanie J Calvert",
+  "publication_date": "2022-Apr-27",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e47"
+  },
+  "title": "“Long covid”: the Dutch response",
+  "url": "http://www.bmj.com/content/370/bmj.m3202",
+  "authors": "Jako Burgers",
+  "publication_date": "2020-Aug-14",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e48"
+  },
+  "title": "Long covid clinics should be run as research hubs",
+  "url": "http://www.bmj.com/content/374/bmj.n1996",
+  "authors": "Margaret McCartney Richard Byng",
+  "publication_date": "2021-Aug-20",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e49"
+  },
+  "title": "Covid-19: Two million people in the UK are estimated to be experiencing long covid, says ONS",
+  "url": "http://www.bmj.com/content/377/bmj.o1391",
+  "authors": "Jacqui Wise",
+  "publication_date": "2022-Jun-01",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e4a"
+  },
+  "title": "Decoding the unknowns in long covid",
+  "url": "http://www.bmj.com/content/372/bmj.n132",
+  "authors": "Daniel M Altmann Rosemary J Boyton",
+  "publication_date": "2021-Feb-04",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e4b"
+  },
+  "title": "Covid-19: Vaccinated people are less likely to get long covid, review finds",
+  "url": "http://www.bmj.com/content/376/bmj.o407",
+  "authors": "Elisabeth Mahase",
+  "publication_date": "2022-Feb-16",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e4c"
+  },
+  "title": "Chronic fatigue syndrome and long covid: individualisation, not compartmentalisation",
+  "url": "http://www.bmj.com/content/374/bmj.n1863",
+  "authors": "Russell S Malcolm",
+  "publication_date": "2021-Jul-28",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e4d"
+  },
+  "title": "Long covid: reshaping conversations about medically unexplained symptoms",
+  "url": "http://www.bmj.com/content/374/bmj.n1859",
+  "authors": "Sean L Davidson David B Menkes",
+  "publication_date": "2021-Jul-28",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e4e"
+  },
+  "title": "Long covid: “Holistic” approach is best, given range of symptoms, say researchers",
+  "url": "http://www.bmj.com/content/376/bmj.o336",
+  "authors": "Gareth Iacobucci",
+  "publication_date": "2022-Feb-08",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e4f"
+  },
+  "title": "Chronic fatigue syndrome and long covid: moving beyond the controversy",
+  "url": "http://www.bmj.com/content/373/bmj.n1559",
+  "authors": "Melanie Newman",
+  "publication_date": "2021-Jun-24",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e50"
+  },
+  "title": "Covid-19: Long covid symptoms among hospital inpatients show little improvement after a year, data suggest",
+  "url": "http://www.bmj.com/content/375/bmj.n3092",
+  "authors": "Ingrid Torjesen",
+  "publication_date": "2021-Dec-15",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e51"
+  },
+  "title": "Managing long covid: don’t overlook olfactory dysfunction",
+  "url": "http://www.bmj.com/content/370/bmj.m3771",
+  "authors": "",
+  "publication_date": "2020-Sep-30",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e53"
+  },
+  "title": "Fresh evidence of the scale and scope of long covid",
+  "url": "http://www.bmj.com/content/373/bmj.n853",
+  "authors": "Manoj Sivan Clare Rayner Brendan Delaney",
+  "publication_date": "2021-Apr-01",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e54"
+  },
+  "title": "Covid-19: Long covid must be recognised as occupational disease, says BMA",
+  "url": "http://www.bmj.com/content/374/bmj.n2258",
+  "authors": "Elisabeth Mahase",
+  "publication_date": "2021-Sep-14",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e55"
+  },
+  "title": "Long covid: One in seven children may still have symptoms 15 weeks after infection, data show",
+  "url": "http://www.bmj.com/content/374/bmj.n2157",
+  "authors": "Jacqui Wise",
+  "publication_date": "2021-Sep-01",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e56"
+  },
+  "title": "Failure to prescribe: UK workers with occupational long covid-19 have been ignored",
+  "url": "http://www.bmj.com/content/374/bmj.n2018",
+  "authors": "Andrew Watterson",
+  "publication_date": "2021-Aug-16",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e57"
+  },
+  "title": "Long covid: doctors must assess and investigate patients properly",
+  "url": "http://www.bmj.com/content/371/bmj.m4583",
+  "authors": "Amali U Lokugamage Mary-Ann Bowen Jennifer Blair",
+  "publication_date": "2020-Dec-02",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e58"
+  },
+  "title": "Covid-19: Long covid cases are underreported in GP records, research suggests",
+  "url": "http://www.bmj.com/content/374/bmj.n1685",
+  "authors": "Jacqui Wise",
+  "publication_date": "2021-Jul-02",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e59"
+  },
+  "title": "Long covid could be four different syndromes, review suggests",
+  "url": "http://www.bmj.com/content/371/bmj.m3981",
+  "authors": "Elisabeth Mahase",
+  "publication_date": "2020-Oct-14",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e5a"
+  },
+  "title": "Use patient reported outcome measures (PROMs) in treatment of long covid",
+  "url": "http://www.bmj.com/content/373/bmj.n1260",
+  "authors": "Philip Berry",
+  "publication_date": "2021-May-18",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e5b"
+  },
+  "title": "Covid-19: What do we know about “long covid”?",
+  "url": "http://www.bmj.com/content/370/bmj.m2815",
+  "authors": "Elisabeth Mahase",
+  "publication_date": "2020-Jul-14",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e5c"
+  },
+  "title": "Vaccinating children to prevent long covid? More caution is needed in interpreting current epidemiological data",
+  "url": "http://www.bmj.com/content/372/bmj.n520",
+  "authors": "Sunil S Bhopal Michael Absoud",
+  "publication_date": "2021-Feb-24",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e5d"
+  },
+  "title": "Covid-19: Recognise long covid as occupational disease and compensate frontline workers, say MPs",
+  "url": "http://www.bmj.com/content/372/bmj.n503",
+  "authors": "Matthew Limb",
+  "publication_date": "2021-Feb-19",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e5e"
+  },
+  "title": "Long covid: WHO calls on countries to offer patients more rehabilitation",
+  "url": "http://www.bmj.com/content/372/bmj.n405",
+  "authors": "Jacqui Wise",
+  "publication_date": "2021-Feb-10",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e5f"
+  },
+  "title": "Patient commentary: How power imbalances in the narratives, research, and publications around long covid can harm patients",
+  "url": "http://www.bmj.com/content/373/bmj.n1579",
+  "authors": "Amali U Lokugamage Frances K Simpson Carolyn A Chew-Graham",
+  "publication_date": "2021-Jun-25",
+  "source": "BMJ"
+},{
+  "_id": {
+    "$oid": "642b2f2b0cd2860b7b8a9e60"
+  },
+  "title": "The elephant and the blind men: the children of long covid",
+  "url": "http://www.bmj.com/content/372/bmj.n157",
+  "authors": "Frances K Simpson Amali U Lokugamage",
+  "publication_date": "2021-Jan-19",
+  "source": "BMJ"
+}]
