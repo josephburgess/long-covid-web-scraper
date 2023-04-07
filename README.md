@@ -5,7 +5,7 @@ _This project is still being built, however it is deployed on Render so that cha
 This project is an information hub for research, news and social posts about Long Covid. It utilises several APIs and web scrapers built using Python to obtain information and display it to the user. 
 
 ## Technology
-The project uses a Python/Flask backend and a TypeScript/React frontend, with MongoDB as the database.  Currently the hub has 3 sections, News, Data and Reddit Feed. News articles and Reddit posts are obtained using API calls to the respective services. 
+The project uses a Python/Flask backend and a TypeScript/React frontend, with MongoDB used to store scraped data.  Currently the hub has 3 sections, News, Data and Reddit Feed. News articles and Reddit posts are obtained using API calls to the respective services. 
 
 The Research section visualizes data on long COVID articles from PubMed, the British Medical Journal (BMJ) and the Lancet. The data is scraped from the web using BeautifulSoup and stored in MongoDB, which is read by the Flask backend using Pandas. The backend serves the data as JSON, which is then fetched by the React frontend and visualized using Plotly. 
 
