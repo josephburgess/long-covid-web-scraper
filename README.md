@@ -53,7 +53,7 @@ To run the frontend tests, run:
 
 ```bash
 cd frontend
-npm run cypress
+npm run test
 ```
 
 
