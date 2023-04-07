@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
           News
         </Button>
         <Button color="inherit" component={Link} to="/research" className={styles.button} data-cy="navbar-link-data">
-          Data
+          Research
         </Button>
         <Button color="inherit" component={Link} to="/reddit" className={styles.button} data-cy="navbar-link-reddit">
           Reddit Feed

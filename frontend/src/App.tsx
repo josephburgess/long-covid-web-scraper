@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DataVisualisation from './components/DataVisualisation/DataVisualisation';
 import RedditFeed from './components/RedditFeed/RedditFeed';
 import NewsFeed from './components/NewsFeed/NewsFeed';
 import { Container, Box } from '@mui/material';
 import Navbar from './components/Navbar/Navbar';
+import ResearchPage from './components/ResearchPage/ResearchPage';
 
 const App: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const App: React.FC = () => {
           <Box sx={{ marginTop: 4 }}>
             <Routes>
               <Route path="/" element={<NewsFeed />} />
-              <Route path="/research" element={<DataVisualisation />} />
+              <Route path="/research" element={<ResearchPage />} />
               <Route path="/reddit" element={<RedditFeed />} />
               <Route path="/news" element={<NewsFeed />} />
             </Routes>
