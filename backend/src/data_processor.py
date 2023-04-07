@@ -29,26 +29,33 @@ class DataProcessor:
 
     def standardize_date(self, date_string, source):
         if source == 'pubmed':
-            date_match = re.search(
-                r'(\d{4})\s([a-zA-Z]{3})\s(\d{1,2})', date_string)
-            if date_match:
-                year, month, day = date_match.groups()
-                return f'{year}-{month}-{day.zfill(2)}'
+            return self.standardize_pubmed_date(date_string)
         elif source == "BMJ":
-            date_match = re.search(
-                r'Published (\d{2}) (\w{3}) (\d{4})', date_string)
-            if date_match:
-                day = date_match.group(1)
-                month = date_match.group(2)
-                year = date_match.group(3)
-                return f"{year}-{month}-{day}"
+            return self.standardize_bmj_date(date_string)
         elif source == "The Lancet":
-            date_match = re.search(
-                r'Published: ([a-zA-Z]+) (\d{1,2}), (\d{4})', date_string)
-            if date_match:
-                month, day, year = date_match.groups()
-                return f'{year}-{month[:3]}-{day.zfill(2)}'
+            return self.standardize_lancet_date(date_string)
         return None
+
+    def standardize_pubmed_date(self, date_string):
+        date_match = re.search(
+            r'(\d{4})\s([a-zA-Z]{3})\s(\d{1,2})', date_string)
+        if date_match:
+            year, month, day = date_match.groups()
+            return f'{year}-{month}-{day.zfill(2)}'
+
+    def standardize_bmj_date(self, date_string):
+        date_match = re.search(
+            r'Published (\d{2}) (\w{3}) (\d{4})', date_string)
+        if date_match:
+            day, month, year = date_match.groups()
+            return f"{year}-{month}-{day}"
+
+    def standardize_lancet_date(self, date_string):
+        date_match = re.search(
+            r'Published: ([a-zA-Z]+) (\d{1,2}), (\d{4})', date_string)
+        if date_match:
+            month, day, year = date_match.groups()
+            return f'{year}-{month[:3]}-{day.zfill(2)}'
 
     def update_processed_collection(self, processed_collection_name):
         db_manager = DatabaseManager(processed_collection_name)
