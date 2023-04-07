@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 class LancetScraper(Scraper):
     def __init__(self):
         self.base_url = 'https://www.thelancet.com/action/doSearch'
-        self.query = '?term=long+covid&page='
+        self.query = '?text1=long+covid&field1=Title&journalCode=lancet&SeriesKey=lancet'
 
     def parse_lancet(self, html_content):
         soup = BeautifulSoup(html_content, 'html.parser')
@@ -24,6 +24,9 @@ class LancetScraper(Scraper):
 
             authors = container.find(
                 'ul', class_='meta__authors').text.strip()
+
+            if authors == "The Lancet":
+                authors = "Unattributed"
 
             publication_date = container.find(
                 'span', id='item_date').text.strip()

@@ -19,10 +19,11 @@ const ResearchFeed: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchResearchArticleData();
-      setArticles(data.slice(0, 10));
+      console.log("Data from backend:", data); 
+      setArticles(data);
       setIsLoading(false);
     };
-
+    
     fetchData();
   }, []);
 

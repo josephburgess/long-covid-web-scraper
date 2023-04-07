@@ -16,6 +16,11 @@ const ResearchArticle: React.FC<ResearchArticleProps> = ({
   authors,
   url,
 }) => {
+  // const formattedDate = new Date(publication_date).toLocaleDateString('en-US', {
+  //   year: 'numeric',
+  //   month: 'short',
+  //   day: 'numeric',
+  // });
   return (
     <div data-cy="research-article" className={styles.researchArticle}>
       <a href={url} data-cy="title" target="_blank" rel="noopener noreferrer">

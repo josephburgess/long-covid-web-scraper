@@ -66,7 +66,7 @@ class TestLancetScraper(unittest.TestCase):
 
         assert len(articles) == 2
         assert articles[0]['title'] == 'Long COVID: 3 years in'
-        assert articles[0]['authors'] == 'The Lancet'
+        assert articles[0]['authors'] == 'Unattributed'
         assert articles[0]['publication_date'] == '11 Mar 2023'
         assert articles[1]['title'] == 'Healing Long Covid: a marathon not a sprint'
         assert articles[1]['authors'] == 'Nisreen A Alwan'

@@ -1,7 +1,6 @@
-from pymongo import MongoClient
 import pandas as pd
 import re
-import os
+from datetime import datetime
 from scrapers import DatabaseManager
 from db_connector import get_db
 
