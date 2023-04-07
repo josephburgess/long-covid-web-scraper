@@ -1,0 +1,11 @@
+.researchFeed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.researchArticle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
