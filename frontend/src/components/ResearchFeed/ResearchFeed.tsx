@@ -27,7 +27,7 @@ const ResearchFeed: React.FC = () => {
   }, []);
 
   return (
-    <div className={styles.researchFeed}>
+    <div className={styles.researchFeed} data-cy="research-feed">
       {isLoading ? (
         <Loading />
       ) : (

@@ -42,7 +42,7 @@ const YearPublishedGraph: React.FC = () => {
       });
 
       const layout: Partial<Plotly.Layout> = {
-        title: 'Number of Long COVID Articles by Year',
+        title: 'Publication Tracker',
         xaxis: {
           title: 'Year',
           tickmode: 'linear',
@@ -64,7 +64,7 @@ const YearPublishedGraph: React.FC = () => {
     drawPlot();
   }, []);
 
-  return <div ref={plotRef} />;
+  return <div ref={plotRef} data-cy="year-published-graph" />;
 };
 
 

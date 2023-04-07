@@ -8,7 +8,7 @@ interface ResearchSidebarProps {
 
 const ResearchSidebar: React.FC<ResearchSidebarProps> = ({ onSelection }) => {
   return (
-    <div className={styles.sidebar}>
+    <div className={styles.sidebar} data-cy="research-sidebar">
       <Button onClick={() => onSelection('researchFeed')}>Research Feed</Button>
       <Button onClick={() => onSelection('publicationTracker')}>Publication Tracker</Button>
     </div>
