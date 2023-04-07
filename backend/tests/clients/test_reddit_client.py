@@ -6,9 +6,9 @@ from src.clients import RedditClient
 class TestRedditClient(unittest.TestCase):
     def setUp(self):
         self.mock_post1 = Mock(
-            title='Post 1', url='https://www.reddit.com/post1', created_utc=1617000000.0)
+            title='Post 1', url='https://www.reddit.com/post1', created_utc=1617000000.0, selftext='This is test text for the first reddit post')
         self.mock_post2 = Mock(
-            title='Post 2', url='https://www.reddit.com/post2', created_utc=1617100000.0)
+            title='Post 2', url='https://www.reddit.com/post2', created_utc=1617100000.0, selftext='This is test text for the second reddit post')
         self.mock_search_results = [self.mock_post1, self.mock_post2]
 
     def test_load_posts(self):
@@ -20,9 +20,9 @@ class TestRedditClient(unittest.TestCase):
 
         expected_output = [
             {'title': 'Post 1', 'url': 'https://www.reddit.com/post1',
-                'created': 1617000000.0},
+                'created': 1617000000.0, 'selftext': 'This is test text for the first reddit post'},
             {'title': 'Post 2', 'url': 'https://www.reddit.com/post2',
-                'created': 1617100000.0}
+                'created': 1617100000.0, 'selftext': 'This is test text for the second reddit post'}
         ]
         self.assertEqual(posts, expected_output)
 
