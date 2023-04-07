@@ -16,7 +16,7 @@ describe('<Navbar />', () => {
     cy.get('[data-cy="navbar"]').should('be.visible');
     cy.get('[data-cy="navbar-title"]').contains('Long COVID Hub');
     cy.get('[data-cy="navbar-link-news"]').contains('News');
-    cy.get('[data-cy="navbar-link-data"]').contains('Data');
+    cy.get('[data-cy="navbar-link-data"]').contains('Research');
     cy.get('[data-cy="navbar-link-reddit"]').contains('Reddit Feed');
   });
 });
