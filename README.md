@@ -21,7 +21,16 @@ To install the project, follow these steps:
 cd backend && pip install -r requirements.txt
 cd ../frontend && npm install
 ```
+3. Install MongoDB
 
+   ```
+   brew tap mongodb/brew
+   brew install mongodb-community@5.0
+   ```
+4. Start MongoDB
+   ```
+   brew services start mongodb-community@5.0
+   ```
 
 ## Usage
 
