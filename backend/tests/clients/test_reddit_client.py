@@ -1,31 +1,60 @@
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 import unittest
 from src.clients import RedditClient
+from mocks import mock_reddit_posts, setup_mock_reddit
 
 
 class TestRedditClient(unittest.TestCase):
     def setUp(self):
-        self.mock_post1 = Mock(
-            title='Post 1', url='https://www.reddit.com/post1', created_utc=1617000000.0, selftext='This is test text for the first reddit post')
-        self.mock_post2 = Mock(
-            title='Post 2', url='https://www.reddit.com/post2', created_utc=1617100000.0, selftext='This is test text for the second reddit post')
-        self.mock_search_results = [self.mock_post1, self.mock_post2]
+        self.mock_posts = mock_reddit_posts
 
     def test_load_posts(self):
-        mock_reddit = Mock()
-        mock_reddit.subreddit.return_value.search.return_value = self.mock_search_results
-        with patch('praw.Reddit', return_value=mock_reddit):
+        with patch("praw.Reddit") as mock_reddit:
+            setup_mock_reddit(mock_reddit, self.mock_posts)
             client = RedditClient()
             posts = client.load_posts()
 
         expected_output = [
-            {'title': 'Post 1', 'url': 'https://www.reddit.com/post1',
-                'created': 1617000000.0, 'selftext': 'This is test text for the first reddit post'},
-            {'title': 'Post 2', 'url': 'https://www.reddit.com/post2',
-                'created': 1617100000.0, 'selftext': 'This is test text for the second reddit post'}
+            {
+                "title": "Post 1",
+                "url": "https://www.reddit.com/post1",
+                "created": 1617000000.0,
+                "selftext": "This is test text for the first reddit post",
+            },
+            {
+                "title": "Post 2",
+                "url": "https://www.reddit.com/post2",
+                "created": 1617100000.0,
+                "selftext": "This is test text for the second reddit post",
+            },
         ]
+
         self.assertEqual(posts, expected_output)
 
+    def test_gather_gpt_training_data(self):
+        with patch("src.clients.RedditClient._write_to_file") as mock_write_to_file:
+            with patch("praw.Reddit") as mock_reddit:
+                setup_mock_reddit(
+                    mock_reddit, self.mock_posts[:2], submission_ids=["1", "2"]
+                )
+                client = RedditClient()
+                client.gather_gpt_training_data()
 
-if __name__ == '__main__':
+            expected_output = [
+                {
+                    "prompt": self.mock_posts[0].selftext,
+                    "completion": self.mock_posts[0].comments[0].body,
+                },
+                {
+                    "prompt": self.mock_posts[1].selftext,
+                    "completion": self.mock_posts[1].comments[0].body,
+                },
+            ]
+
+            mock_write_to_file.assert_called_once_with(
+                "reddit_data_3.jsonl", expected_output
+            )
+
+
+if __name__ == "__main__":
     unittest.main()
