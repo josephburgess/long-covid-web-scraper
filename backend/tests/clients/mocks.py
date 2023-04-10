@@ -16,6 +16,7 @@ def setup_mock_reddit(mock_reddit, mock_posts, submission_ids=None):
         def submission_side_effect(id):
             post = next(p for p in mock_posts if p.id == id)
             mock_submission = Mock()
+            mock_submission.title = post.title
             mock_submission.selftext = post.selftext
             mock_submission.comments = post.comments
             return mock_submission

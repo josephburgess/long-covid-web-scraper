@@ -42,17 +42,21 @@ class TestRedditClient(unittest.TestCase):
 
             expected_output = [
                 {
-                    "prompt": self.mock_posts[0].selftext,
-                    "completion": self.mock_posts[0].comments[0].body,
+                    "prompt": self.mock_posts[0].title
+                    + " "
+                    + self.mock_posts[0].selftext,
+                    "completion": "Answer to the first question.",
                 },
                 {
-                    "prompt": self.mock_posts[1].selftext,
-                    "completion": self.mock_posts[1].comments[0].body,
+                    "prompt": self.mock_posts[1].title
+                    + " "
+                    + self.mock_posts[1].selftext,
+                    "completion": "Answer to the second question.",
                 },
             ]
 
             mock_write_to_file.assert_called_once_with(
-                "reddit_data_3.jsonl", expected_output
+                "reddit_data.jsonl", expected_output
             )
 
 
