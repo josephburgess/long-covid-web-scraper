@@ -77,22 +77,32 @@ class RedditClient:
 
             for id in submission_ids:
                 submission = reddit.submission(id)
-                title = submission.title
-                print(title)
-                submission.comments.replace_more(limit=0)
-                if submission.comments:
-                    data.append(
-                        {
-                            "prompt": submission.selftext,
-                            "completion": submission.comments[0].body,
-                        }
-                    )
+                processed_data = self._process_submission(submission)
+                if processed_data:
+                    data.append(processed_data)
 
             self._write_to_file("reddit_data_3.jsonl", data)
 
         except Exception as e:
             logging.exception(f"Error loading data: {e}")
             return None
+
+    def _process_submission(self, submission):
+        title = submission.title
+        print(title)
+        submission.comments.replace_more(limit=0)
+
+        if submission.comments:
+            prompt = (
+                submission.selftext
+                if submission.selftext and submission.selftext != "."
+                else title
+            )
+            return {
+                "prompt": prompt,
+                "completion": submission.comments[0].body,
+            }
+        return None
 
     @staticmethod
     def _write_to_file(file_name, data):
