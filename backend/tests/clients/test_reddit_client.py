@@ -42,15 +42,11 @@ class TestRedditClient(unittest.TestCase):
 
             expected_output = [
                 {
-                    "prompt": self.mock_posts[0].title
-                    + " "
-                    + self.mock_posts[0].selftext,
+                    "prompt": "Post 1 This is test text for the first reddit post",
                     "completion": "Answer to the first question.",
                 },
                 {
-                    "prompt": self.mock_posts[1].title
-                    + " "
-                    + self.mock_posts[1].selftext,
+                    "prompt": "Post 2 This is test text for the second reddit post",
                     "completion": "Answer to the second question.",
                 },
             ]
