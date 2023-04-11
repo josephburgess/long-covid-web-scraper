@@ -8,30 +8,12 @@ load_dotenv()
 
 
 class RedditClient:
-    def __init__(self):
-        self._load_credentials()
-        self.subreddit_name = "covidlonghaulers"
-        self.search_terms = [
-            "skin",
-            "burning",
-            "neurologist",
-            "neurology",
-            "fatigue",
-            "neuropathy",
-            "tingling",
-            "burn",
-            "fire",
-            "neuro",
-            "sfn",
-            "sensitive",
-            "touch",
-            "POTS",
-        ]
-
-    def _load_credentials(self):
+    def __init__(self, search_terms=None):
         self.client_id = os.getenv("REDDIT_CLIENT_ID")
         self.client_secret = os.getenv("REDDIT_CLIENT_SECRET")
         self.user_agent = os.getenv("REDDIT_USER_AGENT")
+        self.subreddit_name = "covidlonghaulers"
+        self.search_terms = search_terms
 
     def _get_reddit_instance(self):
         return praw.Reddit(
@@ -51,7 +33,9 @@ class RedditClient:
     def gather_gpt_training_data(self):
         try:
             submission_ids = self._fetch_submission_ids()
+            print(f"Submission IDs: {submission_ids}")
             data = self._process_submissions(submission_ids)
+            print(f"Data: {data}")
             self._write_to_file("reddit_data.jsonl", data)
         except Exception as e:
             logging.exception(f"Error loading data: {e}")
@@ -63,10 +47,14 @@ class RedditClient:
         )
 
     def _fetch_search_results(self):
-        search_query = self._build_search_query()
         reddit = self._get_reddit_instance()
         subreddit = reddit.subreddit(self.subreddit_name)
-        return subreddit.search(search_query, sort="new", time_filter="month")
+
+        if self.search_terms:
+            search_query = self._build_search_query()
+            return subreddit.search(search_query, sort="new", time_filter="month")
+        else:
+            return subreddit.top("week")
 
     def _extract_output(self, search_results):
         return [
@@ -112,7 +100,7 @@ class RedditClient:
                     }
                 )
                 break
-
+        print(f"Data for submission {submission.id}: {data}")
         return data
 
     @staticmethod

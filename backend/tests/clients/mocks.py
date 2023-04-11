@@ -8,18 +8,21 @@ def get_mock_comments(body):
     return mock_comments
 
 
-def setup_mock_reddit(mock_reddit, mock_posts, submission_ids=None):
-    mock_reddit.return_value.subreddit.return_value.search.return_value = mock_posts
+def setup_mock_reddit(mock_reddit, mock_posts, search=True, submission_ids=None):
+    mock_subreddit = MagicMock()
+    mock_reddit.return_value.subreddit.return_value = mock_subreddit
+
+    if search:
+        mock_subreddit.search.return_value = mock_posts
+    else:
+        mock_subreddit.top.return_value = mock_posts
 
     if submission_ids:
 
-        def submission_side_effect(id):
-            post = next(p for p in mock_posts if p.id == id)
-            mock_submission = Mock()
-            mock_submission.title = post.title
-            mock_submission.selftext = post.selftext
-            mock_submission.comments = post.comments
-            return mock_submission
+        def submission_side_effect(submission_id):
+            for post in mock_posts:
+                if post.id == submission_id:
+                    return post
 
         mock_reddit.return_value.submission.side_effect = submission_side_effect
 

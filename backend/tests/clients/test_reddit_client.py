@@ -10,7 +10,7 @@ class TestRedditClient(unittest.TestCase):
 
     def test_load_posts(self):
         with patch("praw.Reddit") as mock_reddit:
-            setup_mock_reddit(mock_reddit, self.mock_posts)
+            setup_mock_reddit(mock_reddit, self.mock_posts, search=False)
             client = RedditClient()
             posts = client.load_posts()
 
@@ -35,7 +35,10 @@ class TestRedditClient(unittest.TestCase):
         with patch("src.clients.RedditClient._write_to_file") as mock_write_to_file:
             with patch("praw.Reddit") as mock_reddit:
                 setup_mock_reddit(
-                    mock_reddit, self.mock_posts[:2], submission_ids=["1", "2"]
+                    mock_reddit,
+                    self.mock_posts[:2],
+                    search=True,
+                    submission_ids=["1", "2"],
                 )
                 client = RedditClient()
                 client.gather_gpt_training_data()

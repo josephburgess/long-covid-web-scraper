@@ -1,4 +1,4 @@
-from scrapers import Scraper
+from .base_scraper import Scraper
 from bs4 import BeautifulSoup
 
 

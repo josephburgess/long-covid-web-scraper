@@ -1,5 +1,5 @@
 from bson.objectid import ObjectId
-from db_connector import get_db
+from .db_connector import get_db
 
 
 class DatabaseManager:
@@ -8,18 +8,18 @@ class DatabaseManager:
         self.collection = self.db[collection_name]
 
     def _get_existing_article_ids(self):
-        existing_articles = self.collection.find({}, {'_id': 1})
-        return set([article['_id'] for article in existing_articles])
+        existing_articles = self.collection.find({}, {"_id": 1})
+        return set([article["_id"] for article in existing_articles])
 
     def _deduplicate_articles(self, new_articles):
         seen_ids = self._get_existing_article_ids()
         deduplicated_articles = []
 
         for article in new_articles:
-            if '_id' not in article:
-                article['_id'] = ObjectId()
+            if "_id" not in article:
+                article["_id"] = ObjectId()
 
-            if article['_id'] not in seen_ids:
+            if article["_id"] not in seen_ids:
                 deduplicated_articles.append(article)
 
         return deduplicated_articles

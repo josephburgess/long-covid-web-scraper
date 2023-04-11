@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from src.clients import RedditClient, GuardianClient
-from src.db_connector import get_db
+from src.database import get_db
 from bson import json_util
 
 
@@ -23,8 +23,9 @@ def get_news():
     return jsonify(articles)
 
 
-@bp.route("/api/reddit")
+@bp.route("/api/reddit", methods=["POST"])
 def get_reddit_data():
-    reddit_client = RedditClient()
+    search_terms = request.json.get("searchTerms", [])
+    reddit_client = RedditClient(search_terms=search_terms)
     posts = reddit_client.load_posts()
     return jsonify(posts)
