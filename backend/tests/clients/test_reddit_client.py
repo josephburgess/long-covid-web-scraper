@@ -1,6 +1,7 @@
 from unittest.mock import patch
 import unittest
 from src.clients import RedditClient
+from src.clients.reddit_helpers import *
 from mocks import mock_reddit_posts, setup_mock_reddit
 
 
@@ -32,7 +33,7 @@ class TestRedditClient(unittest.TestCase):
         self.assertEqual(posts, expected_output)
 
     def test_gather_gpt_training_data(self):
-        with patch("src.clients.RedditClient._write_to_file") as mock_write_to_file:
+        with patch("src.clients.reddit_helpers.write_to_file") as mock_write_to_file:
             with patch("praw.Reddit") as mock_reddit:
                 setup_mock_reddit(
                     mock_reddit, self.mock_posts[:2], submission_ids=["1", "2"]

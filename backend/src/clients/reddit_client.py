@@ -1,17 +1,13 @@
-import logging
-import os
-import json
-import praw
-from dotenv import load_dotenv
+# reddit_client.py
 
-load_dotenv()
+import logging
+import praw
+from .reddit_helpers import *
 
 
 class RedditClient:
     def __init__(self):
-        self.client_id = os.getenv("REDDIT_CLIENT_ID")
-        self.client_secret = os.getenv("REDDIT_CLIENT_SECRET")
-        self.user_agent = os.getenv("REDDIT_USER_AGENT")
+        self.client_id, self.client_secret, self.user_agent = load_credentials()
         self.subreddit_name = "covidlonghaulers"
         self.search_terms = [
             "skin",
@@ -39,70 +35,17 @@ class RedditClient:
 
     def load_posts(self):
         try:
-            reddit = self._get_reddit_instance()
-            subreddit = reddit.subreddit(self.subreddit_name)
-            search_query = " OR ".join(
-                f"selftext:{term} OR title:{term}" for term in self.search_terms
-            )
-            search_results = subreddit.search(
-                search_query, sort="new", time_filter="month"
-            )
-            output = [
-                {
-                    "title": post.title,
-                    "url": post.url,
-                    "created": post.created_utc,
-                    "selftext": post.selftext,
-                }
-                for post in search_results
-                if post.is_self
-            ]
-            return output
+            search_results = fetch_search_results(self)
+            return extract_output(search_results)
         except Exception as e:
             logging.exception(f"Error loading posts: {e}")
             return None
 
     def gather_gpt_training_data(self):
         try:
-            reddit = self._get_reddit_instance()
-            subreddit = reddit.subreddit(self.subreddit_name)
-
-            data = []
-            submission_ids = []
-
-            for submission in subreddit.search(
-                query="flair:Question", sort="top", time_filter="all", limit=500
-            ):
-                submission_ids.append(submission.id)
-
-            for id in submission_ids:
-                submission = reddit.submission(id)
-                processed_data = self._process_submission(submission)
-                if processed_data:
-                    data.extend(processed_data)
-
-            self._write_to_file("reddit_data.jsonl", data)
-
+            submission_ids = fetch_submission_ids(self)
+            data = process_submissions(self, submission_ids)
+            write_to_file("reddit_data.jsonl", data)
         except Exception as e:
             logging.exception(f"Error loading data: {e}")
             return None
-
-    def _process_submission(self, submission):
-        print(submission.title)
-        submission.comments.replace_more(limit=0)
-
-        data = []
-        for comment in submission.comments:
-            if not comment.body or comment.body == "[deleted]":
-                continue
-            prompt = submission.title + " " + submission.selftext
-            data.append({"prompt": prompt, "completion": comment.body})
-            if len(data) == 5:
-                break
-        return data if data else None
-
-    @staticmethod
-    def _write_to_file(file_name, data):
-        with open(file_name, "w") as f:
-            for item in data:
-                f.write(json.dumps(item) + "\n")
