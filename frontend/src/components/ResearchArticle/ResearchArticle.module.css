@@ -1,5 +1,44 @@
 .researchArticle {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  padding: 16px;
+  transition: all 0.3s;
+}
+
+.researchArticle:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.researchArticle a {
+  color: #0070f3;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-decoration: none;
+}
+
+.researchArticle a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.researchArticle p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+.researchArticle p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .researchArticle {
+    font-size: 16px;
+  }
 }
