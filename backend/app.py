@@ -1,37 +1,20 @@
-from bson import json_util
-from flask import Flask, jsonify
-from src.clients import RedditClient, GuardianClient
-from src.db_connector import get_db
+from flask import Flask
 from flask_cors import CORS
+from src import routes
 import os
 
 
-app = Flask(__name__)
-CORS(app)
+def create_app():
+    app = Flask(__name__)
+    app.register_blueprint(routes.bp)
+    CORS(app)
+    return app
 
 
-@app.route("/api/data")
-def get_data():
-    db = get_db()
-    collection = db.processed_articles
-    cursor = collection.find({}).sort("publication_date", -1)
-    data_list = list(cursor)
-    return json_util.dumps(data_list, default=json_util.default)
-
-
-@app.route("/api/news")
-def get_news():
-    news_client = GuardianClient()
-    articles = news_client.search_news('long-covid')
-    return jsonify(articles)
-
-
-@app.route("/api/reddit")
-def get_reddit_data():
-    reddit_client = RedditClient()
-    posts = reddit_client.load_posts()
-    return jsonify(posts)
+def run_flask_app():
+    app = create_app()
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    run_flask_app()
