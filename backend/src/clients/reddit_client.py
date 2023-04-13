@@ -33,9 +33,7 @@ class RedditClient:
     def gather_gpt_training_data(self):
         try:
             submission_ids = self._fetch_submission_ids()
-            print(f"Submission IDs: {submission_ids}")
             data = self._process_submissions(submission_ids)
-            print(f"Data: {data}")
             self._write_to_file("reddit_data.jsonl", data)
         except Exception as e:
             logging.exception(f"Error loading data: {e}")
@@ -87,6 +85,7 @@ class RedditClient:
         ]
 
     def _process_single_submission(self, submission):
+        print(submission.title)
         submission.comments.replace_more(limit=0)
         data = []
 
@@ -100,7 +99,6 @@ class RedditClient:
                     }
                 )
                 break
-        print(f"Data for submission {submission.id}: {data}")
         return data
 
     @staticmethod
