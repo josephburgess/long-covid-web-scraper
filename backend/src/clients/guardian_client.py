@@ -24,7 +24,6 @@ class GuardianClient:
     def _fetch_search_results(self, query):
         url = f"{self.base_url}search"
         params = {
-            "section": "society",
             "q": query,
             "page-size": 40,
             "query-fields": "headline",
