@@ -17,6 +17,7 @@ class DataProcessor:
         return pd.DataFrame(data)
 
     def clean_data(self):
+        print("Cleaning data...")
         self.df = self.df.dropna()
 
         for i, row in self.df.iterrows():
@@ -60,6 +61,7 @@ class DataProcessor:
     def update_processed_collection(self, processed_collection_name):
         db_manager = DatabaseManager(processed_collection_name)
         db_manager.update_collection(self.df.to_dict(orient="records"))
+        self.new_articles_count = db_manager.new_articles_count
 
 
 def main():
@@ -67,6 +69,9 @@ def main():
     data_processor = DataProcessor(db, "articles")
     data_processor.clean_data()
     data_processor.update_processed_collection("processed_articles")
+    print(
+        f"{data_processor.new_articles_count} new articles processed and added to the 'processed_articles' database."
+    )
 
 
 if __name__ == "__main__":

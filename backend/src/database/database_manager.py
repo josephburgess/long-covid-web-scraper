@@ -29,3 +29,5 @@ class DatabaseManager:
 
         if deduplicated_articles:
             self.collection.insert_many(deduplicated_articles)
+
+        self.new_articles_count = len(deduplicated_articles)
