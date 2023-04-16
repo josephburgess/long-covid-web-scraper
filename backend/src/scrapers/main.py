@@ -1,15 +1,13 @@
-from src.scrapers import BMJScraper, PubMedScraper, LancetScraper
+from src.scrapers import PubMedScraper
 from src.database import DatabaseManager
 from .data_processor import main as data_processor_main
 
 
 def main():
-    scrapers = [PubMedScraper(), BMJScraper(), LancetScraper()]
-
-    for scraper in scrapers:
-        data = scraper.scrape()
-        db_manager = DatabaseManager("articles")
-        db_manager.update_collection(data)
+    scraper = PubMedScraper()
+    data = scraper.scrape()
+    db_manager = DatabaseManager("articles")
+    db_manager.update_collection(data)
 
     data_processor_main()
 
