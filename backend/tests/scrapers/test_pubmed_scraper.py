@@ -14,7 +14,7 @@ class TestPubMedScraper(unittest.TestCase):
         html_content = pubmed_scraper.fetch_html(url)
 
         assert html_content is not None
-        assert "docsum-content" in html_content
+        assert "results-article" in html_content
 
     def test_parse_pubmed(self):
         pubmed_scraper = PubMedScraper()
@@ -24,6 +24,7 @@ class TestPubMedScraper(unittest.TestCase):
         assert articles[0]["title"] == "Sample Article Title"
         assert articles[0]["authors"] == "John Doe, Jane Smith"
         assert articles[0]["publication_date"] == "Jan 01, 2022"
+        assert articles[0]["abstract"] == "Sample abstract text"
 
 
 if __name__ == "__main__":
