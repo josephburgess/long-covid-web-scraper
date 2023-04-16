@@ -46,7 +46,9 @@ const RedditFeed: React.FC = () => {
   return (
     <div className="reddit-feed">
       <h1 data-cy="reddit-feed-title">Reddit Feed</h1>
+      <div className={styles['search-filter-container']}>
       <SearchFilter onChange={handleSearchTermsChange} searchTerms={redditSearchTerms} />
+      </div>
       <div className={styles['reddit-post-container']}>
       {isLoading ? (
         <Loading />

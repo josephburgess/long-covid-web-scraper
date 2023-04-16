@@ -5,7 +5,7 @@
   border-radius: 5px;
   padding: 1rem;
   margin: 0.5rem;
-  max-width: 600px; /* Change the max-width value to your desired width */
+  max-width: 600px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

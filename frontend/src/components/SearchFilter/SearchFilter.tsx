@@ -2,6 +2,7 @@ import React from 'react';
 import { MultiValue, ActionMeta } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import makeAnimated from 'react-select/animated';
+import styles from './SearchFilter.module.css';
 
 const animatedComponents = makeAnimated();
 
@@ -18,6 +19,7 @@ const SearchFilter: React.FC<SearchFilterBarProps> = ({ onChange, searchTerms })
     classNamePrefix="search-filter"
     options={searchTerms}
     onChange={onChange}
+    className={styles['search-filter']}
   />
 );
 
