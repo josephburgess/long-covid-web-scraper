@@ -16,9 +16,9 @@ class TestBMJScraper(unittest.TestCase):
         assert html_content is not None
         assert "highwire-article-citation" in html_content
 
-    def test_parse_BMJ(self):
+    def test_parse_html_BMJ(self):
         bmj_scraper = BMJScraper()
-        articles = bmj_scraper.parse_bmj(sample_bmj_html)
+        articles = bmj_scraper.parse_html(sample_bmj_html)
 
         assert len(articles) == 1
         assert articles[0]["title"] == "Sample Article Title"
