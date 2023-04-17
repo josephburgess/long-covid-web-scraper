@@ -16,9 +16,9 @@ class TestLancetScraper(unittest.TestCase):
         assert html_content is not None
         assert "search__item" in html_content
 
-    def test_parse_lancet(self):
+    def test_parse_html_lancet(self):
         lancet_scraper = LancetScraper()
-        articles = lancet_scraper.parse_lancet(sample_lancet_html)
+        articles = lancet_scraper.parse_html(sample_lancet_html)
 
         assert len(articles) == 2
         assert articles[0]["title"] == "Long COVID: 3 years in"

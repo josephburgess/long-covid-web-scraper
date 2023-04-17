@@ -9,11 +9,26 @@ class LancetScraper(Scraper):
             "?text1=long+covid&field1=Title&journalCode=lancet&SeriesKey=lancet"
         )
 
-    def parse_lancet(self, html_content):
+    def extract_title_and_url(self, container):
+        title_tag = container.find("a", href=True)
+        title = title_tag.text.strip()
+        url = "https://www.thelancet.com" + title_tag["href"]
+        return title, url
+
+    def extract_authors(self, container):
+        authors = container.find("ul", class_="meta__authors").text.strip()
+
+        if authors == "The Lancet":
+            return "Unattributed"
+        return authors
+
+    def extract_publication_date(self, container):
+        return container.find("span", id="item_date").text.strip()
+
+    def parse_html(self, html_content):
         soup = BeautifulSoup(html_content, "html.parser")
         articles = []
 
-        # Find all article containers
         article_containers = soup.find_all("li", class_="search__item")
 
         for container in article_containers:
@@ -23,16 +38,9 @@ class LancetScraper(Scraper):
             ):
                 continue
 
-            title_tag = container.find("a", href=True)
-            title = title_tag.text.strip()
-            url = "https://www.thelancet.com" + title_tag["href"]
-
-            authors = container.find("ul", class_="meta__authors").text.strip()
-
-            if authors == "The Lancet":
-                authors = "Unattributed"
-
-            publication_date = container.find("span", id="item_date").text.strip()
+            title, url = self.extract_title_and_url(container)
+            authors = self.extract_authors(container)
+            publication_date = self.extract_publication_date(container)
 
             article = {
                 "title": title,
@@ -50,7 +58,7 @@ class LancetScraper(Scraper):
         html_content = self.fetch_html(self.base_url + self.query)
 
         if html_content:
-            articles = self.parse_lancet(html_content)
+            articles = self.parse_html(html_content)
         else:
             articles = []
 
