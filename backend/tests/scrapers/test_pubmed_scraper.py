@@ -18,7 +18,7 @@ class TestPubMedScraper(unittest.TestCase):
 
     def test_parse_pubmed(self):
         pubmed_scraper = PubMedScraper()
-        articles = pubmed_scraper.parse_pubmed(sample_pubmed_html)
+        articles = pubmed_scraper.parse_html(sample_pubmed_html)
 
         assert len(articles) == 1
         assert articles[0]["title"] == "Sample Article Title"

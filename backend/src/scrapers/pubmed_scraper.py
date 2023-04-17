@@ -7,33 +7,39 @@ class PubMedScraper(Scraper):
         self.base_url = "https://pubmed.ncbi.nlm.nih.gov/"
         self.query = '?term=%28"long+covid"%29&filter=simsearch1.fha&filter=pubt.booksdocs&filter=pubt.clinicaltrial&filter=pubt.meta-analysis&filter=pubt.randomizedcontrolledtrial&filter=pubt.review&filter=pubt.systematicreview&format=abstract&sort=date&size=50&page='
 
-    def parse_pubmed(self, html_content):
+    def extract_title_and_url(self, container):
+        title_tag = container.find("h1", class_="heading-title").find("a")
+        title = title_tag.text.strip()
+        url = "https://pubmed.ncbi.nlm.nih.gov" + title_tag["href"]
+        return title, url
+
+    def extract_authors(self, container):
+        return container.find("span", class_="authors-list").text.strip()
+
+    def extract_publication_date(self, container):
+        citation_span = container.find("span", class_="cit")
+        if citation_span:
+            return citation_span.text.strip()
+        return ""
+
+    def extract_abstract(self, container):
+        abstract = container.find("div", class_="abstract-content")
+        if abstract:
+            abstract_paragraphs = abstract.find_all("p")
+            return " ".join(p.get_text(strip=True) for p in abstract_paragraphs)
+        return ""
+
+    def parse_html(self, html_content):
         soup = BeautifulSoup(html_content, "html.parser")
         articles = []
 
         article_containers = soup.find_all("div", class_="results-article")
 
         for container in article_containers:
-            title_tag = container.find("h1", class_="heading-title").find("a")
-            title = title_tag.text.strip()
-            url = "https://pubmed.ncbi.nlm.nih.gov" + title_tag["href"]
-
-            authors = container.find("span", class_="authors-list").text.strip()
-
-            citation_span = container.find("span", class_="cit")
-            if citation_span:
-                publication_date = citation_span.text.strip()
-            else:
-                publication_date = ""
-
-            abstract = container.find("div", class_="abstract-content")
-            if abstract:
-                abstract_paragraphs = abstract.find_all("p")
-                abstract_text = " ".join(
-                    p.get_text(strip=True) for p in abstract_paragraphs
-                )
-            else:
-                abstract_text = ""
+            title, url = self.extract_title_and_url(container)
+            authors = self.extract_authors(container)
+            publication_date = self.extract_publication_date(container)
+            abstract_text = self.extract_abstract(container)
 
             article = {
                 "title": title,
@@ -56,7 +62,7 @@ class PubMedScraper(Scraper):
             html_content = self.fetch_html(url)
 
             if html_content:
-                articles = self.parse_pubmed(html_content)
+                articles = self.parse_html(html_content)
                 all_articles.extend(articles)
                 print("Found", len(articles), "articles")
             else:
