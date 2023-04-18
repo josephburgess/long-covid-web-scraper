@@ -1,70 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import * as Plotly from 'plotly.js-dist';
-import { schemeSet2 } from 'd3-scale-chromatic';
-import { fetchYearPublishedArticleData } from '../../services/dataApi';
-
-export interface YearPublishedArticle {
-  source: string;
-  publication_date: string;
-}
+import React, { useRef } from 'react';
+import { useYearPublishedData } from '../../hooks/useYearPublishedData';
+import { useDrawYearPublishedPlot } from '../../hooks/useDrawYearPublishedPlot';
+import { getLayout } from '../../utils/graphUtils';
 
 const YearPublishedGraph: React.FC = () => {
   const plotRef = useRef<HTMLDivElement>(null);
+  const data = useYearPublishedData();
+  const layout = getLayout();
 
-  useEffect(() => {
-    const drawPlot = async () => {
-      const data = await fetchYearPublishedArticleData();
-      const traces = processArticleData(data);
-      const layout = getLayout();
-
-      if (plotRef.current) {
-        Plotly.newPlot(plotRef.current, traces, layout);
-      }
-    };
-
-    drawPlot();
-  }, []);
-
-  const processArticleData = (data: YearPublishedArticle[]) => {
-    const sources = Array.from(
-      new Set(data.map((article: YearPublishedArticle) => article.source))
-    );
-
-    return sources.map((source, i) => {
-      const sourceData = data.filter(
-        (article: YearPublishedArticle) => article.source === source
-      );
-
-      const years = sourceData.reduce((acc: Record<string, number>, article: YearPublishedArticle) => {
-        const year = article.publication_date.split('-')[0];
-        acc[year] = (acc[year] || 0) + 1;
-        return acc;
-      }, {});
-
-      return {
-        x: Object.keys(years),
-        y: Object.values(years),
-        type: 'bar' as const,
-        name: source,
-        marker: { color: schemeSet2[i] },
-      };
-    });
-  };
-
-  const getLayout = (): Partial<Plotly.Layout> => ({
-    title: 'Publication Tracker',
-    xaxis: {
-      title: 'Year',
-      tickmode: 'linear',
-      tick0: 0,
-      dtick: 1,
-      ticklen: 5,
-      tickwidth: 2,
-      tickcolor: '#000',
-    },
-    yaxis: { title: 'Number of Articles' },
-    barmode: 'stack',
-  });
+  useDrawYearPublishedPlot(plotRef, data, layout);
 
   return <div ref={plotRef} data-cy="year-published-graph" />;
 };

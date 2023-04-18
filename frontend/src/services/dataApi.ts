@@ -1,5 +1,5 @@
-import { YearPublishedArticle } from '../components/YearPublishedGraph/YearPublishedGraph';
 import { ResearchArticleData } from '../components/ResearchFeed/ResearchFeed';
+import { ResearchArticleInterface } from '../types/ResearchArticleInterface';
 
 const fetchData = async <T>(): Promise<T[]> => {
   try {
@@ -19,7 +19,7 @@ export const fetchResearchArticleData = async (): Promise<
 };
 
 export const fetchYearPublishedArticleData = async (): Promise<
-  YearPublishedArticle[]
+  ResearchArticleInterface[]
 > => {
-  return await fetchData<YearPublishedArticle>();
+  return await fetchData<ResearchArticleInterface>();
 };
