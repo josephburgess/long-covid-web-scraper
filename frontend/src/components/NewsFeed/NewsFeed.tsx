@@ -21,9 +21,7 @@ const NewsFeed: React.FC = () => {
       const newsData = await fetchNewsArticles();
       setArticles(newsData);
       setIsLoading(false);
-
     };
-
     fetchData();
   }, []);
 
