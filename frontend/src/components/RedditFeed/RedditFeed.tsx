@@ -3,19 +3,14 @@ import RedditPost from '../RedditPost/RedditPost';
 import SearchFilter from '../SearchFilter/SearchFilter';
 import { redditSearchTerms } from '../data/redditSearchTerms';
 import { fetchRedditPosts } from '../../services/redditApi';
+import { RedditPostInterface } from '../../types/RedditPostInterface';
 import Loading from '../Loading/Loading';
 import Paginate from 'react-paginate';
 import styles from './RedditFeed.module.css';
 
-export interface RedditPostData {
-  title: string;
-  url: string;
-  created: number;
-  selftext: string;
-}
 
 const RedditFeed: React.FC = () => {
-  const [posts, setPosts] = useState<RedditPostData[]>([]);
+  const [posts, setPosts] = useState<RedditPostInterface[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [searchTerms, setSearchTerms] = useState<string[]>([]);

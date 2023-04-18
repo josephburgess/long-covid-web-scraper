@@ -1,8 +1,8 @@
-import { RedditPostData } from '../components/RedditFeed/RedditFeed';
+import { RedditPostInterface } from '../types/RedditPostInterface';
 
 export const fetchRedditPosts = async (
   searchTerms: string[]
-): Promise<RedditPostData[]> => {
+): Promise<RedditPostInterface[]> => {
   try {
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}/api/reddit`,

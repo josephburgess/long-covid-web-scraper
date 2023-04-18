@@ -19,7 +19,6 @@ const ResearchFeed: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchResearchArticleData();
-      console.log("Data from backend:", data); 
       setArticles(data);
       setIsLoading(false);
     };

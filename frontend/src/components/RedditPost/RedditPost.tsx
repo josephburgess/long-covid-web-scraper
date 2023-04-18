@@ -1,15 +1,9 @@
 import React from 'react';
 import { formatDistanceToNowStrict } from 'date-fns';
 import styles from './RedditPost.module.css';
+import { RedditPostInterface } from '../../types/RedditPostInterface';
 
-interface RedditPostProps {
-  title: string;
-  url: string;
-  created: number;
-  selftext: string;
-}
-
-const RedditPost: React.FC<RedditPostProps> = ({ title, url, created, selftext }) => {
+const RedditPost: React.FC<RedditPostInterface> = ({ title, url, created, selftext }) => {
   const timestampText = formatDistanceToNowStrict(new Date(created * 1000), { addSuffix: true });
   const previewText = selftext.slice(0, 150) + '...';
 
