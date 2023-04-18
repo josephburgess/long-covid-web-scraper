@@ -1,6 +1,8 @@
 import pytest
+from unittest.mock import patch
 from flask import json
 from app import create_app
+from .mock_responses import mock_news_articles
 
 
 @pytest.fixture()
@@ -20,7 +22,11 @@ def runner(app):
 
 
 def test_get_news(client):
-    response = client.get("/api/news")
-    assert response.status_code == 200
-    data = json.loads(response.data)
-    assert len(data) > 0
+    with patch("src.clients.GuardianClient.search_news") as mock_search_news:
+        mock_data = mock_news_articles
+        mock_search_news.return_value = mock_data
+
+        response = client.get("/api/news")
+        assert response.status_code == 200
+        data = json.loads(response.data)
+        assert len(data) == len(mock_data)

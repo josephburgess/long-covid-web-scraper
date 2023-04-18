@@ -5,4 +5,5 @@ export interface ResearchArticleInterface {
   authors: string;
   url: string;
   abstract: string;
+  summary: string;
 }

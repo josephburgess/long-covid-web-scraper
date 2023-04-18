@@ -1,5 +1,6 @@
 from .base_scraper import Scraper
 from bs4 import BeautifulSoup
+from src.clients import summariseText
 
 
 class PubMedScraper(Scraper):
@@ -40,6 +41,7 @@ class PubMedScraper(Scraper):
             authors = self.extract_authors(container)
             publication_date = self.extract_publication_date(container)
             abstract_text = self.extract_abstract(container)
+            summary = summariseText(abstract_text)
 
             article = {
                 "title": title,
@@ -47,13 +49,14 @@ class PubMedScraper(Scraper):
                 "authors": authors,
                 "publication_date": publication_date,
                 "abstract": abstract_text,
+                "summary": summary,
                 "source": "pubmed",
             }
             articles.append(article)
 
         return articles
 
-    def scrape(self, max_pages=14):
+    def scrape(self, max_pages=1):
         all_articles = []
 
         for page_num in range(1, max_pages + 1):
