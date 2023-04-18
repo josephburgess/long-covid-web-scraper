@@ -5,7 +5,7 @@ import { mount } from '@cypress/react18';
 describe('<RedditFeed />', () => {
   beforeEach(() => {
     cy.fixture('sample_posts.json').then((posts) => {
-      cy.intercept('GET', 'http://127.0.0.1:5000/api/reddit', {
+      cy.intercept('POST', 'http://127.0.0.1:5000/api/reddit', {
         fixture: 'sample_posts.json',
       }).as('fetchRedditPosts');
     });

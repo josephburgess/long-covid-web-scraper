@@ -1,5 +1,7 @@
 _This project is still being built, however it is deployed on Render so that changes can be viewed on a live site in realtime. Please feel free to have a browse [here](https://long-covid-hub.onrender.com/), but note that it is still a work in progress!_
 
+[![main](https://github.com/josephburgess/long-covid-web-scraper/actions/workflows/main.yml/badge.svg)](https://github.com/josephburgess/long-covid-web-scraper/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/josephburgess/long-covid-web-scraper/branch/main/graph/badge.svg?token=0OEO440FI9)](https://codecov.io/gh/josephburgess/long-covid-web-scraper) [![Maintainability](https://api.codeclimate.com/v1/badges/a188eab62b8fc975e22c/maintainability)](https://codeclimate.com/github/josephburgess/long-covid-web-scraper/maintainability)
+
 # Long COVID Hub
 
 This project is an information hub for research, news and social posts about Long Covid. It utilises several APIs and web scrapers built using Python to obtain information and display it to the user. 
