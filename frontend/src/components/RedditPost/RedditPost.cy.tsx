@@ -11,7 +11,7 @@ describe('<RedditPost />', () => {
   };
 
   beforeEach(() => {
-    mount(<RedditPost title={post.title} url={post.url} created={post.created} selftext={post.selftext} />);
+    mount(<RedditPost {...post} />);
   });
 
   it('displays the post title', () => {

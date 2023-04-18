@@ -12,7 +12,7 @@ describe('<NewsArticle />', () => {
   };
 
   beforeEach(() => {
-    mount(<NewsArticle webUrl={article.webUrl} headline={article.headline} thumbnail={article.thumbnail} standfirst={article.standfirst} date={article.date} />);
+    mount(<NewsArticle {...article} />);
   });
 
   it('displays the article headline', () => {

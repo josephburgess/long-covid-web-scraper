@@ -11,7 +11,7 @@ describe('<ResearchArticle />', () => {
   };
 
   beforeEach(() => {
-    mount(<ResearchArticle title={article.title} source={article.source} publication_date={article.publication_date} authors={article.authors} url={article.url} />);
+    mount(<ResearchArticle {...article} />);
   });
 
   it('renders', () => {
