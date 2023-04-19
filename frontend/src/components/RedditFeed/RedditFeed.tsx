@@ -35,10 +35,7 @@ const RedditFeed: React.FC = () => {
     <div className='reddit-feed'>
       <h1 data-cy='reddit-feed-title'>Reddit Feed</h1>
       <div className={styles['search-filter-container']}>
-        <SearchFilter
-          onChange={handleSearchTermsChange(setSearchTerms)}
-          searchTerms={redditSearchTerms}
-        />
+        <SearchFilter onChange={handleSearchTermsChange(setSearchTerms)} searchTerms={redditSearchTerms} />
       </div>
       <div className={styles['reddit-post-container']}>
         {isLoading ? (
@@ -49,10 +46,7 @@ const RedditFeed: React.FC = () => {
           ))
         )}
       </div>
-      <Pagination
-        pageCount={pageCount}
-        onPageChange={handlePageChange(setCurrentPage)}
-      />
+      <Pagination pageCount={pageCount} onPageChange={handlePageChange(setCurrentPage)} />
     </div>
   );
 };
