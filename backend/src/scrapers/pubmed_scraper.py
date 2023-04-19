@@ -41,6 +41,7 @@ class PubMedScraper(Scraper):
             authors = self.extract_authors(container)
             publication_date = self.extract_publication_date(container)
             abstract_text = self.extract_abstract(container)
+
             summary = summarise_text(abstract_text)
 
             article = {
