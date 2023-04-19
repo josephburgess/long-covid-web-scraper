@@ -1,29 +1,13 @@
-import React, { useState, useEffect } from 'react';
 import NewsArticle from '../NewsArticle/NewsArticle';
 import Loading from '../Loading/Loading';
 import styles from './NewsFeed.module.css';
 import { fetchNewsArticles } from '../../services/newsApi';
-
-export interface NewsArticleData {
-  webUrl: string;
-  headline: string;
-  thumbnail: string;
-  standfirst: string;
-  date: string;
-}
+import { NewsArticleInterface } from '../../types/NewsArticleInterface';
+import { useFetchData } from '../../hooks/useFetchData';
 
 const NewsFeed: React.FC = () => {
-  const [articles, setArticles] = useState<NewsArticleData[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const newsData = await fetchNewsArticles();
-      setArticles(newsData);
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
+  const [articles, isLoading] =
+    useFetchData<NewsArticleInterface>(fetchNewsArticles);
 
   return (
     <div className={styles.container}>
@@ -31,14 +15,11 @@ const NewsFeed: React.FC = () => {
       {isLoading ? (
         <Loading />
       ) : (
-      <div className={styles.grid}>
-        {articles.map((article, index) => (
-          <NewsArticle
-            key={index}
-            {...article}
-          />
-        ))}
-      </div>
+        <div className={styles.grid}>
+          {articles.map((article, index) => (
+            <NewsArticle key={index} {...article} />
+          ))}
+        </div>
       )}
     </div>
   );

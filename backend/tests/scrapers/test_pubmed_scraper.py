@@ -1,7 +1,5 @@
 import unittest
 import responses
-import json
-from unittest.mock import MagicMock, patch
 from src.scrapers import PubMedScraper
 from .sample_html import (
     sample_pubmed_html,
@@ -37,14 +35,25 @@ class TestPubMedScraper:
 
         assert html_content is None
 
-    def test_parse_pubmed(self):
+    @responses.activate
+    def test_scrape_pubmed(self, monkeypatch):
+        monkeypatch.setattr("src.clients.summarise_text", mock_summarise_text)
+
+        url = "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22long+covid%22%29&filter=simsearch1.fha&filter=pubt.booksdocs&filter=pubt.clinicaltrial&filter=pubt.meta-analysis&filter=pubt.randomizedcontrolledtrial&filter=pubt.review&filter=pubt.systematicreview&format=abstract&sort=date&size=50&page=1"
+        responses.add(responses.GET, url, body=sample_pubmed_html, status=200)
+
+        summary_api_url = "https://api.smrzr.io/v1/summarize?&num_sentences=5"
+        summary_response = {"summary": "Sample summary"}
+        responses.add(
+            responses.POST, summary_api_url, json=summary_response, status=200
+        )
+
         pubmed_scraper = PubMedScraper()
-        articles = pubmed_scraper.parse_html(sample_pubmed_html)
+        articles = pubmed_scraper.scrape(max_pages=1)
 
         assert len(articles) == 1
         assert articles[0]["title"] == "Sample Article Title"
         assert articles[0]["authors"] == "John Doe, Jane Smith"
-        assert articles[0]["publication_date"] == "Jan 01, 2022"
         assert articles[0]["publication_date"] == "Jan 01, 2022"
         assert articles[0]["abstract"] == "Sample abstract text"
 

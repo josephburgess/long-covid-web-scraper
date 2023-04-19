@@ -66,6 +66,7 @@
     "@types/d3-scale-chromatic": "^3.0.0",
     "@types/node": "^18.15.11",
     "@types/plotly.js": "^2.12.18",
+    "@types/react-select": "^5.0.1",
     "babel-plugin-istanbul": "^6.1.1",
     "cross-env": "^7.0.3",
     "cypress": "^12.9.0",

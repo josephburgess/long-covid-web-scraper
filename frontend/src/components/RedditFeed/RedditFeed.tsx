@@ -1,69 +1,52 @@
 import React, { useState, useEffect } from 'react';
+import Loading from '../Loading/Loading';
 import RedditPost from '../RedditPost/RedditPost';
 import SearchFilter from '../SearchFilter/SearchFilter';
+import Pagination from '../Pagination/Pagination';
 import { redditSearchTerms } from '../data/redditSearchTerms';
 import { fetchRedditPosts } from '../../services/redditApi';
 import { RedditPostInterface } from '../../types/RedditPostInterface';
-import Loading from '../Loading/Loading';
-import Paginate from 'react-paginate';
+import {
+  handlePageChange,
+  getPageCount,
+  getDisplayItems,
+} from '../../utils/paginationHelper';
+import { handleSearchTermsChange } from '../../utils/searchFilterHelper';
 import styles from './RedditFeed.module.css';
-
+import { useFetchData } from '../../hooks/useFetchData';
 
 const RedditFeed: React.FC = () => {
-  const [posts, setPosts] = useState<RedditPostInterface[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [currentPage, setCurrentPage] = useState<number>(0);
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
-  const handlePageChange = (selectedItem: { selected: number }) => {
-    setCurrentPage(selectedItem.selected);
-  };
-
-  const handleSearchTermsChange = (selected: any) => {
-    setSearchTerms(selected.map((item: any) => item.value));
-  };
-
-  const itemsPerPage = 20;
-  const pageCount = Math.ceil(posts.length / itemsPerPage);
-  const displayPosts = posts.slice(currentPage * itemsPerPage, (currentPage * itemsPerPage) + itemsPerPage);
-
+  const fetchFilteredRedditPosts = () => fetchRedditPosts(searchTerms);
+  const [posts, isLoading] = useFetchData<RedditPostInterface>(
+    fetchFilteredRedditPosts
+  );
 
   useEffect(() => {
-    const fetchData = async () => {
-      const redditData = await fetchRedditPosts(searchTerms);
-      setPosts(redditData);
-      setIsLoading(false);
-    };
+    setSearchTerms([]);
+  }, []);
 
-    fetchData();
-  }, [searchTerms]);
+  const pageCount = getPageCount(posts.length);
+  const displayPosts = getDisplayItems(posts, currentPage);
 
   return (
-    <div className="reddit-feed">
-      <h1 data-cy="reddit-feed-title">Reddit Feed</h1>
+    <div className='reddit-feed'>
+      <h1 data-cy='reddit-feed-title'>Reddit Feed</h1>
       <div className={styles['search-filter-container']}>
-      <SearchFilter onChange={handleSearchTermsChange} searchTerms={redditSearchTerms} />
+        <SearchFilter onChange={handleSearchTermsChange(setSearchTerms)} searchTerms={redditSearchTerms} />
       </div>
       <div className={styles['reddit-post-container']}>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        displayPosts.map((post, index) => <RedditPost key={index} {...post} />)
-      )}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          displayPosts.map((post, index) => (
+            <RedditPost key={index} {...post} />
+          ))
+        )}
       </div>
-      <Paginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={'...'}
-        breakClassName={'break-me'}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageChange}
-        containerClassName={styles.pagination}
-        activeClassName={styles.active}
-        disabledClassName={styles.disabled}
-      />
+      <Pagination pageCount={pageCount} onPageChange={handlePageChange(setCurrentPage)} />
     </div>
   );
 };

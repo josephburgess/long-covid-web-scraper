@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchYearPublishedArticleData } from '../services/dataApi';
+import { fetchResearchArticleData } from '../services/dataApi';
 import { processArticleData } from '../utils/graphUtils';
 
 export const useYearPublishedData = () => {
@@ -7,7 +7,7 @@ export const useYearPublishedData = () => {
 
   useEffect(() => {
     const processData = async () => {
-      const rawData = await fetchYearPublishedArticleData();
+      const rawData = await fetchResearchArticleData();
       const processedData = processArticleData(rawData);
       setData(processedData);
     };

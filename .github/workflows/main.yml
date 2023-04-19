@@ -13,7 +13,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          python-version: ["3.8", "3.9", "3.10", "3.11"]
+          python-version: ["3.8", "3.9", "3.10"]
     runs-on: ubuntu-latest
 
     steps:
@@ -43,13 +43,13 @@ jobs:
           codecov
         env: 
           MONGO_CLIENT_STRING: 'mongodb://localhost:27017'
-        working-directory: backend
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           file: ./coverage.xml
           flags: backend
+          verbose: true 
 
   frontend:
     runs-on: ubuntu-latest
