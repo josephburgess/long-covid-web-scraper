@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { fetchResearchArticleData } from '../../services/dataApi';
 import {
   handlePageChange,
@@ -10,21 +10,17 @@ import ResearchArticle from '../ResearchArticle/ResearchArticle';
 import styles from './ResearchFeed.module.css';
 import Loading from '../Loading/Loading';
 import { ResearchArticleInterface } from '../../types/ResearchArticleInterface';
+import { useFetchData } from '../../hooks/useFetchData';
 
 const ResearchFeed: React.FC = () => {
-  const [articles, setArticles] = useState<ResearchArticleInterface[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchResearchArticleData();
-      setArticles(data);
-      setIsLoading(false);
-    };
+  const [articles, isLoading] = useFetchData<ResearchArticleInterface>(
+    fetchResearchArticleData
+  );
 
-    fetchData();
-  }, []);
+  const pageCount = getPageCount(articles.length);
+  const displayArticles = getDisplayItems(articles, currentPage);
 
   const pageCount = getPageCount(articles.length);
   const displayArticles = getDisplayItems(articles, currentPage);

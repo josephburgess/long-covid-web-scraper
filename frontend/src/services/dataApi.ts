@@ -1,4 +1,3 @@
-import { ResearchArticleData } from '../components/ResearchFeed/ResearchFeed';
 import { ResearchArticleInterface } from '../types/ResearchArticleInterface';
 
 const fetchData = async <T>(): Promise<T[]> => {
@@ -13,12 +12,6 @@ const fetchData = async <T>(): Promise<T[]> => {
 };
 
 export const fetchResearchArticleData = async (): Promise<
-  ResearchArticleData[]
-> => {
-  return await fetchData<ResearchArticleData>();
-};
-
-export const fetchYearPublishedArticleData = async (): Promise<
   ResearchArticleInterface[]
 > => {
   return await fetchData<ResearchArticleInterface>();
