@@ -1,17 +1,12 @@
 import React from 'react';
-import { MultiValue, ActionMeta } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import makeAnimated from 'react-select/animated';
 import styles from './SearchFilter.module.css';
-
+import { SearchFilterProps } from '../../types/SearchFilterProps';
 const animatedComponents = makeAnimated();
 
-interface SearchFilterBarProps {
-  onChange: (selected: MultiValue<{ value: string; label: string }>, actionMeta: ActionMeta<{ value: string; label: string }>) => void;
-  searchTerms: Array<{ value: string; label: string }>;
-}
 
-const SearchFilter: React.FC<SearchFilterBarProps> = ({ onChange, searchTerms }) => (
+const SearchFilter: React.FC<SearchFilterProps> = ({ onChange, searchTerms }) => (
   <CreatableSelect
     closeMenuOnSelect={false}
     components={animatedComponents}
