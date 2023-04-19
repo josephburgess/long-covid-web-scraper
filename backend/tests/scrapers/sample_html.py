@@ -10,6 +10,39 @@ sample_pubmed_html = """
 </div>
 """
 
+sample_pubmed_html_no_abstract = """
+<div class="results-article">
+    <h1 class="heading-title">
+    <a href="/12345678/">Sample Article Title</a>
+    <span class="authors-list">John Doe, Jane Smith</span>
+    <span class="cit">Jan 01, 2022</span>
+</div>
+"""
+
+sample_pubmed_html_multi_para_abstract = """
+<div class="results-article">
+    <h1 class="heading-title">
+    <a href="/12345678/">Sample Article Title</a>
+    <span class="authors-list">John Doe, Jane Smith</span>
+    <span class="cit">Jan 01, 2022</span>
+    <div class="abstract-content">
+        <p>Sample abstract text</p>
+        <p>Another paragraph of abstract</p>
+    </div>
+</div>
+"""
+
+sample_pubmed_html_no_citation = """
+<div class="results-article">
+    <h1 class="heading-title">
+    <a href="/12345678/">Sample Article Title</a>
+    <span class="authors-list">John Doe, Jane Smith</span>
+    <div class="abstract-content">
+        <p>Sample abstract text</p>
+    </div>
+</div>
+"""
+
 sample_bmj_html = """
 <div class="highwire-article-citation">
   <a href="www.example.com" class="highwire-cite-linked-title">Sample Article Title</a>

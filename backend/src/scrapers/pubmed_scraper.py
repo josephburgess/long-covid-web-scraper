@@ -1,6 +1,6 @@
 from .base_scraper import Scraper
 from bs4 import BeautifulSoup
-from src.clients import summariseText
+from src.clients import summarise_text
 
 
 class PubMedScraper(Scraper):
@@ -41,7 +41,7 @@ class PubMedScraper(Scraper):
             authors = self.extract_authors(container)
             publication_date = self.extract_publication_date(container)
             abstract_text = self.extract_abstract(container)
-            summary = summariseText(abstract_text)
+            summary = summarise_text(abstract_text)
 
             article = {
                 "title": title,
