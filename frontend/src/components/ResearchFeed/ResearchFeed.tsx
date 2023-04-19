@@ -22,9 +22,6 @@ const ResearchFeed: React.FC = () => {
   const pageCount = getPageCount(articles.length);
   const displayArticles = getDisplayItems(articles, currentPage);
 
-  const pageCount = getPageCount(articles.length);
-  const displayArticles = getDisplayItems(articles, currentPage);
-
   return (
     <div className={styles.researchFeed} data-cy='research-feed'>
       {isLoading ? (
