@@ -7,7 +7,7 @@ _This project is still being built, however it is deployed on Render so that cha
 
 # Long COVID Hub
 
-This project is an information hub for research, news and social posts about Long Covid. It utilises several APIs and web scrapers built using Python to obtain information and display it to the user. 
+This project is an information hub for research, news and social posts about Long Covid. It utilises several APIs, web scrapers and a neural model for summarisation built using Python to obtain information and display it to the user. 
 
 ## Technology
 The project uses a Python/Flask backend and a TypeScript/React frontend, with MongoDB used to store scraped data.  Currently the hub has 3 sections, News, Data and Reddit Feed. News articles and Reddit posts are obtained using API calls to the respective services. 
