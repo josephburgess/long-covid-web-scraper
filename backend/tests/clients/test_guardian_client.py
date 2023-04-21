@@ -1,60 +1,23 @@
-import unittest
+import pytest
+import logging
 from unittest.mock import Mock, patch
 from src.clients import GuardianClient
+from mocks import mock_guardian_response, mock_guardian_client_output
 
 
-class TestGuardianClient(unittest.TestCase):
-    def setUp(self):
-        self.client = GuardianClient()
-        self.example_response_data = {
-            "response": {
-                "results": [
-                    {
-                        "webUrl": "https://www.example.com/article1",
-                        "fields": {
-                            "headline": "Example Article 1",
-                            "thumbnail": "https://www.example.com/thumbnail1",
-                            "standfirst": "This is an example article",
-                        },
-                        "webPublicationDate": "2023-04-03T13:37:48Z",
-                    },
-                    {
-                        "webUrl": "https://www.example.com/article2",
-                        "fields": {
-                            "headline": "Example Article 2",
-                            "thumbnail": "",
-                            "standfirst": "",
-                        },
-                        "webPublicationDate": "2023-04-03T15:37:48Z",
-                    },
-                ]
-            }
-        }
-        self.example_output = [
-            {
-                "webUrl": "https://www.example.com/article1",
-                "headline": "Example Article 1",
-                "thumbnail": "https://www.example.com/thumbnail1",
-                "standfirst": "This is an example article",
-                "date": "2023-04-03T13:37:48Z",
-            },
-            {
-                "webUrl": "https://www.example.com/article2",
-                "headline": "Example Article 2",
-                "thumbnail": "",
-                "standfirst": "",
-                "date": "2023-04-03T15:37:48Z",
-            },
-        ]
+@pytest.fixture
+def guardian_client():
+    return GuardianClient()
 
-    @patch("requests.get")
-    def test_search_news(self, mock_get):
+
+def test_search_news(guardian_client):
+    with patch("requests.get") as mock_get:
         mock_response = Mock()
         mock_response.status_code = 200
-        mock_response.json.return_value = self.example_response_data
+        mock_response.json.return_value = mock_guardian_response
         mock_get.return_value = mock_response
 
-        output = self.client.search_news("example")
+        output = guardian_client.search_news("example")
 
         mock_get.assert_called_once_with(
             "https://content.guardianapis.com/search",
@@ -64,17 +27,14 @@ class TestGuardianClient(unittest.TestCase):
                 "query-fields": "headline",
                 "show-fields": "thumbnail,headline,byline,standfirst,bodyText",
                 "order-by": "newest",
-                "api-key": self.client.api_key,
+                "api-key": guardian_client.api_key,
             },
         )
-        self.assertEqual(output, self.example_output)
-
-    def test_search_news_error_handling(self):
-        with patch("requests.get", side_effect=Exception("error")):
-            with self.assertLogs(level="ERROR") as log:
-                self.client.search_news("example")
-                self.assertIn("Error searching news", log.output[0])
+        assert output == mock_guardian_client_output
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_search_news_error_handling(guardian_client):
+    with patch("requests.get", side_effect=Exception("error")):
+        with patch.object(logging, "error") as log:
+            guardian_client.search_news("example")
+            log.assert_called_once_with("Error searching news: error", exc_info=True)
