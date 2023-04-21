@@ -58,3 +58,45 @@ mock_reddit_posts = [
         is_self=False,
     ),
 ]
+
+mock_guardian_response = {
+    "response": {
+        "results": [
+            {
+                "webUrl": "https://www.example.com/article1",
+                "fields": {
+                    "headline": "Example Article 1",
+                    "thumbnail": "https://www.example.com/thumbnail1",
+                    "standfirst": "This is an example article",
+                },
+                "webPublicationDate": "2023-04-03T13:37:48Z",
+            },
+            {
+                "webUrl": "https://www.example.com/article2",
+                "fields": {
+                    "headline": "Example Article 2",
+                    "thumbnail": "",
+                    "standfirst": "",
+                },
+                "webPublicationDate": "2023-04-03T15:37:48Z",
+            },
+        ]
+    }
+}
+
+mock_guardian_client_output = [
+    {
+        "webUrl": "https://www.example.com/article1",
+        "headline": "Example Article 1",
+        "thumbnail": "https://www.example.com/thumbnail1",
+        "standfirst": "This is an example article",
+        "date": "2023-04-03T13:37:48Z",
+    },
+    {
+        "webUrl": "https://www.example.com/article2",
+        "headline": "Example Article 2",
+        "thumbnail": "",
+        "standfirst": "",
+        "date": "2023-04-03T15:37:48Z",
+    },
+]

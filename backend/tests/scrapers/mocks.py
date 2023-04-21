@@ -1,3 +1,8 @@
+def mock_summarise_text(text):
+    return "Sample summary"
+
+
+pubmed_url = "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22long+covid%22%29&filter=simsearch1.fha&filter=pubt.booksdocs&filter=pubt.clinicaltrial&filter=pubt.meta-analysis&filter=pubt.randomizedcontrolledtrial&filter=pubt.review&filter=pubt.systematicreview&format=abstract&sort=date&size=50&page=1"
 sample_pubmed_html = """
 <div class="results-article">
     <h1 class="heading-title">
@@ -43,6 +48,7 @@ sample_pubmed_html_no_citation = """
 </div>
 """
 
+bmj_url = "https://www.bmj.com/search/advanced/title%3Along%2Bcovid%20title_flags%3Amatch-all%20numresults%3A100%20sort%3Apublication-date%20direction%3Adescending%20format_result%3Astandard"
 sample_bmj_html = """
 <div class="highwire-article-citation">
   <a href="www.example.com" class="highwire-cite-linked-title">Sample Article Title</a>
@@ -51,6 +57,8 @@ sample_bmj_html = """
 </div>
 """
 
+
+lancet_url = "https://www.thelancet.com/action/doSearch?text1=long+covid&field1=Title&journalCode=lancet&SeriesKey=lancet"
 sample_lancet_html = """
 <li class="search__item">
     <span class="hlFld-Title">
