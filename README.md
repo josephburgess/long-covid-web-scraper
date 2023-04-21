@@ -9,7 +9,7 @@ This project is an information hub for research, news and social posts about Lon
 ## Technology
 The project uses a Python/Flask backend and a TypeScript/React frontend, with MongoDB used to store scraped data.  Currently the hub has 3 sections, News, Data and Reddit Feed. News articles and Reddit posts are obtained using API calls to the respective services. 
 
-The Research section visualizes data on long COVID articles from PubMed, the British Medical Journal (BMJ) and the Lancet. The data is scraped from the web using BeautifulSoup and stored in MongoDB, which is read by the Flask backend using Pandas. The backend serves the data as JSON, which is then fetched by the React frontend and visualized using Plotly. 
+The Research section visualizes data on long COVID articles from PubMed. The data is scraped from the PubMed website using BeautifulSoup which grabs the Title, Author, Date, and Abstract from the articles. The abstract is summarised using an AI model and stored in MongoDB, which is read by the Flask backend using Pandas. The backend serves the data as JSON, which is then fetched by the React frontend and visualized using Plotly. 
 
 ## Installation
 
