@@ -57,9 +57,9 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_EMAIL }}
           heroku_app_name: long-haul-hub
           heroku_email: your-heroku-email
-          buildpacks: "heroku/python"
-          app_dir: "backend"
-          remote_branch: "main"
+          buildpack: "heroku/python"
+          appdir: "backend"
+          branch: "main"
 
   frontend:
     runs-on: ubuntu-latest
@@ -93,6 +93,6 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: long-haul-hub
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          buildpacks: "heroku/node"
-          app_dir: "frontend"
-          remote_branch: "main"
+          buildpack: "heroku/node"
+          appdir: "frontend"
+          branch: "main"
