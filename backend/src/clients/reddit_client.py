@@ -1,13 +1,30 @@
+"""
+This module provides a simple client for fetching and processing posts from Reddit.
+It includes a RedditClient class with methods to retrieve search results, gather GPT 
+training data, and process individual submissions.
+"""
+
 import logging
 import os
 import json
 import praw
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
 class RedditClient:
+    """
+    A simple client class for interacting with the Reddit API.
+    Attributes:
+    - client_id (str): Reddit API client ID, retrieved from environment variables.
+    - client_secret (str): Reddit API client secret, retrieved from environment variables.
+    - user_agent (str): Reddit API user agent, retrieved from environment variables.
+    - subreddit_name (str): The subreddit from which to fetch posts.
+    - search_terms (List[str]): The search terms to filter posts.
+    """
+
     def __init__(self, search_terms=None):
         self.client_id = os.getenv("REDDIT_CLIENT_ID")
         self.client_secret = os.getenv("REDDIT_CLIENT_SECRET")
@@ -23,20 +40,31 @@ class RedditClient:
         )
 
     def load_posts(self):
+        """
+        Retrieves search results for posts on the specified subreddit.
+        Returns:
+        - list[dict]: A list of dictionaries containing the search results, None if an error occurs.
+        """
         try:
             search_results = self._fetch_search_results()
             return self._extract_output(search_results)
-        except Exception as e:
-            logging.exception(f"Error loading posts: {e}")
+        except requests.RequestException as error:
+            logging.exception("Error loading posts: %s", error)
             return None
 
     def gather_gpt_training_data(self):
+        """
+        Retrieves search results for posts on the specified subreddit and processes them into a format
+        suitable for training a GPT model.
+        Returns:
+        - list[str]: A list of strings containing the processed search results, None if an error occurs.
+        """
         try:
             submission_ids = self._fetch_submission_ids()
             data = self._process_submissions(submission_ids)
             self._write_to_file("reddit_data.jsonl", data)
-        except Exception as e:
-            logging.exception(f"Error loading data: {e}")
+        except requests.RequestException as error:
+            logging.exception("Error loading data: %s", error)
             return None
 
     def _build_search_query(self):
@@ -107,6 +135,6 @@ class RedditClient:
 
     @staticmethod
     def _write_to_file(file_name, data):
-        with open(file_name, "w") as f:
+        with open(file_name, "w", encoding="utf-8") as file:
             for item in data:
-                f.write(json.dumps(item) + "\n")
+                file.write(json.dumps(item) + "\n")

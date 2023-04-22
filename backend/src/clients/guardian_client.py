@@ -1,6 +1,11 @@
-import requests
+"""
+This module provides a simple client for fetching news articles from The Guardian API.
+It includes a GuardianClient class with a search_news method to retrieve search results
+based on a given query.
+"""
 import os
 import logging
+import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
@@ -8,17 +13,24 @@ load_dotenv()
 
 
 class GuardianClient:
+    """
+    A simple client class for interacting with the Guardian API.
+    """
+
     def __init__(self):
         self.api_key = os.getenv("GUARDIAN_API_KEY")
         self.base_url = "https://content.guardianapis.com/"
 
     def search_news(self, query):
+        """
+        Search the Guardian API for news articles matching the query.
+        """
         try:
             response = self._fetch_search_results(query)
             results = self._parse_search_results(response)
             return results
-        except Exception as e:
-            logging.exception(f"Error searching news: {e}")
+        except requests.RequestException as error:
+            logging.exception("Error searching news: %s", error)
             return None
 
     def _fetch_search_results(self, query):
@@ -31,7 +43,7 @@ class GuardianClient:
             "order-by": "newest",
             "api-key": self.api_key,
         }
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=10)
         response.raise_for_status()
         return response.json()
 
