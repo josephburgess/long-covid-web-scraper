@@ -2,13 +2,13 @@ import * as Plotly from 'plotly.js';
 import { ResearchArticleInterface } from '../types/ResearchArticleInterface';
 import { schemeSet2 } from 'd3-scale-chromatic';
 
-export const getLayout = (): Partial<Plotly.Layout> => ({
+export const getLayout = (uniqueYears: number[]): Partial<Plotly.Layout> => ({
   title: 'Publication Tracker',
   xaxis: {
     title: 'Year',
-    tickmode: 'linear',
-    tick0: 0,
-    dtick: 1,
+    tickmode: 'array',
+    tickvals: uniqueYears,
+    ticktext: uniqueYears.map(String),
     ticklen: 5,
     tickwidth: 2,
     tickcolor: '#000',
@@ -39,7 +39,7 @@ export const processArticleData = (data: ResearchArticleInterface[]) => {
     );
 
     return {
-      x: Object.keys(years),
+      x: Object.keys(years).map(Number),
       y: Object.values(years),
       type: 'bar' as const,
       name: source,
