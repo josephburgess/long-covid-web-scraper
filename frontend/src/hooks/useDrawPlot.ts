@@ -1,15 +1,14 @@
-// hooks/
 import { useEffect } from 'react';
 import * as Plotly from 'plotly.js-dist';
 
-export const useDrawYearPublishedPlot = (
+export const useDrawPlot = (
   plotRef: React.RefObject<HTMLDivElement>,
-  data: Plotly.Data[],
+  traces: Plotly.Data[],
   layout: Partial<Plotly.Layout>
 ) => {
   useEffect(() => {
-    if (plotRef.current) {
-      Plotly.newPlot(plotRef.current, data, layout);
+    if (plotRef.current && traces.length > 0) {
+      Plotly.newPlot(plotRef.current, traces, layout);
     }
-  }, [plotRef, data, layout]);
+  }, [plotRef, traces, layout]);
 };
