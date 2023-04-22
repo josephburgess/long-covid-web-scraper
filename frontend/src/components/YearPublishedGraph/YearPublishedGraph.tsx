@@ -1,16 +1,30 @@
+// YearPublishedGraph.tsx
 import React, { useRef } from 'react';
-import { useYearPublishedData } from '../../hooks/useYearPublishedData';
-import { useDrawYearPublishedPlot } from '../../hooks/useDrawYearPublishedPlot';
-import { getLayout } from '../../utils/graphUtils';
+import { useProcessedYearPublishedData } from '../../hooks/useProcessedYearPublishedData';
+import { useDrawPlot } from '../../hooks/useDrawPlot';
 
 const YearPublishedGraph: React.FC = () => {
   const plotRef = useRef<HTMLDivElement>(null);
-  const data = useYearPublishedData();
-  const layout = getLayout();
+  const traces = useProcessedYearPublishedData();
 
-  useDrawYearPublishedPlot(plotRef, data, layout);
+  const layout: Partial<Plotly.Layout> = {
+    title: 'Publication Tracker',
+    xaxis: {
+      title: 'Year',
+      tickmode: 'linear',
+      tick0: 0,
+      dtick: 1,
+      ticklen: 5,
+      tickwidth: 2,
+      tickcolor: '#000',
+    },
+    yaxis: { title: 'Number of Articles' },
+    barmode: 'stack',
+  };
 
-  return <div ref={plotRef} data-cy="year-published-graph" />;
+  useDrawPlot(plotRef, traces, layout);
+
+  return <div ref={plotRef} data-cy='year-published-graph' />;
 };
 
 export default YearPublishedGraph;
