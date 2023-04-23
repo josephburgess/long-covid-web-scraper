@@ -1,39 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { fetchResearchArticleData } from '../../services/dataApi';
-import {
-  handlePageChange,
-  getPageCount,
-  getDisplayItems,
-} from '../../utils/paginationHelper';
 import Pagination from '../Pagination/Pagination';
 import ResearchArticle from '../ResearchArticle/ResearchArticle';
 import styles from './ResearchFeed.module.css';
 import Loading from '../Loading/Loading';
 import { ResearchArticleInterface } from '../../types/ResearchArticleInterface';
 import { useFetchData } from '../../hooks/useFetchData';
+import { usePagination } from '../../hooks/usePagination';
+import { useLoading } from '../../hooks/useLoading';
 
 const ResearchFeed: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<number>(0);
-
+  const itemsPerPage = 20;
   const [articles, isLoading] = useFetchData<ResearchArticleInterface>(
     fetchResearchArticleData
   );
 
-  const pageCount = getPageCount(articles.length);
-  const displayArticles = getDisplayItems(articles, currentPage);
+  const { setCurrentPage, pageCount, displayItems } = usePagination(
+    articles,
+    itemsPerPage
+  );
+  const loading = useLoading(isLoading);
 
   return (
     <div className={styles.researchFeed} data-cy='research-feed'>
-      {isLoading ? (
+      {loading ? (
         <Loading />
       ) : (
-        displayArticles.map((article, index) => (
+        displayItems.map((article, index) => (
           <ResearchArticle key={index} {...article} />
         ))
       )}
       <Pagination
         pageCount={pageCount}
-        onPageChange={handlePageChange(setCurrentPage)}
+        onPageChange={(selectedItem) => setCurrentPage(selectedItem.selected)}
       />
     </div>
   );
