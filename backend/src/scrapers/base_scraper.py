@@ -1,5 +1,5 @@
 import requests
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
 class Scraper(ABC):
@@ -9,6 +9,12 @@ class Scraper(ABC):
             return response.text
         return None
 
-    @abstractmethod
     def scrape(self):
-        pass
+        html_content = self.fetch_html(self.base_url + self.query)
+
+        if html_content:
+            articles = self.parse_html(html_content)
+        else:
+            articles = []
+
+        return articles
