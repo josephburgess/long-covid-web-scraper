@@ -1,21 +1,19 @@
 export const handlePageChange =
   (setCurrentPage: (page: number) => void) =>
-  (selectedItem: { selected: number }) => {
+  (selectedItem: { selected: number }) =>
     setCurrentPage(selectedItem.selected);
-  };
 
-const itemsPerPage = 20;
-
-export const getPageCount = (itemsLength: number) => {
-  return Math.ceil(itemsLength / itemsPerPage);
+export const getPageCount = (totalItems: number, itemsPerPage: number) => {
+  return Math.ceil(totalItems / itemsPerPage);
 };
 
-export const getDisplayItems = <T extends any>(
-  items: T[],
-  currentPage: number
+export const getDisplayItems = (
+  items: any[],
+  currentPage: number,
+  itemsPerPage: number
 ) => {
-  return items.slice(
-    currentPage * itemsPerPage,
-    currentPage * itemsPerPage + itemsPerPage
-  );
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  return items.slice(startIndex, endIndex);
 };
