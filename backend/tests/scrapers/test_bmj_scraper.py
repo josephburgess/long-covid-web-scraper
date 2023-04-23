@@ -29,3 +29,12 @@ def test_scrape_BMJ(bmj_scraper):
     assert articles[0]["title"] == "Sample Article Title"
     assert articles[0]["authors"] == "John Doe"
     assert articles[0]["publication_date"] == "Mar 01, 2023"
+
+
+@responses.activate
+def test_scrape_BMJ_no_html(bmj_scraper):
+    responses.add(responses.GET, bmj_url, body=None, status=200)
+
+    articles = bmj_scraper.scrape()
+
+    assert articles == []

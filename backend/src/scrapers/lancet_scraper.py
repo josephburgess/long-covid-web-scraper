@@ -53,13 +53,3 @@ class LancetScraper(Scraper):
             articles.append(article)
 
         return articles
-
-    def scrape(self):
-        html_content = self.fetch_html(self.base_url + self.query)
-
-        if html_content:
-            articles = self.parse_html(html_content)
-        else:
-            articles = []
-
-        return articles

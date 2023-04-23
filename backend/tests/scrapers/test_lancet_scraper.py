@@ -31,3 +31,12 @@ def test_scrape_lancet(lancet_scraper):
     assert articles[1]["title"] == "Healing Long Covid: a marathon not a sprint"
     assert articles[1]["authors"] == "Nisreen A Alwan"
     assert articles[1]["publication_date"] == "4 Mar 2023"
+
+
+@responses.activate
+def test_scrape_lancet_no_html(lancet_scraper):
+    responses.add(responses.GET, lancet_url, body=None, status=200)
+
+    articles = lancet_scraper.scrape()
+
+    assert articles == []
