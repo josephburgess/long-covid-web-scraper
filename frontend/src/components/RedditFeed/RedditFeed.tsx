@@ -1,51 +1,18 @@
-import React, { useState } from 'react';
-import Loading from '../Loading/Loading';
+import React from 'react';
 import RedditPost from '../RedditPost/RedditPost';
-import SearchFilter from '../SearchFilter/SearchFilter';
-import Pagination from '../Pagination/Pagination';
-import { searchFilterTerms } from '../data/searchFilterTerms';
 import { fetchRedditPosts } from '../../services/redditApi';
-import {
-  handlePageChange,
-  getPageCount,
-  getDisplayItems,
-} from '../../utils/paginationHelper';
-import { handleSearchTermsChange } from '../../utils/searchFilterHelper';
 import styles from './RedditFeed.module.css';
-import { useFetchData } from '../../hooks/useFetchData';
+import Feed from '../Feed/Feed';
 
-const RedditFeed: React.FC = () => {
-  const [searchTerms, setSearchTerms] = useState<string[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const [posts, isLoading] = useFetchData(fetchRedditPosts, searchTerms);
-
-  const pageCount = getPageCount(posts.length);
-  const displayPosts = getDisplayItems(posts, currentPage);
-
-  return (
-    <div className='reddit-feed'>
-      <h1 data-cy='reddit-feed-title'>Reddit Feed</h1>
-      <div className={styles['search-filter-container']}>
-        <SearchFilter
-          onChange={handleSearchTermsChange(setSearchTerms)}
-          searchTerms={searchFilterTerms}
-        />
-      </div>
-      <div className={styles['reddit-post-container']}>
-        {isLoading ? (
-          <Loading />
-        ) : (
-          displayPosts.map((post, index) => (
-            <RedditPost key={index} {...post} />
-          ))
-        )}
-      </div>
-      <Pagination
-        pageCount={pageCount}
-        onPageChange={handlePageChange(setCurrentPage)}
-      />
-    </div>
-  );
-};
+const RedditFeed: React.FC = () => (
+  <div className={styles.feed}>
+    <Feed
+      title='Reddit Feed'
+      fetchData={fetchRedditPosts}
+      ItemComponent={RedditPost}
+      className={styles.redditFeed}
+    />
+  </div>
+);
 
 export default RedditFeed;

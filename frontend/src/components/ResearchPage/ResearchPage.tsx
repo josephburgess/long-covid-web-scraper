@@ -13,7 +13,6 @@ const ResearchPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Research</h1>
       <div className={styles.main}>
         <ResearchSidebar onSelection={handleSelection} />
         <div className={styles.content}>
