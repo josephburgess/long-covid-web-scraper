@@ -6,17 +6,20 @@ import {
   getDisplayItems,
 } from '../../utils/paginationHelper';
 import Pagination from '../Pagination/Pagination';
+import SearchFilter from '../SearchFilter/SearchFilter';
+import { handleSearchTermsChange } from '../../utils/searchFilterHelper';
 import ResearchArticle from '../ResearchArticle/ResearchArticle';
 import styles from './ResearchFeed.module.css';
 import Loading from '../Loading/Loading';
-import { ResearchArticleInterface } from '../../types/ResearchArticleInterface';
+import { searchFilterTerms } from '../data/searchFilterTerms';
 import { useFetchData } from '../../hooks/useFetchData';
 
 const ResearchFeed: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
-
-  const [articles, isLoading] = useFetchData<ResearchArticleInterface>(
-    fetchResearchArticleData
+  const [searchTerms, setSearchTerms] = useState<string[]>([]);
+  const [articles, isLoading] = useFetchData(
+    fetchResearchArticleData,
+    searchTerms
   );
 
   const pageCount = getPageCount(articles.length);
@@ -24,6 +27,13 @@ const ResearchFeed: React.FC = () => {
 
   return (
     <div className={styles.researchFeed} data-cy='research-feed'>
+      <div className={styles['search-filter-container']}>
+        <SearchFilter
+          onChange={handleSearchTermsChange(setSearchTerms)}
+          searchTerms={searchFilterTerms}
+        />
+      </div>
+
       {isLoading ? (
         <Loading />
       ) : (
