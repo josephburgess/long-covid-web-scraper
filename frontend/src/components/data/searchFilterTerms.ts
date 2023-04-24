@@ -1,4 +1,4 @@
-export const redditSearchTerms = [
+export const searchFilterTerms = [
   { value: 'skin', label: 'Skin' },
   { value: 'burning', label: 'Burning' },
   { value: 'neurologist', label: 'Neurologist' },

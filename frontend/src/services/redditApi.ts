@@ -1,7 +1,7 @@
 import { RedditPostInterface } from '../types/RedditPostInterface';
 
 export const fetchRedditPosts = async (
-  searchTerms: string[]
+  searchTerms?: string[]
 ): Promise<RedditPostInterface[]> => {
   try {
     const response = await fetch(

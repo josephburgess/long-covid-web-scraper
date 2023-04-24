@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Loading from '../Loading/Loading';
 import RedditPost from '../RedditPost/RedditPost';
 import SearchFilter from '../SearchFilter/SearchFilter';
 import Pagination from '../Pagination/Pagination';
-import { redditSearchTerms } from '../data/redditSearchTerms';
+import { searchFilterTerms } from '../data/searchFilterTerms';
 import { fetchRedditPosts } from '../../services/redditApi';
-import { RedditPostInterface } from '../../types/RedditPostInterface';
 import {
   handlePageChange,
   getPageCount,
@@ -18,15 +17,7 @@ import { useFetchData } from '../../hooks/useFetchData';
 const RedditFeed: React.FC = () => {
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
-
-  const fetchFilteredRedditPosts = () => fetchRedditPosts(searchTerms);
-  const [posts, isLoading] = useFetchData<RedditPostInterface>(
-    fetchFilteredRedditPosts
-  );
-
-  useEffect(() => {
-    setSearchTerms([]);
-  }, []);
+  const [posts, isLoading] = useFetchData(fetchRedditPosts, searchTerms);
 
   const pageCount = getPageCount(posts.length);
   const displayPosts = getDisplayItems(posts, currentPage);
@@ -35,7 +26,10 @@ const RedditFeed: React.FC = () => {
     <div className='reddit-feed'>
       <h1 data-cy='reddit-feed-title'>Reddit Feed</h1>
       <div className={styles['search-filter-container']}>
-        <SearchFilter onChange={handleSearchTermsChange(setSearchTerms)} searchTerms={redditSearchTerms} />
+        <SearchFilter
+          onChange={handleSearchTermsChange(setSearchTerms)}
+          searchTerms={searchFilterTerms}
+        />
       </div>
       <div className={styles['reddit-post-container']}>
         {isLoading ? (
@@ -46,7 +40,10 @@ const RedditFeed: React.FC = () => {
           ))
         )}
       </div>
-      <Pagination pageCount={pageCount} onPageChange={handlePageChange(setCurrentPage)} />
+      <Pagination
+        pageCount={pageCount}
+        onPageChange={handlePageChange(setCurrentPage)}
+      />
     </div>
   );
 };
