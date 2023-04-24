@@ -1,0 +1,16 @@
+export const searchFilterTerms = [
+  { value: 'skin', label: 'Skin' },
+  { value: 'burning', label: 'Burning' },
+  { value: 'neurologist', label: 'Neurologist' },
+  { value: 'neurology', label: 'Neurology' },
+  { value: 'fatigue', label: 'Fatigue' },
+  { value: 'neuropathy', label: 'Neuropathy' },
+  { value: 'tingling', label: 'Tingling' },
+  { value: 'burn', label: 'Burn' },
+  { value: 'fire', label: 'Fire' },
+  { value: 'neuro', label: 'Neuro' },
+  { value: 'sfn', label: 'SFN' },
+  { value: 'sensitive', label: 'Sensitive' },
+  { value: 'touch', label: 'Touch' },
+  { value: 'POTS', label: 'POTS' },
+];
