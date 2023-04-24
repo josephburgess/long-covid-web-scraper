@@ -11,19 +11,15 @@ import { handleSearchTermsChange } from '../../utils/searchFilterHelper';
 import ResearchArticle from '../ResearchArticle/ResearchArticle';
 import styles from './ResearchFeed.module.css';
 import Loading from '../Loading/Loading';
-import { ResearchArticleInterface } from '../../types/ResearchArticleInterface';
-import { useFetchData } from '../../hooks/useFetchData';
 import { searchFilterTerms } from '../data/searchFilterTerms';
+import { useFetchData } from '../../hooks/useFetchData';
 
 const ResearchFeed: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
-
-  const fetchFilteredResearchArticles = () =>
-    fetchResearchArticleData(searchTerms);
-
-  const [articles, isLoading] = useFetchData<ResearchArticleInterface>(
-    fetchFilteredResearchArticles
+  const [articles, isLoading] = useFetchData(
+    fetchResearchArticleData,
+    searchTerms
   );
 
   const pageCount = getPageCount(articles.length);

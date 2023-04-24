@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Loading from '../Loading/Loading';
 import RedditPost from '../RedditPost/RedditPost';
 import SearchFilter from '../SearchFilter/SearchFilter';
 import Pagination from '../Pagination/Pagination';
 import { searchFilterTerms } from '../data/searchFilterTerms';
 import { fetchRedditPosts } from '../../services/redditApi';
-import { RedditPostInterface } from '../../types/RedditPostInterface';
 import {
   handlePageChange,
   getPageCount,
@@ -18,15 +17,7 @@ import { useFetchData } from '../../hooks/useFetchData';
 const RedditFeed: React.FC = () => {
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
-
-  const fetchFilteredRedditPosts = () => fetchRedditPosts(searchTerms);
-  const [posts, isLoading] = useFetchData<RedditPostInterface>(
-    fetchFilteredRedditPosts
-  );
-
-  useEffect(() => {
-    setSearchTerms([]);
-  }, []);
+  const [posts, isLoading] = useFetchData(fetchRedditPosts, searchTerms);
 
   const pageCount = getPageCount(posts.length);
   const displayPosts = getDisplayItems(posts, currentPage);

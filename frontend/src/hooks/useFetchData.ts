@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
 
 export const useFetchData = <T>(
-  fetchData: () => Promise<T[]>
+  fetchDataFunction: (searchTerms?: string[]) => Promise<T[]>,
+  searchTerms?: string[]
 ): [T[], boolean] => {
   const [data, setData] = useState<T[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      const fetchedData = await fetchData();
+    const fetchData = async () => {
+      setIsLoading(true);
+      const fetchedData = await fetchDataFunction(searchTerms);
       setData(fetchedData);
       setIsLoading(false);
     };
 
-    fetchDataAndSetState();
-  }, [fetchData]);
+    fetchData();
+  }, [fetchDataFunction, searchTerms]);
 
   return [data, isLoading];
 };
