@@ -1,8 +1,11 @@
 import pandas as pd
 import re
-from datetime import datetime
+from collections import Counter
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
 from src.database import DatabaseManager
 from src.database import get_db
+from .wordcloud_filtered_words import custom_filter_words
 
 
 class DataProcessor:
@@ -10,6 +13,8 @@ class DataProcessor:
         self.db = db
         self.collection_name = collection_name
         self.df = self.load_data()
+        self.stop_words = set(stopwords.words("english"))
+        self.lemmatizer = WordNetLemmatizer()
 
     def load_data(self):
         collection = self.db[self.collection_name]
@@ -63,12 +68,49 @@ class DataProcessor:
         db_manager.update_collection(self.df.to_dict(orient="records"))
         self.new_articles_count = db_manager.new_articles_count
 
+    def extract_top_words(self, top_n=120):
+        word_counter = Counter()
+
+        for _, row in self.df.iterrows():
+            text = row["title"] + " " + row["summary"]
+            words = re.findall(r"\b\w+\b", text.lower())
+
+            for word in words:
+                if word not in self.stop_words and word not in custom_filter_words and not word.isdigit():
+                    lemmatized_word = self.lemmatizer.lemmatize(word)
+                    word_counter.update([lemmatized_word])
+
+        top_words = word_counter.most_common(top_n)
+
+        result = [{"text": word, "value": count} for word, count in top_words]
+
+        top_words_collection = self.db["top_words"]
+        top_words_collection.delete_many({})
+        top_words_collection.insert_many(result)
+
+        return result
+
+
+    def get_filtered_words(self, text):
+        words = re.findall(r"\b\w+\b", text.lower())
+        filtered_words = [
+            self.lemmatizer.lemmatize(word) for word in words if word not in self.stop_words
+        ]
+        return filtered_words
+
+    def update_word_counter(self, word_counter, text):
+        filtered_words = self.get_filtered_words(text)
+        word_counter.update(filtered_words)
+
+
+
 
 def main():
     db = get_db()
     data_processor = DataProcessor(db, "articles")
     data_processor.clean_data()
     data_processor.update_processed_collection("processed_articles")
+    data_processor.extract_top_words()
     print(
         f"{data_processor.new_articles_count} new articles processed and added to the 'processed_articles' database."
     )

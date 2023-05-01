@@ -1,5 +1,5 @@
-import React from 'react'
-import ResearchPage from './ResearchPage'
+import React from 'react';
+import ResearchPage from './ResearchPage';
 import { mount } from '@cypress/react18';
 
 describe('<ResearchPage />', () => {
@@ -13,7 +13,7 @@ describe('<ResearchPage />', () => {
 
   it('changes selection when clicking buttons on sidebar', () => {
     mount(<ResearchPage />);
-    
+
     cy.get('button').contains('Publication Tracker').click();
     cy.get('[data-cy="research-feed"]').should('not.exist');
     cy.get('[data-cy="year-published-graph"]').should('exist');

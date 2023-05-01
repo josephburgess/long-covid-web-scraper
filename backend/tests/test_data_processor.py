@@ -2,7 +2,7 @@ import unittest
 from mongomock import MongoClient
 import pandas as pd
 from src.scrapers import DataProcessor
-
+from collections import Counter
 
 class TestDataProcessor(unittest.TestCase):
     def setUp(self):
@@ -14,7 +14,16 @@ class TestDataProcessor(unittest.TestCase):
 
         self.test_df = pd.DataFrame(
             {
-                "title": ["Article 1", "Article 2", "Article 3"],
+                "title": [
+                    "Symptoms",
+                    "Infection",
+                    "Health",
+                ],
+                "summary": [
+                    "Symptoms",
+                    "Infection",
+                    "Health",
+                ],
                 "publication_date": ["2020 May 10", "Published 15 Jun 2021", None],
                 "source": ["pubmed", "BMJ", "pubmed"],
             }
@@ -70,6 +79,51 @@ class TestDataProcessor(unittest.TestCase):
             self.data_processor.standardize_date(date3, source3), "2020-Jul-20"
         )
 
+    def test_extract_top_words(self):
+        self.data_processor.df = self.test_df
+        top_n = 3
+
+        top_words = self.data_processor.extract_top_words(top_n)
+        expected_top_words = [
+            {"text": "symptom", "value": 2},
+            {"text": "infection", "value": 2},
+            {"text": "health", "value": 2},
+        ]
+
+        self.assertEqual(len(top_words), top_n)
+
+        for word in top_words:
+            word.pop("_id", None)
+
+        top_words = sorted(top_words, key=lambda x: x["text"])
+        expected_top_words = sorted(expected_top_words, key=lambda x: x["text"])
+
+        self.assertEqual(top_words, expected_top_words)
+
+        top_words_collection = self.test_database["top_words"]
+        top_words_from_db = list(top_words_collection.find())
+
+        self.assertEqual(len(top_words_from_db), top_n)
+
+        for word in top_words_from_db:
+            word.pop("_id", None)
+
+        top_words_from_db = sorted(top_words_from_db, key=lambda x: x["text"])
+
+        self.assertEqual(top_words_from_db, expected_top_words)
+
+
+    def test_get_filtered_words(self):
+        text = "This is a test text containing some stop words like and, the, of"
+        expected_filtered_words = ["test", "text", "containing", "stop", "word", "like"]
+        self.assertEqual(self.data_processor.get_filtered_words(text), expected_filtered_words)
+
+    def test_update_word_counter(self):
+        word_counter = Counter()
+        text = "This is a test text containing some stop words like and, the, of"
+        expected_word_counter = Counter({"test": 1, "text": 1, "containing": 1, "stop": 1, "word": 1, "like": 1})
+        self.data_processor.update_word_counter(word_counter, text)
+        self.assertEqual(word_counter, expected_word_counter)
 
 if __name__ == "__main__":
     unittest.main()

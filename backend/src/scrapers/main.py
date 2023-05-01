@@ -1,6 +1,6 @@
 from src.scrapers import PubMedScraper
 from src.database import DatabaseManager
-from .data_processor import main as data_processor_main
+from .data_processor import main as data_processor
 
 
 def main():
@@ -9,7 +9,7 @@ def main():
     db_manager = DatabaseManager("articles")
     db_manager.update_collection(data)
 
-    data_processor_main()
+    data_processor()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 from flask import Blueprint
-from src.controllers import get_reddit_posts, get_news_articles, get_research_data
+from src.controllers import get_reddit_posts, get_news_articles, get_research_data, get_wordcloud_data
 
 
 bp = Blueprint("routes", __name__)
@@ -18,3 +18,7 @@ def get_news():
 @bp.route("/api/reddit", methods=["POST"])
 def get_reddit():
     return get_reddit_posts()
+
+@bp.route("/api/wordcloud")
+def get_wordcloud():
+    return get_wordcloud_data()

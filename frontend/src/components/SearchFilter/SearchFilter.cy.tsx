@@ -29,7 +29,9 @@ describe('<SearchFilter />', () => {
     cy.get('.search-filter__dropdown-indicator').click();
     cy.get('.search-filter__option').contains(searchTerms[0].label).click();
 
-    cy.get('@onChange').should('be.calledOnce').and('be.calledWith', [searchTerms[0]]);
+    cy.get('@onChange')
+      .should('be.calledOnce')
+      .and('be.calledWith', [searchTerms[0]]);
 
     cy.get('.search-filter__multi-value__remove').click();
 
@@ -44,6 +46,6 @@ describe('<SearchFilter />', () => {
     cy.get('.search-filter__dropdown-indicator').click();
     cy.get('.search-filter__input').type(`${newTerm.label}{enter}`);
 
-    cy.get('@onChange').should('have.been.calledOnce')
+    cy.get('@onChange').should('have.been.calledOnce');
   });
 });

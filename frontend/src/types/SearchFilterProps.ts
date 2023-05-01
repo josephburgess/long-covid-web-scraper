@@ -7,4 +7,5 @@ export interface SearchFilterProps {
     actionMeta: ActionMeta<SearchFilterItem>
   ) => void;
   searchTerms: Array<SearchFilterItem>;
+  value?: SearchFilterItem[] | null;
 }
