@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ResearchSidebar from '../ResearchSidebar/ResearchSidebar';
 import YearPublishedGraph from '../YearPublishedGraph/YearPublishedGraph';
+import WordCloud from '../WordCloud/WordCloud';
 import ResearchFeed from '../ResearchFeed/ResearchFeed';
 import styles from './ResearchPage.module.css';
 
@@ -17,6 +18,7 @@ const ResearchPage: React.FC = () => {
       <div className={styles.main}>
         <ResearchSidebar onSelection={handleSelection} />
         <div className={styles.content}>
+          {selection === 'wordCloud' && <WordCloud />}
           {selection === 'researchFeed' && <ResearchFeed />}
           {selection === 'publicationTracker' && <YearPublishedGraph />}
         </div>
