@@ -60,3 +60,22 @@ mock_news_articles = [
         "webUrl": "https://www.theguardian.com/society/2023/mar/16/it-helps-so-much-long-covid-sufferers-aided-by-sessions-with-opera-singers",
     },
 ]
+
+mock_wordcloud_data = [
+    {
+        "word": "covid",
+        "count": 100,
+    },
+    {
+        "word": "long",
+        "count": 90,
+    },
+    {
+        "word": "19",
+        "count": 80,
+    },
+    {
+        "word": "medical",
+        "count": 70,
+    },
+]
