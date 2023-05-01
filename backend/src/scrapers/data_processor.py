@@ -74,14 +74,10 @@ class DataProcessor:
         for _, row in self.df.iterrows():
             text = row["title"] + " " + row["summary"]
             words = re.findall(r"\b\w+\b", text.lower())
-
-            for word in words:
-                if word not in self.stop_words and word not in custom_filter_words and not word.isdigit():
-                    lemmatized_word = self.lemmatizer.lemmatize(word)
-                    word_counter.update([lemmatized_word])
+            filtered_words = self.process_words(words)
+            word_counter.update(filtered_words)
 
         top_words = word_counter.most_common(top_n)
-
         result = [{"text": word, "value": count} for word, count in top_words]
 
         top_words_collection = self.db["top_words"]
@@ -90,6 +86,19 @@ class DataProcessor:
 
         return result
 
+    def is_valid_word(self, word):
+        return (
+            word not in self.stop_words
+            and word not in custom_filter_words
+            and not word.isdigit()
+        )
+
+    def process_words(self, words):
+        return [
+            self.lemmatizer.lemmatize(word)
+            for word in words
+            if self.is_valid_word(word)
+        ]
 
     def get_filtered_words(self, text):
         words = re.findall(r"\b\w+\b", text.lower())
