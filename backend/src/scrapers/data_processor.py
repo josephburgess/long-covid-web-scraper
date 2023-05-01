@@ -72,15 +72,9 @@ class DataProcessor:
 
         for _, row in self.df.iterrows():
             text = row["title"] + " " + row["summary"]
-            words = re.findall(r"\b\w+\b", text.lower())
-
-            for word in words:
-                if word not in self.stop_words:
-                    lemmatized_word = self.lemmatizer.lemmatize(word)
-                    word_counter.update([lemmatized_word])
+            self.update_word_counter(word_counter, text)
 
         top_words = word_counter.most_common(top_n)
-
         result = [{"text": word, "value": count} for word, count in top_words]
 
         top_words_collection = self.db["top_words"]
@@ -88,6 +82,19 @@ class DataProcessor:
         top_words_collection.insert_many(result)
 
         return result
+
+    def get_filtered_words(self, text):
+        words = re.findall(r"\b\w+\b", text.lower())
+        filtered_words = [
+            self.lemmatizer.lemmatize(word) for word in words if word not in self.stop_words
+        ]
+        return filtered_words
+
+    def update_word_counter(self, word_counter, text):
+        filtered_words = self.get_filtered_words(text)
+        word_counter.update(filtered_words)
+
+
 
 
 def main():
