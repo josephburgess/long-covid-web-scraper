@@ -51,6 +51,7 @@ const ResearchFeed: React.FC<ResearchFeedProps> = ({ searchFilter }) => {
           onChange={handleSearchTermsChange(setSearchTerms)}
           searchTerms={searchFilterTerms}
           value={selectedSearchTerms}
+
         />
       </div>
 
