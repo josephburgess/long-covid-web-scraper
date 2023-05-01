@@ -2,7 +2,7 @@ import unittest
 from mongomock import MongoClient
 import pandas as pd
 from src.scrapers import DataProcessor
-
+from collections import Counter
 
 class TestDataProcessor(unittest.TestCase):
     def setUp(self):
@@ -112,6 +112,18 @@ class TestDataProcessor(unittest.TestCase):
 
         self.assertEqual(top_words_from_db, expected_top_words)
 
+
+    def test_get_filtered_words(self):
+        text = "This is a test text containing some stop words like and, the, of"
+        expected_filtered_words = ["test", "text", "containing", "stop", "word", "like"]
+        self.assertEqual(self.data_processor.get_filtered_words(text), expected_filtered_words)
+
+    def test_update_word_counter(self):
+        word_counter = Counter()
+        text = "This is a test text containing some stop words like and, the, of"
+        expected_word_counter = Counter({"test": 1, "text": 1, "containing": 1, "stop": 1, "word": 1, "like": 1})
+        self.data_processor.update_word_counter(word_counter, text)
+        self.assertEqual(word_counter, expected_word_counter)
 
 if __name__ == "__main__":
     unittest.main()
