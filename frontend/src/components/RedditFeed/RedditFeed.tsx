@@ -22,6 +22,11 @@ const RedditFeed: React.FC = () => {
   const pageCount = getPageCount(posts.length);
   const displayPosts = getDisplayItems(posts, currentPage);
 
+  const selectedSearchTerms = searchTerms.map((term) => ({
+    value: term,
+    label: term,
+  }));
+
   return (
     <div className='reddit-feed'>
       <h1 data-cy='reddit-feed-title'>Reddit Feed</h1>
@@ -29,6 +34,7 @@ const RedditFeed: React.FC = () => {
         <SearchFilter
           onChange={handleSearchTermsChange(setSearchTerms)}
           searchTerms={searchFilterTerms}
+          value={selectedSearchTerms}
         />
       </div>
       <div className={styles['reddit-post-container']}>

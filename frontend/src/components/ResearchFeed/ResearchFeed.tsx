@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchResearchArticleData } from '../../services/dataApi';
 import {
   handlePageChange,
@@ -14,7 +14,11 @@ import Loading from '../Loading/Loading';
 import { searchFilterTerms } from '../data/searchFilterTerms';
 import { useFetchData } from '../../hooks/useFetchData';
 
-const ResearchFeed: React.FC = () => {
+interface ResearchFeedProps {
+  searchFilter: string;
+}
+
+const ResearchFeed: React.FC<ResearchFeedProps> = ({ searchFilter }) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
   const [articles, isLoading] = useFetchData(
@@ -25,12 +29,28 @@ const ResearchFeed: React.FC = () => {
   const pageCount = getPageCount(articles.length);
   const displayArticles = getDisplayItems(articles, currentPage);
 
+  useEffect(() => {
+    if (searchFilter) {
+      setSearchTerms((prevSearchTerms) => {
+        const newSearchTerms = new Set(prevSearchTerms);
+        newSearchTerms.add(searchFilter);
+        return Array.from(newSearchTerms);
+      });
+    }
+  }, [searchFilter]);
+
+  const selectedSearchTerms = searchTerms.map((term) => ({
+    value: term,
+    label: term,
+  }));
+
   return (
     <div className={styles.researchFeed} data-cy='research-feed'>
       <div className={styles['search-filter-container']}>
         <SearchFilter
           onChange={handleSearchTermsChange(setSearchTerms)}
           searchTerms={searchFilterTerms}
+          value={selectedSearchTerms}
         />
       </div>
 

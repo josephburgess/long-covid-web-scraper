@@ -10,8 +10,18 @@ interface Word {
   value: number;
 }
 
-const WordCloud: React.FC = () => {
+interface WordCloudProps {
+  onWordClick: (word: string) => void;
+}
+
+const WordCloud: React.FC<WordCloudProps> = ({ onWordClick }) => {
   const [wordData, setWordData] = useState<Word[]>([]);
+
+  const callbacks = {
+    onWordClick: (word: Word) => {
+      onWordClick(word.text);
+    },
+  };
 
   useEffect(() => {
     const fetchWordData = async () => {
@@ -41,7 +51,11 @@ const WordCloud: React.FC = () => {
 
   return (
     <div style={{ width: '100%', height: '400px' }}>
-      <ReactWordCloud options={options} words={wordData} />
+      <ReactWordCloud
+        options={options}
+        words={wordData}
+        callbacks={callbacks}
+      />
     </div>
   );
 };
