@@ -15,14 +15,14 @@ class TestDataProcessor(unittest.TestCase):
         self.test_df = pd.DataFrame(
             {
                 "title": [
-                    "Article 1: Long Covid Symptoms",
-                    "Article 2: Long Covid Treatment",
-                    "Article 3: Long Covid in Children",
+                    "Symptoms",
+                    "Infection",
+                    "Health",
                 ],
                 "summary": [
-                    "This article discusses the symptoms of long Covid.",
-                    "This article covers the various treatments for long Covid.",
-                    "This article explores the impact of long Covid on children.",
+                    "Symptoms",
+                    "Infection",
+                    "Health",
                 ],
                 "publication_date": ["2020 May 10", "Published 15 Jun 2021", None],
                 "source": ["pubmed", "BMJ", "pubmed"],
@@ -85,9 +85,9 @@ class TestDataProcessor(unittest.TestCase):
 
         top_words = self.data_processor.extract_top_words(top_n)
         expected_top_words = [
-            {"text": "long", "value": 6},
-            {"text": "covid", "value": 6},
-            {"text": "article", "value": 6},
+            {"text": "symptom", "value": 2},
+            {"text": "infection", "value": 2},
+            {"text": "health", "value": 2},
         ]
 
         self.assertEqual(len(top_words), top_n)
