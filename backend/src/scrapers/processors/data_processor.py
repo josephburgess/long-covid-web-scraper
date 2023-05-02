@@ -63,7 +63,7 @@ class DataProcessor:
         self.new_articles_count = db_manager.new_articles_count
 
 
-def main():
+def main():  # pragma: no cover
     print('Processing "articles" collection...')
     db = get_db()
     data_processor = DataProcessor(db, "articles")

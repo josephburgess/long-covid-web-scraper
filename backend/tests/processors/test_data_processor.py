@@ -1,8 +1,8 @@
 import unittest
 from mongomock import MongoClient
+from unittest.mock import MagicMock
 import pandas as pd
 from src.scrapers.processors import DataProcessor
-from collections import Counter
 from .mocks import mock_df, test_articles
 
 
@@ -51,6 +51,13 @@ class TestDataProcessor(unittest.TestCase):
         self.assertEqual(
             self.data_processor.standardize_date(date3, source3), "2020-Jul-20"
         )
+
+    # def test_update_processed_collection(self):
+    #     self.data_processor.update_processed_collection("processed_articles")
+
+    #     self.test_database.update_collection.assert_called_once_with(
+    #         mock_df.to_dict(orient="records")
+    #     )
 
 
 if __name__ == "__main__":

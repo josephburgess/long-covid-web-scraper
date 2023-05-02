@@ -60,7 +60,7 @@ class TopWordsExtractor:
         word_counter.update(filtered_words)
 
 
-def main():
+def main():  # pragma: no cover
     print("Extracting top words...")
     db = get_db()
     data_processor = DataProcessor(db, "processed_articles")
