@@ -68,51 +68,6 @@ class DataProcessor:
         db_manager.update_collection(self.df.to_dict(orient="records"))
         self.new_articles_count = db_manager.new_articles_count
 
-    def extract_top_words(self, top_n=120):
-        word_counter = Counter()
-
-        for _, row in self.df.iterrows():
-            text = row["title"] + " " + row["summary"]
-            words = re.findall(r"\b\w+\b", text.lower())
-            filtered_words = self.process_words(words)
-            word_counter.update(filtered_words)
-
-        top_words = word_counter.most_common(top_n)
-        result = [{"text": word, "value": count} for word, count in top_words]
-
-        top_words_collection = self.db["top_words"]
-        top_words_collection.delete_many({})
-        top_words_collection.insert_many(result)
-
-        return result
-
-    def is_valid_word(self, word):
-        return (
-            word not in self.stop_words
-            and word not in custom_filter_words
-            and not word.isdigit()
-        )
-
-    def process_words(self, words):
-        return [
-            self.lemmatizer.lemmatize(word)
-            for word in words
-            if self.is_valid_word(word)
-        ]
-
-    def get_filtered_words(self, text):
-        words = re.findall(r"\b\w+\b", text.lower())
-        filtered_words = [
-            self.lemmatizer.lemmatize(word) for word in words if word not in self.stop_words
-        ]
-        return filtered_words
-
-    def update_word_counter(self, word_counter, text):
-        filtered_words = self.get_filtered_words(text)
-        word_counter.update(filtered_words)
-
-
-
 
 def main():
     db = get_db()
