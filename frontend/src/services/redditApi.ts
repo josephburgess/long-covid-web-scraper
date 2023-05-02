@@ -1,21 +1,15 @@
+import axios from 'axios';
 import { RedditPostInterface } from '../types/RedditPostInterface';
 
 export const fetchRedditPosts = async (
   searchTerms?: string[]
 ): Promise<RedditPostInterface[]> => {
   try {
-    const response = await fetch(
+    const response = await axios.post<RedditPostInterface[]>(
       `${process.env.REACT_APP_API_URL}/api/reddit`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ searchTerms }),
-      }
+      { searchTerms }
     );
-    const data = await response.json();
-    return data;
+    return response.data;
   } catch (error) {
     console.error(error);
     return [];
