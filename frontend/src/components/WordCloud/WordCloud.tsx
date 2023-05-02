@@ -1,58 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import ReactWordCloud, { Options } from 'react-wordcloud';
-import axios from 'axios';
+import React from 'react';
+import ReactWordCloud from 'react-wordcloud';
 
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
-interface Word {
-  text: string;
-  value: number;
-}
+import { useWordClickCallbacks } from '../../hooks/useWordClickCallbacks';
+import { useFetchData } from '../../hooks/useFetchData';
+import { wordCloudOptions } from '../../utils/wordCloudOptions';
+import { fetchWordCloudData } from '../../services/wordcloudApi';
 
 interface WordCloudProps {
   onWordClick: (word: string) => void;
 }
 
 const WordCloud: React.FC<WordCloudProps> = ({ onWordClick }) => {
-  const [wordData, setWordData] = useState<Word[]>([]);
+  const [wordData, isLoading] = useFetchData(fetchWordCloudData);
+  const callbacks = useWordClickCallbacks(onWordClick);
 
-  const callbacks = {
-    onWordClick: (word: Word) => {
-      onWordClick(word.text);
-    },
-  };
-
-  useEffect(() => {
-    const fetchWordData = async () => {
-      try {
-        const response = await axios.get<Word[]>('/api/wordcloud');
-        setWordData(response.data);
-      } catch (error) {
-        console.error('Error fetching wordcloud data:', error);
-      }
-    };
-
-    fetchWordData();
-  }, []);
-
-  const options: Partial<Options> = {
-    fontFamily: 'Roboto, sans-serif',
-    fontSizes: [16, 60],
-    rotations: 2,
-    rotationAngles: [0, 45],
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    padding: 4,
-    scale: 'sqrt',
-    spiral: 'archimedean',
-    transitionDuration: 1000,
-  };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div style={{ width: '100%', height: '400px' }}>
       <ReactWordCloud
-        options={options}
+        options={wordCloudOptions}
         words={wordData}
         callbacks={callbacks}
       />
