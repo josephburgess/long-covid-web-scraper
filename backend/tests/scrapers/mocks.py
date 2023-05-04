@@ -2,7 +2,7 @@ def mock_summarise_text(text):
     return "Sample summary"
 
 
-pubmed_url = "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22long+covid%22%29&filter=simsearch1.fha&filter=pubt.booksdocs&filter=pubt.clinicaltrial&filter=pubt.meta-analysis&filter=pubt.randomizedcontrolledtrial&filter=pubt.review&filter=pubt.systematicreview&format=abstract&sort=date&size=50&page=1"
+pubmed_url = 'https://pubmed.ncbi.nlm.nih.gov/?term=("long+covid")+NOT+Corrigendum&filter=simsearch1.fha&filter=pubt.booksdocs&filter=pubt.clinicaltrial&filter=pubt.meta-analysis&filter=pubt.randomizedcontrolledtrial&filter=pubt.review&filter=pubt.systematicreview&format=abstract&size=50&page=1'
 sample_pubmed_html = """
 <div class="results-article">
     <h1 class="heading-title">
