@@ -6,12 +6,13 @@ import os
 load_dotenv()
 
 API_URL = "https://private-api.smrzr.io/v1/summarize?&num_sentences=5"
+API_TOKEN = os.getenv("BERT_SUMMARIZER_API_KEY")
 
 
 def summarise_text(payload):
     headers = {
         "Content-Type": "application/json",
-        "api_token": os.getenv("BERT_SUMMARIZER_API_KEY"),
+        "api_token": API_TOKEN,
     }
     response = requests.post(API_URL, data=json.dumps(payload), headers=headers)
     if response.status_code == 200:
