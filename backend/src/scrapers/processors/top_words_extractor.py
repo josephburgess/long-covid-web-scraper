@@ -5,6 +5,7 @@ from nltk.stem import WordNetLemmatizer
 from .wordcloud_filtered_words import custom_filter_words
 from src.database import get_db
 from .data_processor import DataProcessor
+from alive_progress import alive_bar, animations
 
 
 class TopWordsExtractor:
@@ -17,11 +18,13 @@ class TopWordsExtractor:
     def extract_top_words(self, top_n=120):
         word_counter = Counter()
 
-        for _, row in self.df.iterrows():
-            text = row["title"] + " " + row["summary"]
-            words = re.findall(r"\b\w+\b", text.lower())
-            filtered_words = self.process_words(words)
-            word_counter.update(filtered_words)
+        with alive_bar(len(self.df)) as bar:
+            for _, row in self.df.iterrows():
+                text = row["title"] + " " + row["summary"]
+                words = re.findall(r"\b\w+\b", text.lower())
+                filtered_words = self.process_words(words)
+                word_counter.update(filtered_words)
+                bar()
 
         top_words = word_counter.most_common(top_n)
         result = [{"text": word, "value": count} for word, count in top_words]

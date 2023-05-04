@@ -1,6 +1,10 @@
 from .base_scraper import Scraper
 from bs4 import BeautifulSoup
-from src.clients import summarise_text
+
+# from src.clients import summarise_text
+
+from summarizer import Summarizer
+from alive_progress import alive_bar
 
 
 class PubMedScraper(Scraper):
@@ -30,31 +34,34 @@ class PubMedScraper(Scraper):
             return " ".join(p.get_text(strip=True) for p in abstract_paragraphs)
         return ""
 
+    def summarise_text(self, text):
+        model = Summarizer()
+        return model(text, num_sentences=5)
+
     def parse_html(self, html_content):
         soup = BeautifulSoup(html_content, "html.parser")
         articles = []
 
         article_containers = soup.find_all("div", class_="results-article")
+        with alive_bar(50, bar="brackets") as bar:
+            for container in article_containers:
+                title, url = self.extract_title_and_url(container)
+                authors = self.extract_authors(container)
+                publication_date = self.extract_publication_date(container)
+                abstract_text = self.extract_abstract(container)
+                summary = self.summarise_text(abstract_text)
 
-        for container in article_containers:
-            title, url = self.extract_title_and_url(container)
-            authors = self.extract_authors(container)
-            publication_date = self.extract_publication_date(container)
-            abstract_text = self.extract_abstract(container)
-
-            summary = summarise_text(abstract_text)
-
-            article = {
-                "title": title,
-                "url": url,
-                "authors": authors,
-                "publication_date": publication_date,
-                "abstract": abstract_text,
-                "summary": summary,
-                "source": "pubmed",
-            }
-            articles.append(article)
-
+                article = {
+                    "title": title,
+                    "url": url,
+                    "authors": authors,
+                    "publication_date": publication_date,
+                    "abstract": abstract_text,
+                    "summary": summary,
+                    "source": "pubmed",
+                }
+                articles.append(article)
+                bar()
         return articles
 
     def scrape(self, max_pages=1):
