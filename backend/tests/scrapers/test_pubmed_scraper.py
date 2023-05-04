@@ -38,7 +38,7 @@ def test_scrape_pubmed(pubmed_scraper, monkeypatch):
     monkeypatch.setattr("src.clients.summarise_text", mock_summarise_text)
     responses.add(responses.GET, pubmed_url, body=sample_pubmed_html, status=200)
 
-    summary_api_url = "https://api.smrzr.io/v1/summarize?&num_sentences=5"
+    summary_api_url = "https://private-api.smrzr.io/v1/summarize?&num_sentences=5"
     summary_response = {"summary": "Sample summary"}
     responses.add(responses.POST, summary_api_url, json=summary_response, status=200)
 
