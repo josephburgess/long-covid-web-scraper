@@ -1,12 +1,14 @@
 from .base_scraper import Scraper
 from bs4 import BeautifulSoup
 from src.clients import summarise_text
+from alive_progress import alive_bar
+import time
 
 
 class PubMedScraper(Scraper):
     def __init__(self):
         self.base_url = "https://pubmed.ncbi.nlm.nih.gov/"
-        self.query = '?term=%28"long+covid"%29&filter=simsearch1.fha&filter=pubt.booksdocs&filter=pubt.clinicaltrial&filter=pubt.meta-analysis&filter=pubt.randomizedcontrolledtrial&filter=pubt.review&filter=pubt.systematicreview&format=abstract&sort=date&size=50&page='
+        self.query = '?term=("long+covid")+NOT+Corrigendum&filter=simsearch1.fha&filter=pubt.booksdocs&filter=pubt.clinicaltrial&filter=pubt.meta-analysis&filter=pubt.randomizedcontrolledtrial&filter=pubt.review&filter=pubt.systematicreview&format=abstract&size=50&page='
 
     def extract_title_and_url(self, container):
         title_tag = container.find("h1", class_="heading-title").find("a")
@@ -30,31 +32,33 @@ class PubMedScraper(Scraper):
             return " ".join(p.get_text(strip=True) for p in abstract_paragraphs)
         return ""
 
+    def summarise_abstract(self, text):
+        return summarise_text(text)
+
     def parse_html(self, html_content):
         soup = BeautifulSoup(html_content, "html.parser")
         articles = []
 
         article_containers = soup.find_all("div", class_="results-article")
+        with alive_bar(50, bar="brackets") as bar:
+            for container in article_containers:
+                title, url = self.extract_title_and_url(container)
+                authors = self.extract_authors(container)
+                publication_date = self.extract_publication_date(container)
+                abstract_text = self.extract_abstract(container)
+                summary = self.summarise_abstract(abstract_text)
 
-        for container in article_containers:
-            title, url = self.extract_title_and_url(container)
-            authors = self.extract_authors(container)
-            publication_date = self.extract_publication_date(container)
-            abstract_text = self.extract_abstract(container)
-
-            summary = summarise_text(abstract_text)
-
-            article = {
-                "title": title,
-                "url": url,
-                "authors": authors,
-                "publication_date": publication_date,
-                "abstract": abstract_text,
-                "summary": summary,
-                "source": "pubmed",
-            }
-            articles.append(article)
-
+                article = {
+                    "title": title,
+                    "url": url,
+                    "authors": authors,
+                    "publication_date": publication_date,
+                    "abstract": abstract_text,
+                    "summary": summary,
+                    "source": "pubmed",
+                }
+                articles.append(article)
+                bar()
         return articles
 
     def scrape(self, max_pages=1):

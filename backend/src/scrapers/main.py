@@ -1,6 +1,10 @@
 from src.scrapers import PubMedScraper
 from src.database import DatabaseManager
-from .processors.main import main as data_processing_main
+from src.scrapers.processors.main import run_processors
+from src.scrapers import setup_warnings_and_loggers
+
+
+setup_warnings_and_loggers()
 
 
 def main():
@@ -9,7 +13,7 @@ def main():
     db_manager = DatabaseManager("articles")
     db_manager.update_collection(data)
 
-    data_processing_main()
+    run_processors()
 
 
 if __name__ == "__main__":

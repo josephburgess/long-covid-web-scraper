@@ -2,6 +2,7 @@ import pandas as pd
 import re
 from src.database import DatabaseManager
 from src.database import get_db
+from alive_progress import alive_bar, animations
 
 
 class DataProcessor:
@@ -18,12 +19,13 @@ class DataProcessor:
     def clean_data(self):
         print("Cleaning data...")
         self.df = self.df.dropna()
-
-        for i, row in self.df.iterrows():
-            standardized_date = self.standardize_date(
-                row["publication_date"], row["source"]
-            )
-            self.df.at[i, "publication_date"] = standardized_date
+        with alive_bar(len(self.df)) as bar:
+            for i, row in self.df.iterrows():
+                standardized_date = self.standardize_date(
+                    row["publication_date"], row["source"]
+                )
+                self.df.at[i, "publication_date"] = standardized_date
+                bar()
 
         self.df = self.df.drop_duplicates(subset=["title"])
         self.df = self.df.dropna(subset=["publication_date"])
